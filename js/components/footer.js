@@ -77,12 +77,11 @@ function buildFooterHTML() {
         <div class="footer__grid">
           <div class="footer__brand">
             <a href="/index.html" class="footer__brand-name" aria-label="${CONFIG.CLAN_NAME} home">
-              <svg class="footer__brand-logo" viewBox="0 0 28 28" fill="none"
-                   xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect width="28" height="28" rx="7" fill="#141414"/>
-                <text x="14" y="19" font-family="system-ui,sans-serif" font-size="11"
-                      font-weight="600" fill="white" text-anchor="middle">XIV</text>
-              </svg>
+              <img src="/assets/brand/logo.png"
+                   class="footer__brand-logo"
+                   alt="${CONFIG.CLAN_NAME} logo"
+                   width="28" height="28"
+                   loading="lazy">
               <span>${CONFIG.CLAN_NAME}</span>
             </a>
             <p class="footer__brand-desc">

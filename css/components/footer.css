@@ -47,6 +47,10 @@
 .footer__brand-logo {
   width: 28px;
   height: 28px;
+  object-fit: contain;
+  /* Invert white-bg logo to look correct on black footer */
+  filter: invert(1);
+  flex-shrink: 0;
 }
 
 .footer__brand-desc {

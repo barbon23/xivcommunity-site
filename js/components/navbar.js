@@ -60,12 +60,11 @@ function buildNavHTML() {
     <nav class="navbar" role="navigation" aria-label="Main navigation">
       <div class="navbar__inner">
         <a href="/index.html" class="navbar__brand" aria-label="${CONFIG.CLAN_NAME} home">
-          <svg class="navbar__logo" viewBox="0 0 32 32" fill="none"
-               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="#0A0A0A"/>
-            <text x="16" y="22" font-family="system-ui,sans-serif" font-size="13"
-                  font-weight="600" fill="white" text-anchor="middle">XIV</text>
-          </svg>
+          <img src="/assets/brand/logo.png"
+               class="navbar__logo"
+               alt="${CONFIG.CLAN_NAME} logo"
+               width="48" height="48"
+               loading="eager">
           <span>${CONFIG.CLAN_NAME}</span>
         </a>
 
