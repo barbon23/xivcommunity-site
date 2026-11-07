@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Title and meta set dynamically by blog-post.js -->
+  <title>Post — XIVCOMMUNITY</title>
+  <meta name="description" content="Read the latest from XIVCOMMUNITY.">
+  <meta name="theme-color" content="#000000">
+
+  <meta property="og:type"  content="article">
+  <meta property="og:title" content="Post — XIVCOMMUNITY">
+  <meta property="og:image" content="/assets/brand/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A0A0A'/><text x='16' y='22' font-family='system-ui' font-size='13' font-weight='600' fill='white' text-anchor='middle'>XIV</text></svg>">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components/button.css">
+  <link rel="stylesheet" href="/css/components/navbar.css">
+  <link rel="stylesheet" href="/css/components/footer.css">
+  <link rel="stylesheet" href="/css/components/badge.css">
+  <link rel="stylesheet" href="/css/pages/blog.css">
+
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+
+  <header id="site-header">
+    <noscript>
+      <nav style="padding:16px 24px;border-bottom:1px solid #e5e5e5;display:flex;gap:24px;font-family:sans-serif;font-size:14px">
+        <a href="/index.html">Home</a>
+        <a href="/members.html">Members</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/support.html">Support</a>
+        <a href="/rules.html">Rules</a>
+      </nav>
+    </noscript>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- Post not found state -->
+      <div id="post-error" hidden style="padding-block:var(--space-10);max-width:480px">
+        <p style="font-size:var(--font-size-sm);color:var(--color-muted);margin-bottom:var(--space-2)">404</p>
+        <h1 style="margin-bottom:var(--space-3)">Post not found</h1>
+        <p style="margin-bottom:var(--space-4)">That post doesn't exist or may have been removed.</p>
+        <a href="/blog.html" class="btn btn--dark">Back to Blog</a>
+      </div>
+
+      <!-- Post header — populated by blog-post.js -->
+      <div id="post-header" class="post-header" aria-live="polite"></div>
+
+      <!-- Cover image -->
+      <div id="post-cover"></div>
+
+      <!-- Post actions bar -->
+      <div class="post-actions">
+        <a href="/blog.html" class="btn btn--ghost btn--sm">← Blog</a>
+        <button id="copy-link-btn" class="btn btn--ghost btn--sm post-actions__copy">
+          Copy link
+        </button>
+      </div>
+
+      <!-- Post body prose -->
+      <article id="post-body" class="post-body" aria-live="polite">
+        <!-- Rendered by blog-post.js -->
+      </article>
+
+      <!-- Prev / next navigation -->
+      <nav id="post-nav" class="post-nav" aria-label="Post navigation">
+        <!-- Rendered by blog-post.js -->
+      </nav>
+
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/pages/post.js"></script>
+</body>
+</html>

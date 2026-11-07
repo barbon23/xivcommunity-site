@@ -1,0 +1,199 @@
+/* ============================================================
+   navbar.css — Sticky top nav, desktop + mobile hamburger
+   ============================================================ */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background-color: var(--color-white);
+  border-bottom: var(--border);
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+@media (min-width: 768px) {
+  .navbar__inner { padding-inline: var(--space-5); }
+}
+
+@media (min-width: 1200px) {
+  .navbar__inner { padding-inline: var(--space-6); }
+}
+
+/* Brand */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semi);
+  color: var(--color-ink);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar__brand:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.navbar__logo {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+/* Nav links */
+.navbar__links {
+  display: none;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .navbar__links {
+    display: flex;
+  }
+}
+
+.navbar__link {
+  display: block;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__link:hover {
+  color: var(--color-ink);
+}
+
+.navbar__link--active {
+  color: var(--color-ink);
+  font-weight: var(--font-weight-semi);
+}
+
+/* CTA button */
+.navbar__cta {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar__cta {
+    display: inline-flex;
+  }
+}
+
+/* Hamburger button */
+.navbar__hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: background-color var(--transition-fast);
+}
+
+.navbar__hamburger:hover {
+  background-color: var(--color-surface);
+}
+
+.navbar__hamburger:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .navbar__hamburger {
+    display: none;
+  }
+}
+
+.navbar__hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-ink);
+  border-radius: 2px;
+  transition: transform var(--transition-base), opacity var(--transition-fast);
+  transform-origin: center;
+}
+
+/* Open state */
+.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile drawer */
+.navbar__mobile {
+  display: none;
+  position: fixed;
+  inset: 64px 0 0 0;
+  background-color: var(--color-white);
+  border-top: var(--border);
+  z-index: calc(var(--z-nav) - 1);
+  flex-direction: column;
+  padding: var(--space-3);
+  gap: var(--space-1);
+  overflow-y: auto;
+}
+
+.navbar__mobile.is-open {
+  display: flex;
+}
+
+.navbar__mobile-link {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-2);
+  font-size: var(--font-size-md);
+  color: var(--color-ink);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+  min-height: 52px;
+}
+
+.navbar__mobile-link:hover {
+  background-color: var(--color-surface);
+}
+
+.navbar__mobile-link--active {
+  font-weight: var(--font-weight-semi);
+}
+
+.navbar__mobile-cta {
+  margin-top: var(--space-2);
+  align-self: flex-start;
+}

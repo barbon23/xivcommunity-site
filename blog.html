@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — XIVCOMMUNITY</title>
+  <meta name="description" content="Clan war recaps, guides, announcements, and tournament results from the XIVCOMMUNITY CODM clan.">
+  <meta name="theme-color" content="#000000">
+
+  <meta property="og:title"       content="Blog — XIVCOMMUNITY">
+  <meta property="og:description" content="News, guides and updates from the XIVCOMMUNITY CODM clan.">
+  <meta property="og:url"         content="https://xivcommunity.gg/blog.html">
+  <meta property="og:image"       content="/assets/brand/og.jpg">
+  <meta name="twitter:card"       content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A0A0A'/><text x='16' y='22' font-family='system-ui' font-size='13' font-weight='600' fill='white' text-anchor='middle'>XIV</text></svg>">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components/button.css">
+  <link rel="stylesheet" href="/css/components/navbar.css">
+  <link rel="stylesheet" href="/css/components/footer.css">
+  <link rel="stylesheet" href="/css/components/card.css">
+  <link rel="stylesheet" href="/css/components/form-controls.css">
+  <link rel="stylesheet" href="/css/pages/blog.css">
+
+  <link rel="canonical" href="https://xivcommunity.gg/blog.html">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+
+  <header id="site-header">
+    <noscript>
+      <nav style="padding:16px 24px;border-bottom:1px solid #e5e5e5;display:flex;gap:24px;font-family:sans-serif;font-size:14px">
+        <a href="/index.html">Home</a>
+        <a href="/members.html">Members</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/support.html">Support</a>
+        <a href="/rules.html">Rules</a>
+      </nav>
+    </noscript>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-header__title">Blog</h1>
+        <p class="blog-header__sub">Clan war results, guides, announcements and more.</p>
+      </div>
+
+      <div class="blog-controls">
+        <div class="blog-controls__search">
+          <div class="search-bar" role="search">
+            <svg class="search-bar__icon" viewBox="0 0 18 18" fill="none"
+                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M13 13l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input id="blog-search" class="search-bar__input" type="search"
+                   placeholder="Search posts…" aria-label="Search blog posts"
+                   autocomplete="off">
+          </div>
+        </div>
+        <div class="filter-row" id="blog-filters" role="group" aria-label="Filter by category">
+          <!-- Rendered by blog-list.js -->
+        </div>
+      </div>
+
+      <div class="blog-grid" id="blog-grid" aria-live="polite" aria-label="Blog posts">
+        <!-- Rendered by blog-list.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/pages/blog.js"></script>
+</body>
+</html>

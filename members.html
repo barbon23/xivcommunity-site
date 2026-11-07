@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members — XIVCOMMUNITY</title>
+  <meta name="description" content="The official XIVCOMMUNITY member roster. Browse all active members, filter by role, and copy IGNs.">
+  <meta name="theme-color" content="#000000">
+
+  <meta property="og:title"       content="Members — XIVCOMMUNITY">
+  <meta property="og:description" content="Official member roster for the XIVCOMMUNITY CODM clan.">
+  <meta property="og:url"         content="https://xivcommunity.gg/members.html">
+  <meta property="og:image"       content="/assets/brand/og.jpg">
+  <meta name="twitter:card"       content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A0A0A'/><text x='16' y='22' font-family='system-ui' font-size='13' font-weight='600' fill='white' text-anchor='middle'>XIV</text></svg>">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components/button.css">
+  <link rel="stylesheet" href="/css/components/navbar.css">
+  <link rel="stylesheet" href="/css/components/footer.css">
+  <link rel="stylesheet" href="/css/components/card.css">
+  <link rel="stylesheet" href="/css/components/avatar-row.css">
+  <link rel="stylesheet" href="/css/components/badge.css">
+  <link rel="stylesheet" href="/css/components/form-controls.css">
+  <link rel="stylesheet" href="/css/pages/members.css">
+
+  <link rel="canonical" href="https://xivcommunity.gg/members.html">
+  <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+
+  <header id="site-header">
+    <noscript>
+      <nav style="padding:16px 24px;border-bottom:1px solid #e5e5e5;display:flex;gap:24px;font-family:sans-serif;font-size:14px">
+        <a href="/index.html">Home</a>
+        <a href="/members.html">Members</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/support.html">Support</a>
+        <a href="/rules.html">Rules</a>
+      </nav>
+    </noscript>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- Page header -->
+      <div class="members-header">
+        <div class="members-header__inner">
+          <div>
+            <h1 class="members-header__title">Member roster</h1>
+            <p class="members-header__count" id="members-count" aria-live="polite">Loading…</p>
+          </div>
+          <a href="https://discord.gg/xivcommunity" class="btn btn--dark"
+             target="_blank" rel="noopener noreferrer">
+            Apply to join
+          </a>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="members-controls">
+        <div class="members-controls__search">
+          <div class="search-bar" role="search">
+            <svg class="search-bar__icon" viewBox="0 0 18 18" fill="none"
+                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M13 13l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input id="members-search" class="search-bar__input" type="search"
+                   placeholder="Search by IGN…" aria-label="Search members by IGN"
+                   autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+
+        <div class="members-controls__right">
+          <div class="filter-row" role="group" aria-label="Filter by role">
+            <button class="filter-chip filter-chip--active" data-filter="All">All</button>
+            <button class="filter-chip" data-filter="Founder">Founder</button>
+            <button class="filter-chip" data-filter="Head Admin">Head Admin</button>
+            <button class="filter-chip" data-filter="Officer">Officer</button>
+            <button class="filter-chip" data-filter="Member">Member</button>
+            <button class="filter-chip" data-filter="Recruit">Recruit</button>
+          </div>
+          <select id="members-sort" class="form-select" aria-label="Sort members">
+            <option value="role">Sort: Role</option>
+            <option value="az">Sort: A–Z</option>
+            <option value="za">Sort: Z–A</option>
+            <option value="date">Sort: Join date</option>
+          </select>
+          <button id="members-view-toggle" class="btn btn--ghost btn--sm">Table view</button>
+        </div>
+      </div>
+
+      <!-- Member list -->
+      <div id="members-list" class="section" aria-live="polite" aria-label="Member list">
+        <!-- Rendered by members-list.js -->
+      </div>
+
+      <!-- Apply CTA -->
+      <div class="members-cta" data-reveal>
+        <div>
+          <p class="members-cta__text">Want to be listed here?</p>
+          <p class="members-cta__sub">Applications are reviewed within 5 days. A trial scrim may be required.</p>
+        </div>
+        <a href="https://discord.gg/xivcommunity" class="btn btn--dark"
+           target="_blank" rel="noopener noreferrer">
+          Apply now
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/pages/members.js"></script>
+</body>
+</html>

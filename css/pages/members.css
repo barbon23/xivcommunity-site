@@ -1,0 +1,239 @@
+/* ============================================================
+   members.css — Members roster page styles
+   ============================================================ */
+
+/* ── Page header ─────────────────────────────────────────── */
+
+.members-header {
+  padding-block: var(--space-8);
+  border-bottom: var(--border);
+}
+
+.members-header__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .members-header__inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.members-header__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semi);
+  line-height: var(--line-height-tight);
+}
+
+.members-header__count {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  margin-top: var(--space-1);
+}
+
+/* ── Controls bar ─────────────────────────────────────────── */
+
+.members-controls {
+  padding-block: var(--space-4);
+  border-bottom: var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .members-controls {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+}
+
+.members-controls__search {
+  flex: 1;
+  max-width: 360px;
+}
+
+.members-controls__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ── Role group heading ───────────────────────────────────── */
+
+.role-group {
+  margin-bottom: var(--space-6);
+}
+
+.role-group__heading {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semi);
+  color: var(--color-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-block: var(--space-2);
+  border-bottom: var(--border);
+  margin-bottom: var(--space-3);
+}
+
+/* ── Member grid ─────────────────────────────────────────── */
+
+.members-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .members-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .members-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Table view (desktop toggle) ─────────────────────────── */
+
+.members-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.members-table th {
+  text-align: left;
+  padding: var(--space-2) var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semi);
+  color: var(--color-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.members-table th:hover {
+  color: var(--color-ink);
+}
+
+.members-table td {
+  padding: var(--space-2);
+  border-bottom: var(--border);
+  vertical-align: middle;
+  color: var(--color-ink);
+}
+
+.members-table tr:last-child td {
+  border-bottom: none;
+}
+
+.members-table tr:hover td {
+  background-color: var(--color-surface);
+}
+
+.members-table__ign {
+  font-weight: var(--font-weight-semi);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.members-table__uid {
+  color: var(--color-subtle);
+  font-size: var(--font-size-xs);
+}
+
+/* Verified checkmark */
+.verified-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color-ink);
+  flex-shrink: 0;
+}
+
+.verified-mark svg {
+  width: 10px;
+  height: 10px;
+  color: var(--color-white);
+}
+
+/* ── Empty state ─────────────────────────────────────────── */
+
+.members-empty {
+  text-align: center;
+  padding: var(--space-10) var(--space-4);
+  color: var(--color-muted);
+}
+
+.members-empty__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semi);
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+}
+
+/* ── Apply CTA strip ─────────────────────────────────────── */
+
+.members-cta {
+  margin-top: var(--space-8);
+  padding: var(--space-5) var(--space-5);
+  border: var(--border);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+@media (min-width: 640px) {
+  .members-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.members-cta__text {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semi);
+  color: var(--color-ink);
+}
+
+.members-cta__sub {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+/* Table cell helpers */
+.members-table__num {
+  color: var(--color-subtle);
+  font-size: var(--font-size-xs);
+}
+
+.members-table__date {
+  white-space: nowrap;
+  color: var(--color-muted);
+}

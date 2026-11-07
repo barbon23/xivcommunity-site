@@ -1,0 +1,111 @@
+/* ============================================================
+   layout.css — Container, section wrappers, grid helpers
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-5);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+/* Section wrapper */
+.section {
+  padding-block: var(--section-py);
+}
+
+.section--lg {
+  padding-block: var(--section-py-lg);
+}
+
+.section--dark {
+  background-color: var(--bg-dark);
+}
+
+.section--alt {
+  background-color: var(--bg-section-alt);
+}
+
+/* Two-column split: text + media */
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+  }
+
+  .split--reverse .split__media {
+    order: -1;
+  }
+}
+
+.split__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Three-column text blurbs */
+.blurb-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 900px) {
+  .blurb-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+/* Auto-fill card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-3);
+}
+
+/* Section header */
+.section-header {
+  margin-bottom: var(--space-7);
+}
+
+.section-header--centered {
+  text-align: center;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: var(--space-7);
+}
+
+.section-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semi);
+  color: var(--color-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.section--dark .section-label {
+  color: var(--color-subtle);
+}

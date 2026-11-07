@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "ign": "REVO",
+    "role": "Founder",
+    "uid": "8841023",
+    "joinDate": "2021-03-15",
+    "class": "Slayer",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 2,
+    "ign": "YARA",
+    "role": "Head Admin",
+    "uid": "8841024",
+    "joinDate": "2021-03-15",
+    "class": "OBJ",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 3,
+    "ign": "SilentBolt",
+    "role": "Co-Leader",
+    "uid": "9920311",
+    "joinDate": "2021-06-02",
+    "class": "Sniper",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 4,
+    "ign": "Reyna_XIV",
+    "role": "Officer",
+    "uid": "7712044",
+    "joinDate": "2021-08-18",
+    "class": "Support",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 5,
+    "ign": "PinoyFlash",
+    "role": "Officer",
+    "uid": "7712045",
+    "joinDate": "2021-09-01",
+    "class": "Slayer",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 6,
+    "ign": "GhostLineR",
+    "role": "Officer",
+    "uid": "6603812",
+    "joinDate": "2022-01-10",
+    "class": "Sniper",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 7,
+    "ign": "IronMask_XIV",
+    "role": "Member",
+    "uid": "5540091",
+    "joinDate": "2022-02-20",
+    "class": "OBJ",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 8,
+    "ign": "VoidWalker",
+    "role": "Member",
+    "uid": "5540092",
+    "joinDate": "2022-03-05",
+    "class": "Slayer",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 9,
+    "ign": "CalmStrike",
+    "role": "Member",
+    "uid": "5540093",
+    "joinDate": "2022-04-11",
+    "class": "Support",
+    "verified": false,
+    "avatar": ""
+  },
+  {
+    "id": 10,
+    "ign": "Apex_Rook",
+    "role": "Member",
+    "uid": "4431009",
+    "joinDate": "2022-07-30",
+    "class": "OBJ",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 11,
+    "ign": "ZeroChill_XIV",
+    "role": "Member",
+    "uid": "4431010",
+    "joinDate": "2022-09-14",
+    "class": "Slayer",
+    "verified": false,
+    "avatar": ""
+  },
+  {
+    "id": 12,
+    "ign": "MotherBase_MNL",
+    "role": "Member",
+    "uid": "3320445",
+    "joinDate": "2022-11-02",
+    "class": "Support",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 13,
+    "ign": "DarkLancet",
+    "role": "Member",
+    "uid": "3320446",
+    "joinDate": "2023-01-21",
+    "class": "Sniper",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 14,
+    "ign": "Paladin_Cruz",
+    "role": "Member",
+    "uid": "2210887",
+    "joinDate": "2023-02-08",
+    "class": "OBJ",
+    "verified": false,
+    "avatar": ""
+  },
+  {
+    "id": 15,
+    "ign": "HaloBreaker",
+    "role": "Member",
+    "uid": "2210888",
+    "joinDate": "2023-03-19",
+    "class": "Slayer",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 16,
+    "ign": "KuroSeraph",
+    "role": "Member",
+    "uid": "1100223",
+    "joinDate": "2023-05-07",
+    "class": "Support",
+    "verified": false,
+    "avatar": ""
+  },
+  {
+    "id": 17,
+    "ign": "TacticalBean",
+    "role": "Member",
+    "uid": "1100224",
+    "joinDate": "2023-06-14",
+    "class": "OBJ",
+    "verified": true,
+    "avatar": ""
+  },
+  {
+    "id": 18,
+    "ign": "SolTrace",
+    "role": "Recruit",
+    "uid": "",
+    "joinDate": "2024-01-03",
+    "class": "Slayer",
+    "verified": false,
+    "avatar": ""
+  },
+  {
+    "id": 19,
+    "ign": "MireillePH",
+    "role": "Recruit",
+    "uid": "",
+    "joinDate": "2024-02-11",
+    "class": "Sniper",
+    "verified": false,
+    "avatar": ""
+  },
+  {
+    "id": 20,
+    "ign": "Strikevoid",
+    "role": "Recruit",
+    "uid": "",
+    "joinDate": "2024-03-29",
+    "class": "OBJ",
+    "verified": false,
+    "avatar": ""
+  }
+]

@@ -1,0 +1,101 @@
+/* ============================================================
+   badge.css — Achievement laurel badges + stat pills
+   ============================================================ */
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+@media (min-width: 900px) {
+  .badge-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-3);
+}
+
+/* Laurel decoration */
+.badge__laurel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.badge__laurel-left,
+.badge__laurel-right {
+  width: 28px;
+  height: 36px;
+  color: var(--color-ink-3);
+  flex-shrink: 0;
+}
+
+.badge__stat {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semi);
+  line-height: 1;
+  color: var(--color-white);
+}
+
+.badge__unit {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semi);
+  vertical-align: top;
+  color: var(--color-white);
+}
+
+.badge__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-subtle);
+  line-height: var(--line-height-snug);
+  max-width: 180px;
+}
+
+/* Divider between badges */
+.badge + .badge {
+  border-top: 1px solid var(--color-ink-3);
+}
+
+@media (min-width: 640px) {
+  .badge + .badge {
+    border-top: none;
+    border-left: 1px solid var(--color-ink-3);
+  }
+}
+
+/* Inline tag badge (roles, categories) */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semi);
+  line-height: 1.4;
+  background-color: var(--color-surface);
+  color: var(--color-muted);
+  border: var(--border);
+}
+
+.tag--dark {
+  background-color: var(--color-ink-3);
+  color: var(--color-subtle);
+  border-color: var(--color-ink-3);
+}
+
+/* Role-specific tags */
+.tag--founder   { background-color: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
+.tag--head-admin { background-color: var(--color-ink); color: var(--color-white); border-color: var(--color-ink); }
+.tag--leader    { background-color: var(--color-ink); color: var(--color-white); border-color: var(--color-ink); }
+.tag--co-leader { background-color: var(--color-ink-3); color: var(--color-white); border-color: var(--color-ink-3); }
+.tag--officer   { background-color: var(--color-ink-3); color: var(--color-subtle); border-color: var(--color-ink-3); }
+.tag--member    { background-color: transparent; color: var(--color-muted); border-color: var(--color-border); }
+.tag--recruit   { background-color: transparent; color: var(--color-subtle); border-color: var(--color-border); }

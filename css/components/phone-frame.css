@@ -1,0 +1,110 @@
+/* ============================================================
+   phone-frame.css — CSS-only phone mockup holding screenshots
+   ============================================================ */
+
+.phone-frame {
+  position: relative;
+  width: 260px;
+  margin-inline: auto;
+  flex-shrink: 0;
+}
+
+@media (min-width: 900px) {
+  .phone-frame {
+    width: 300px;
+    margin-inline: 0;
+  }
+}
+
+.phone-frame__shell {
+  position: relative;
+  background-color: var(--color-ink-2);
+  border-radius: 40px;
+  border: 6px solid var(--color-ink-3);
+  box-shadow: inset 0 0 0 2px var(--color-ink);
+  overflow: hidden;
+  aspect-ratio: 9 / 19;
+}
+
+/* Notch */
+.phone-frame__notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 22px;
+  background-color: var(--color-ink);
+  border-radius: 12px;
+  z-index: var(--z-above);
+}
+
+/* Side buttons */
+.phone-frame__shell::before {
+  content: '';
+  position: absolute;
+  top: 80px;
+  right: -8px;
+  width: 3px;
+  height: 40px;
+  background-color: var(--color-ink-3);
+  border-radius: 2px;
+}
+
+.phone-frame__shell::after {
+  content: '';
+  position: absolute;
+  top: 100px;
+  left: -8px;
+  width: 3px;
+  height: 60px;
+  background-color: var(--color-ink-3);
+  border-radius: 2px;
+}
+
+/* Screen area */
+.phone-frame__screen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(100%);
+  display: block;
+}
+
+/* Placeholder screen */
+.phone-frame__placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-ink-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.phone-frame__placeholder-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-muted);
+  line-height: var(--line-height-base);
+}
+
+/* Tall hero phone — slightly larger */
+.phone-frame--hero {
+  width: 280px;
+}
+
+@media (min-width: 900px) {
+  .phone-frame--hero {
+    width: 340px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .phone-frame--hero {
+    width: 380px;
+  }
+}
