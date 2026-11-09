@@ -29,12 +29,6 @@
 
   <link rel="canonical" href="https://xivcommunity.gg/members.html">
   <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-
-  <!-- Vercel Web Analytics -->
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -57,10 +51,11 @@
       <div class="members-header">
         <div class="members-header__inner">
           <div>
-            <h1 class="members-header__title">Member roster</h1>
+            <h1 class="members-header__title" id="members-title">Member roster</h1>
             <p class="members-header__count" id="members-count" aria-live="polite">Loading…</p>
           </div>
           <a href="https://discord.gg/xivcommunity" class="btn btn--dark"
+             id="members-apply-button-label" data-href="apply"
              target="_blank" rel="noopener noreferrer">
             Apply to join
           </a>
@@ -87,6 +82,7 @@
             <button class="filter-chip filter-chip--active" data-filter="All">All</button>
             <button class="filter-chip" data-filter="Founder">Founder</button>
             <button class="filter-chip" data-filter="Head Admin">Head Admin</button>
+            <button class="filter-chip" data-filter="Co-Leader">Co-Leader</button>
             <button class="filter-chip" data-filter="Officer">Officer</button>
             <button class="filter-chip" data-filter="Member">Member</button>
             <button class="filter-chip" data-filter="Recruit">Recruit</button>
@@ -109,10 +105,11 @@
       <!-- Apply CTA -->
       <div class="members-cta" data-reveal>
         <div>
-          <p class="members-cta__text">Want to be listed here?</p>
-          <p class="members-cta__sub">Applications are reviewed within 5 days. A trial scrim may be required.</p>
+          <p class="members-cta__text" id="members-cta-text">Want to be listed here?</p>
+          <p class="members-cta__sub" id="members-cta-sub">Applications are reviewed within 5 days. A trial scrim may be required.</p>
         </div>
         <a href="https://discord.gg/xivcommunity" class="btn btn--dark"
+           id="members-cta-button-label" data-href="apply"
            target="_blank" rel="noopener noreferrer">
           Apply now
         </a>

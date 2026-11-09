@@ -4,7 +4,8 @@
  */
 
 import { fetchJSON } from '../utils/fetch-json.js';
-import { formatDate, readingTime, escapeHTML } from '../utils/format.js';
+import { formatDate, readingTime, escapeHTML, postSlug } from '../utils/format.js';
+import { markdownToHTML } from '../utils/markdown.js';
 import { qs } from '../utils/dom.js';
 
 /**
@@ -90,8 +91,8 @@ function renderCover(post) {
 function renderBody(post) {
   const el = qs('#post-body');
   if (!el) return;
-  // Content is trusted HTML from our own JSON
-  el.innerHTML = post.content || '<p>No content yet.</p>';
+  // Content is Markdown typed in the CMS; escaped + converted by markdown.js
+  el.innerHTML = markdownToHTML(post.content) || '<p>No content yet.</p>';
 }
 
 /**
@@ -107,14 +108,14 @@ function renderPostNav(posts, index) {
   const next = index > 0 ? posts[index - 1] : null;
 
   const prevHTML = prev
-    ? `<a href="/post.html?slug=${encodeURIComponent(prev.slug)}" class="post-nav__item">
+    ? `<a href="/post.html?slug=${encodeURIComponent(postSlug(prev))}" class="post-nav__item">
          <span class="post-nav__dir">← Previous</span>
          <span class="post-nav__title">${escapeHTML(prev.title)}</span>
        </a>`
     : '<div></div>';
 
   const nextHTML = next
-    ? `<a href="/post.html?slug=${encodeURIComponent(next.slug)}" class="post-nav__item post-nav__item--next">
+    ? `<a href="/post.html?slug=${encodeURIComponent(postSlug(next))}" class="post-nav__item post-nav__item--next">
          <span class="post-nav__dir">Next →</span>
          <span class="post-nav__title">${escapeHTML(next.title)}</span>
        </a>`
@@ -157,7 +158,7 @@ export async function initBlogPost() {
 
   let posts;
   try {
-    posts = await fetchJSON('/data/posts.json');
+    posts = (await fetchJSON('/data/posts.json')).posts;
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
   } catch {
     if (errorEl) {
@@ -167,7 +168,7 @@ export async function initBlogPost() {
     return;
   }
 
-  const index = posts.findIndex(p => p.slug === slug);
+  const index = posts.findIndex(p => postSlug(p) === slug);
   if (index === -1) {
     if (errorEl) errorEl.hidden = false;
     return;

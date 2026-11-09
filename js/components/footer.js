@@ -1,47 +1,22 @@
 /**
  * footer.js — Renders the site footer into <footer id="site-footer">.
+ * Link URLs come from data/config.json; the brand blurb comes from
+ * data/content.json (editable in the /admin panel).
+ * The Activision disclaimer is intentionally fixed legal text.
  */
 
 import { qs } from '../utils/dom.js';
-import CONFIG from '../config.js';
+import CONFIG, { getConfig } from '../config.js';
 
 const YEAR = new Date().getFullYear();
 
-const FOOTER_COLS = [
-  {
-    heading: 'Clan',
-    links: [
-      { label: 'Members',   href: '/members.html' },
-      { label: 'Blog',      href: '/blog.html' },
-      { label: 'Rules',     href: '/rules.html' },
-      { label: 'Apply',     href: CONFIG.APPLY_URL, external: true },
-    ],
-  },
-  {
-    heading: 'Community',
-    links: [
-      { label: 'Discord',   href: CONFIG.DISCORD_URL, external: true },
-      { label: 'Facebook',  href: CONFIG.FACEBOOK_URL, external: true },
-      { label: 'Schedule',  href: '/index.html#schedule' },
-    ],
-  },
-  {
-    heading: 'Support',
-    links: [
-      { label: 'Help & FAQ',         href: '/support.html' },
-      { label: 'Report a Player',    href: CONFIG.REPORT_URL, external: true },
-      { label: 'Appeal a Decision',  href: CONFIG.APPEAL_URL, external: true },
-      { label: 'Suggest a Feature',  href: CONFIG.SUGGEST_URL, external: true },
-    ],
-  },
-  {
-    heading: 'Legal',
-    links: [
-      { label: 'Privacy',   href: '#' },
-      { label: 'Terms',     href: '#' },
-    ],
-  },
-];
+/** Fallback brand blurb, used when content.json is unavailable. */
+const DEFAULT_BRAND_DESC =
+  'A competitive Call of Duty: Mobile clan based in the Philippines. Active since 2021.';
+
+/** Fixed legal disclaimer — never edited through the CMS. */
+const DISCLAIMER =
+  'XIVCOMMUNITY is a fan-made community and is not affiliated with or endorsed by Activision or Call of Duty: Mobile.';
 
 /**
  * Build one footer column.
@@ -66,10 +41,49 @@ function buildCol(col) {
 
 /**
  * Build footer HTML.
+ * @param {object|null} content — loaded data/content.json
  * @returns {string}
  */
-function buildFooterHTML() {
-  const cols = FOOTER_COLS.map(buildCol).join('');
+function buildFooterHTML(content) {
+  const links = getConfig();
+
+  const cols = [
+    {
+      heading: 'Clan',
+      links: [
+        { label: 'Members', href: '/members.html' },
+        { label: 'Blog',    href: '/blog.html' },
+        { label: 'Rules',   href: '/rules.html' },
+        { label: 'Apply',   href: links.applyUrl, external: true },
+      ],
+    },
+    {
+      heading: 'Community',
+      links: [
+        { label: 'Discord',  href: links.discordUrl,  external: true },
+        { label: 'Facebook', href: links.facebookUrl, external: true },
+        { label: 'Schedule', href: '/index.html#schedule' },
+      ],
+    },
+    {
+      heading: 'Support',
+      links: [
+        { label: 'Help & FAQ', href: '/support.html' },
+        { label: 'Report a Player',   href: links.reportUrl,  external: true },
+        { label: 'Appeal a Decision', href: links.appealUrl,  external: true },
+        { label: 'Suggest a Feature', href: links.suggestUrl, external: true },
+      ],
+    },
+    {
+      heading: 'Legal',
+      links: [
+        { label: 'Privacy', href: '#' },
+        { label: 'Terms',   href: '#' },
+      ],
+    },
+  ].map(buildCol).join('');
+
+  const brandDesc = content?.footer?.brandDesc ?? DEFAULT_BRAND_DESC;
 
   return `
     <footer class="footer" role="contentinfo">
@@ -85,8 +99,7 @@ function buildFooterHTML() {
               <span>${CONFIG.CLAN_NAME}</span>
             </a>
             <p class="footer__brand-desc">
-              A competitive Call of Duty: Mobile clan based in the Philippines.
-              Active since 2021.
+              ${brandDesc}
             </p>
           </div>
           ${cols}
@@ -97,8 +110,7 @@ function buildFooterHTML() {
             &copy; ${YEAR} ${CONFIG.CLAN_NAME} &middot; ${CONFIG.CLAN_TAG}
           </p>
           <p class="footer__disclaimer">
-            XIVCOMMUNITY is a fan-made community and is not affiliated with
-            or endorsed by Activision or Call of Duty: Mobile.
+            ${DISCLAIMER}
           </p>
         </div>
       </div>
@@ -108,11 +120,11 @@ function buildFooterHTML() {
 
 /**
  * Mount the footer into #site-footer.
- * Uses insertAdjacentHTML to avoid outerHTML reference loss.
+ * @param {object|null} content — loaded data/content.json
  */
-export function initFooter() {
+export function initFooter(content) {
   const container = qs('#site-footer');
   if (!container) return;
-  container.insertAdjacentHTML('afterend', buildFooterHTML());
+  container.insertAdjacentHTML('afterend', buildFooterHTML(content));
   container.remove();
 }

@@ -14,7 +14,7 @@ async function initFAQ() {
   container.innerHTML = '<p class="state-loading">Loading…</p>';
 
   try {
-    const data = await fetchJSON('/data/faq.json');
+    const data = (await fetchJSON('/data/faq.json')).faq;
 
     if (!data.length) {
       container.innerHTML = '<p>No FAQ items yet.</p>';

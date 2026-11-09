@@ -78,6 +78,16 @@ export function truncate(str, maxLen = 120) {
 }
 
 /**
+ * Return the URL slug for a blog post, falling back to the slugified title
+ * so a post saved without an explicit slug still resolves.
+ * @param {object} post
+ * @returns {string}
+ */
+export function postSlug(post) {
+  return post?.slug || slugify(post?.title || '');
+}
+
+/**
  * Escape HTML special characters to prevent XSS when using innerHTML.
  * @param {string} str
  * @returns {string}

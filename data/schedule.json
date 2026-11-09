@@ -1,47 +1,44 @@
-[
-  {
-    "id": 1,
-    "day": "Monday",
-    "time": "20:00",
-    "timezone": "Asia/Manila",
-    "event": "Training Scrims",
-    "description": "Open to all members. Focused on map rotations and coordination.",
-    "type": "scrim"
-  },
-  {
-    "id": 2,
-    "day": "Wednesday",
-    "time": "20:00",
-    "timezone": "Asia/Manila",
-    "event": "Clan Wars Practice",
-    "description": "War squad and alternates. Check war-team channel for lineup.",
-    "type": "clan-war"
-  },
-  {
-    "id": 3,
-    "day": "Friday",
-    "time": "21:00",
-    "timezone": "Asia/Manila",
-    "event": "Casual Game Night",
-    "description": "No pressure. Anyone can join. BR, MP, or whatever the squad votes.",
-    "type": "casual"
-  },
-  {
-    "id": 4,
-    "day": "Saturday",
-    "time": "19:00",
-    "timezone": "Asia/Manila",
-    "event": "Clan Wars",
-    "description": "Official war squad only. Briefing 15 minutes before start.",
-    "type": "clan-war"
-  },
-  {
-    "id": 5,
-    "day": "Sunday",
-    "time": "20:00",
-    "timezone": "Asia/Manila",
-    "event": "Review & VOD Night",
-    "description": "We watch back recorded rounds from the week and discuss.",
-    "type": "training"
-  }
-]
+{
+  "schedule": [
+    {
+      "day": "Monday",
+      "time": "20:00",
+      "timezone": "Asia/Manila",
+      "event": "Training Scrims",
+      "description": "Open to all members. Focused on map rotations and coordination.",
+      "type": "scrim"
+    },
+    {
+      "day": "Wednesday",
+      "time": "20:00",
+      "timezone": "Asia/Manila",
+      "event": "Clan Wars Practice",
+      "description": "War squad and alternates. Check war-team channel for lineup.",
+      "type": "clan-war"
+    },
+    {
+      "day": "Friday",
+      "time": "21:00",
+      "timezone": "Asia/Manila",
+      "event": "Casual Game Night",
+      "description": "No pressure. Anyone can join. BR, MP, or whatever the squad votes.",
+      "type": "casual"
+    },
+    {
+      "day": "Saturday",
+      "time": "19:00",
+      "timezone": "Asia/Manila",
+      "event": "Clan Wars",
+      "description": "Official war squad only. Briefing 15 minutes before start.",
+      "type": "clan-war"
+    },
+    {
+      "day": "Sunday",
+      "time": "20:00",
+      "timezone": "Asia/Manila",
+      "event": "Review & VOD Night",
+      "description": "We watch back recorded rounds from the week and discuss.",
+      "type": "training"
+    }
+  ]
+}

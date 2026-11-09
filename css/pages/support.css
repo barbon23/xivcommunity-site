@@ -47,6 +47,11 @@
   margin-bottom: var(--space-4);
 }
 
+/* Extra space above the Quick links heading */
+.faq__heading--spaced {
+  margin-top: var(--space-8);
+}
+
 /* ── Contact cards sidebar ────────────────────────────────── */
 
 .contact-cards {

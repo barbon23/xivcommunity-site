@@ -1,35 +1,37 @@
-[
-  {
-    "slug": "clan-war-results-october-2026",
-    "title": "Clan War Results — October 2026",
-    "date": "2026-11-01",
-    "category": "Clan Wars",
-    "author": "XIV_Cipher",
-    "excerpt": "We closed out October with a 7-2 record in clan wars, finishing in the top 50 on the leaderboard. Here's a breakdown of each match and who stood out.",
-    "cover": "",
-    "readingTime": 4,
-    "content": "<p>October was one of our strongest months since the clan was founded. We went into the final week needing two wins to secure a top-50 finish, and the team delivered.</p><h2>Match breakdown</h2><p>Our best result came against Phantom Legion on October 22nd — a clean 5-0 sweep on Standoff. NightOwl_PH and SilentBolt each went 30+ kills, and the objective play from Reyna_XIV and Apex_Rook made closing rounds look effortless.</p><p>Our only losses came against ranked clans in the top 20. Both were close — 3-5 scorelines — and we learned a lot about our defensive setups from those matches. We'll be reviewing VODs this week before the November series starts.</p><h2>Standout performances</h2><ul><li>NightOwl_PH — Most kills overall (312 across 9 matches)</li><li>Reyna_XIV — Highest objective score two matches running</li><li>GhostLineR — Clutch round saves in the Fortunate Son map series</li></ul><h2>What's next</h2><p>November clan wars start on the 10th. We're shuffling the squad rotation slightly to give HaloBreaker and TacticalBean more stage time. If you want to be considered for the war squad, post your stats in the Discord war-team channel before the 8th.</p>"
-  },
-  {
-    "slug": "how-to-improve-your-obj-play",
-    "title": "How to improve your OBJ play without grinding rank",
-    "date": "2026-10-18",
-    "category": "Guides",
-    "author": "Reyna_XIV",
-    "excerpt": "Most players focus on KD when they want to rank up. Here's why objective stats matter more, and five small habits that will make you the teammate every squad wants.",
-    "cover": "",
-    "readingTime": 6,
-    "content": "<p>KD gets all the attention, but in a clan that runs structured scrims, your objective contribution is what actually moves the needle. This guide is for players who want to be useful, not just statistically impressive.</p><h2>1. Know your win conditions before the match starts</h2><p>Different game modes have different math. In Hardpoint, your team needs to hold 250 total hill time to win. In Domination, you need 200 captures. Before you drop in, decide which objective you're personally responsible for. Don't assume someone else has it.</p><h2>2. Trade position for time</h2><p>New players think dying near the objective is bad. It's not — dying <em>after</em> you've secured the capture or extended the hold is fine. What's bad is dying in a 1v1 on the far side of the map while your team holds 1v3 on the hill.</p><h2>3. Count the lives</h2><p>In Search and Destroy, counting enemy respawns doesn't apply — but in every other mode, knowing how many enemies are alive tells you whether to push or hold. If you've heard four kills in the last ten seconds and you're playing 5v5, you should be pushing the objective right now.</p><h2>4. Communicate in the clear</h2><p>\"A is contested\" is useful. \"I'm on A\" is useful. \"They're pushing B from the right side\" is very useful. Callouts don't need to be long, they need to be immediate. Practice saying what you see, not what you think should happen.</p><h2>5. Review one clip a day</h2><p>Record your matches and watch back the rounds where your team lost an objective. Nine times out of ten you'll spot a positioning mistake or a moment where you chose the wrong priority. You don't need a coach — you just need to watch yourself play.</p><p>If you want to develop your OBJ game further, post in the #training channel on Discord. We run structured scrims twice a week specifically for players working on their fundamentals.</p>"
-  },
-  {
-    "slug": "recruitment-open-november-2026",
-    "title": "Recruitment is open — here's what we're looking for",
-    "date": "2026-10-05",
-    "category": "Recruitment",
-    "author": "XIV_Cipher",
-    "excerpt": "We're accepting new applications through the end of November. We have three roster spots open and one Officer seat. Read this before you apply.",
-    "cover": "",
-    "readingTime": 3,
-    "content": "<p>Every few months we open the roster to new members. This is one of those windows. We have three general member spots and one Officer position available.</p><h2>What we're looking for</h2><p>We don't have a KD requirement or a rank minimum. What we actually care about is whether you show up consistently, whether you communicate during matches, and whether you're the kind of player who makes their teammates better.</p><p>That said, here's a rough profile of what tends to work well in XIVCOMMUNITY:</p><ul><li>Active at least 4 days a week during Manila hours (evenings/weekends)</li><li>Comfortable playing scrims — not just ranked or BR</li><li>Has a microphone and uses it</li><li>Rank Legendary or Mythic this season (for the Officer role, must have held Legendary for 2+ seasons)</li></ul><h2>The Officer role</h2><p>The Officer seat is for someone who can help coordinate war squads, run tryouts, and keep the clan active between major events. It's a leadership role, not just a senior member title. If that sounds like you, mention it specifically in your application.</p><h2>How to apply</h2><p>Fill out the form linked in our bio and in the #apply channel on Discord. We review applications on a rolling basis and you'll hear back within 5 days. If you're shortlisted, we'll invite you to a trial scrim before making a final decision.</p><p>Applications close November 30th or when spots are filled, whichever comes first.</p>"
-  }
-]
+{
+  "posts": [
+    {
+      "slug": "clan-war-results-october-2026",
+      "title": "Clan War Results — October 2026",
+      "date": "2026-11-01",
+      "category": "Clan Wars",
+      "author": "XIV_Cipher",
+      "excerpt": "We closed out October with a 7-2 record in clan wars, finishing in the top 50 on the leaderboard. Here's a breakdown of each match and who stood out.",
+      "cover": "",
+      "readingTime": 4,
+      "content": "October was one of our strongest months since the clan was founded. We went into the final week needing two wins to secure a top-50 finish, and the team delivered.\n\n## Match breakdown\n\nOur best result came against Phantom Legion on October 22nd — a clean 5-0 sweep on Standoff. NightOwl_PH and SilentBolt each went 30+ kills, and the objective play from Reyna_XIV and Apex_Rook made closing rounds look effortless.\n\nOur only losses came against ranked clans in the top 20. Both were close — 3-5 scorelines — and we learned a lot about our defensive setups from those matches. We'll be reviewing VODs this week before the November series starts.\n\n## Standout performances\n\n- NightOwl_PH — Most kills overall (312 across 9 matches)\n- Reyna_XIV — Highest objective score two matches running\n- GhostLineR — Clutch round saves in the Fortunate Son map series\n\n## What's next\n\nNovember clan wars start on the 10th. We're shuffling the squad rotation slightly to give HaloBreaker and TacticalBean more stage time. If you want to be considered for the war squad, post your stats in the Discord war-team channel before the 8th."
+    },
+    {
+      "slug": "how-to-improve-your-obj-play",
+      "title": "How to improve your OBJ play without grinding rank",
+      "date": "2026-10-18",
+      "category": "Guides",
+      "author": "Reyna_XIV",
+      "excerpt": "Most players focus on KD when they want to rank up. Here's why objective stats matter more, and five small habits that will make you the teammate every squad wants.",
+      "cover": "",
+      "readingTime": 6,
+      "content": "KD gets all the attention, but in a clan that runs structured scrims, your objective contribution is what actually moves the needle. This guide is for players who want to be useful, not just statistically impressive.\n\n## 1. Know your win conditions before the match starts\n\nDifferent game modes have different math. In Hardpoint, your team needs to hold 250 total hill time to win. In Domination, you need 200 captures. Before you drop in, decide which objective you're personally responsible for. Don't assume someone else has it.\n\n## 2. Trade position for time\n\nNew players think dying near the objective is bad. It's not — dying *after* you've secured the capture or extended the hold is fine. What's bad is dying in a 1v1 on the far side of the map while your team holds 1v3 on the hill.\n\n## 3. Count the lives\n\nIn Search and Destroy, counting enemy respawns doesn't apply — but in every other mode, knowing how many enemies are alive tells you whether to push or hold. If you've heard four kills in the last ten seconds and you're playing 5v5, you should be pushing the objective right now.\n\n## 4. Communicate in the clear\n\n\"A is contested\" is useful. \"I'm on A\" is useful. \"They're pushing B from the right side\" is very useful. Callouts don't need to be long, they need to be immediate. Practice saying what you see, not what you think should happen.\n\n## 5. Review one clip a day\n\nRecord your matches and watch back the rounds where your team lost an objective. Nine times out of ten you'll spot a positioning mistake or a moment where you chose the wrong priority. You don't need a coach — you just need to watch yourself play.\n\nIf you want to develop your OBJ game further, post in the #training channel on Discord. We run structured scrims twice a week specifically for players working on their fundamentals."
+    },
+    {
+      "slug": "recruitment-open-november-2026",
+      "title": "Recruitment is open — here's what we're looking for",
+      "date": "2026-10-05",
+      "category": "Recruitment",
+      "author": "XIV_Cipher",
+      "excerpt": "We're accepting new applications through the end of November. We have three roster spots open and one Officer seat. Read this before you apply.",
+      "cover": "",
+      "readingTime": 3,
+      "content": "Every few months we open the roster to new members. This is one of those windows. We have three general member spots and one Officer position available.\n\n## What we're looking for\n\nWe don't have a KD requirement or a rank minimum. What we actually care about is whether you show up consistently, whether you communicate during matches, and whether you're the kind of player who makes their teammates better.\n\nThat said, here's a rough profile of what tends to work well in XIVCOMMUNITY:\n\n- Active at least 4 days a week during Manila hours (evenings/weekends)\n- Comfortable playing scrims — not just ranked or BR\n- Has a microphone and uses it\n- Rank Legendary or Mythic this season (for the Officer role, must have held Legendary for 2+ seasons)\n\n## The Officer role\n\nThe Officer seat is for someone who can help coordinate war squads, run tryouts, and keep the clan active between major events. It's a leadership role, not just a senior member title. If that sounds like you, mention it specifically in your application.\n\n## How to apply\n\nFill out the form linked in our bio and in the #apply channel on Discord. We review applications on a rolling basis and you'll hear back within 5 days. If you're shortlisted, we'll invite you to a trial scrim before making a final decision.\n\nApplications close November 30th or when spots are filled, whichever comes first."
+    }
+  ]
+}

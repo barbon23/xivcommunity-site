@@ -1,0 +1,17 @@
+{
+  "members": {
+    "title": "Member roster",
+    "applyButtonLabel": "Apply to join",
+    "ctaText": "Want to be listed here?",
+    "ctaSub": "Applications are reviewed within 5 days. A trial scrim may be required.",
+    "ctaButtonLabel": "Apply now"
+  },
+  "blog": {
+    "title": "Blog",
+    "sub": "Clan war results, guides, announcements and more."
+  },
+  "support": {
+    "title": "Support",
+    "sub": "Find answers below or reach us through Discord. We respond to most questions within 24 hours."
+  }
+}

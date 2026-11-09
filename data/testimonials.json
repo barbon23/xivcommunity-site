@@ -1,38 +1,34 @@
-[
-  {
-    "id": 1,
-    "quote": "I've been in a few clans before but this is the first one where people actually communicate during matches. The difference it makes is real.",
-    "name": "IronMask_XIV",
-    "source": "Member since Feb 2022"
-  },
-  {
-    "id": 2,
-    "quote": "Joined as a Recruit three months ago with no tournament experience. Now I'm on the war squad. The training scrims are what made that possible.",
-    "name": "HaloBreaker",
-    "source": "Member since Mar 2023"
-  },
-  {
-    "id": 3,
-    "quote": "The clan wars grind here is serious but never toxic. Everyone's trying to get better, not just win. That's rare.",
-    "name": "VoidWalker",
-    "source": "Member since Mar 2022"
-  },
-  {
-    "id": 4,
-    "quote": "XIV runs the most organized scrims in the Philippine CODM scene. I've watched my KD and my callout game improve just from the structure they bring.",
-    "name": "CalmStrike",
-    "source": "Member since Apr 2022"
-  },
-  {
-    "id": 5,
-    "quote": "Reyna and the officers are actually invested in helping you improve. I got detailed feedback after my first two scrims. Didn't expect that at all.",
-    "name": "TacticalBean",
-    "source": "Member since Jun 2023"
-  },
-  {
-    "id": 6,
-    "quote": "Been Legendary three seasons running since joining. I don't think that's a coincidence.",
-    "name": "DarkLancet",
-    "source": "Member since Jan 2023"
-  }
-]
+{
+  "testimonials": [
+    {
+      "quote": "I've been in a few clans before but this is the first one where people actually communicate during matches. The difference it makes is real.",
+      "name": "IronMask_XIV",
+      "source": "Member since Feb 2022"
+    },
+    {
+      "quote": "Joined as a Recruit three months ago with no tournament experience. Now I'm on the war squad. The training scrims are what made that possible.",
+      "name": "HaloBreaker",
+      "source": "Member since Mar 2023"
+    },
+    {
+      "quote": "The clan wars grind here is serious but never toxic. Everyone's trying to get better, not just win. That's rare.",
+      "name": "VoidWalker",
+      "source": "Member since Mar 2022"
+    },
+    {
+      "quote": "XIV runs the most organized scrims in the Philippine CODM scene. I've watched my KD and my callout game improve just from the structure they bring.",
+      "name": "CalmStrike",
+      "source": "Member since Apr 2022"
+    },
+    {
+      "quote": "Reyna and the officers are actually invested in helping you improve. I got detailed feedback after my first two scrims. Didn't expect that at all.",
+      "name": "TacticalBean",
+      "source": "Member since Jun 2023"
+    },
+    {
+      "quote": "Been Legendary three seasons running since joining. I don't think that's a coincidence.",
+      "name": "DarkLancet",
+      "source": "Member since Jan 2023"
+    }
+  ]
+}

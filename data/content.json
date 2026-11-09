@@ -1,0 +1,84 @@
+{
+  "hero": {
+    "eyebrow": "XIVCOMMUNITY [XIV]",
+    "heading": "A CODM clan that takes the game seriously.",
+    "sub": "We run structured scrims, compete in clan wars every week, and help every member get better. Based in the Philippines, active since 2021.",
+    "phoneImage": "/assets/screens/shot-01.webp",
+    "phoneAlt": "CODM clan gameplay screenshot",
+    "socialProofSub": "already play with us",
+    "buttons": [
+      { "label": "Join Discord", "url": "https://discord.gg/xivcommunity" },
+      { "label": "Facebook group", "url": "https://www.facebook.com/xivcommunity" }
+    ]
+  },
+  "blurbs": {
+    "items": [
+      {
+        "num": "01",
+        "title": "Play with a full squad every day",
+        "desc": "Solo queue is fine. Playing with five people who communicate is better. We have enough active members that you can always find a squad for ranked or casual at Manila hours.",
+        "image": "/assets/screens/shot-02.webp",
+        "alt": "Clan squad gameplay"
+      },
+      {
+        "num": "02",
+        "title": "Compete in scrims and clan wars",
+        "desc": "We run structured scrims twice a week and enter every clan war cycle. The war squad is selected on merit — show up consistently and perform, and you're on it.",
+        "image": "/assets/screens/shot-03.webp",
+        "alt": "Tournament scoreboard"
+      },
+      {
+        "num": "03",
+        "title": "Get better by playing with better players",
+        "desc": "Our leadership includes Legendary-tier players who review VODs and give real feedback after scrims. If you want to improve, the tools are here.",
+        "image": "/assets/screens/shot-04.webp",
+        "alt": "Rank screen showing Legendary tier"
+      }
+    ]
+  },
+  "marquee": {
+    "row1": [
+      "/assets/screens/shot-01.webp",
+      "/assets/screens/shot-02.webp",
+      "/assets/screens/shot-03.webp",
+      "/assets/screens/shot-04.webp",
+      "/assets/screens/shot-05.webp"
+    ],
+    "row2": [
+      "/assets/screens/shot-06.webp",
+      "/assets/screens/shot-07.webp",
+      "/assets/screens/shot-08.webp",
+      "/assets/screens/shot-09.webp",
+      "/assets/screens/shot-10.webp"
+    ]
+  },
+  "sections": {
+    "featuresLabel": "What we do",
+    "featuresHeading": "Three things that make the difference",
+    "achievementsLabel": "Our record",
+    "achievementsHeading": "Results, not promises.",
+    "partnersLabel": "Partner clans & community links",
+    "rosterLabel": "The roster",
+    "rosterHeading": "Leadership and officers",
+    "rosterButtonLabel": "See all members",
+    "postsLabel": "News & updates",
+    "postsHeading": "Latest from the blog",
+    "postsButtonLabel": "All posts",
+    "scheduleLabel": "Weekly calendar",
+    "scheduleHeading": "When we play",
+    "scheduleNote": "All times in Philippine Standard Time (UTC+8). Check Discord for cancellations.",
+    "testimonialsLabel": "From the community",
+    "testimonialsHeading": "What our members say"
+  },
+  "cta": {
+    "heading": "Start playing with us today.",
+    "sub": "Applications are open. We'll review yours within 5 days.",
+    "buttons": [
+      { "label": "Join Discord", "url": "https://discord.gg/xivcommunity" },
+      { "label": "Facebook group", "url": "https://www.facebook.com/xivcommunity" }
+    ]
+  },
+  "footer": {
+    "brandDesc": "A competitive Call of Duty: Mobile clan based in the Philippines. Active since 2021."
+  }
+}

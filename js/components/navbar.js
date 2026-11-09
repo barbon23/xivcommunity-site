@@ -2,10 +2,11 @@
  * navbar.js — Renders the site navbar and wires up mobile hamburger.
  * Injects into <header id="site-header">.
  * Marks the active link based on current pathname.
+ * Link URLs come from data/config.json via getConfig().
  */
 
 import { qs } from '../utils/dom.js';
-import CONFIG from '../config.js';
+import CONFIG, { getConfig } from '../config.js';
 
 const NAV_LINKS = [
   { href: '/index.html',   label: 'Home',    match: ['/', '/index.html'] },
@@ -36,6 +37,8 @@ function isActive(match) {
  * @returns {string}
  */
 function buildNavHTML() {
+  const { applyUrl } = getConfig();
+
   const links = NAV_LINKS.map(({ href, label, match }) => {
     const active = isActive(match);
     return `<li>
@@ -70,7 +73,7 @@ function buildNavHTML() {
 
         <ul class="navbar__links" role="list">${links}</ul>
 
-        <a href="${CONFIG.APPLY_URL}" class="btn btn--dark btn--sm navbar__cta"
+        <a href="${applyUrl}" class="btn btn--dark btn--sm navbar__cta"
            target="_blank" rel="noopener noreferrer">
           Join ${CONFIG.CLAN_NAME}
         </a>
@@ -86,7 +89,7 @@ function buildNavHTML() {
       <div id="navbar-mobile" class="navbar__mobile" role="dialog"
            aria-label="Mobile navigation" aria-modal="false">
         ${mobileLinks}
-        <a href="${CONFIG.APPLY_URL}" class="btn btn--dark navbar__mobile-cta"
+        <a href="${applyUrl}" class="btn btn--dark navbar__mobile-cta"
            target="_blank" rel="noopener noreferrer">
           Join ${CONFIG.CLAN_NAME}
         </a>

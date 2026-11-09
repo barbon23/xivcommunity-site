@@ -1,30 +1,28 @@
-[
-  {
-    "id": 1,
-    "name": "PhilCODM Alliance",
-    "type": "partner",
-    "url": "#",
-    "description": "Philippine CODM community alliance"
-  },
-  {
-    "id": 2,
-    "name": "Manila Scrims Hub",
-    "type": "partner",
-    "url": "#",
-    "description": "Organized scrim network for PH clans"
-  },
-  {
-    "id": 3,
-    "name": "SteelFang Clan",
-    "type": "partner",
-    "url": "#",
-    "description": "Friendly rival and regular scrim partner"
-  },
-  {
-    "id": 4,
-    "name": "NightRaven Gaming",
-    "type": "partner",
-    "url": "#",
-    "description": "Community gaming org, Southeast Asia"
-  }
-]
+{
+  "supporters": [
+    {
+      "name": "PhilCODM Alliance",
+      "type": "partner",
+      "url": "#",
+      "description": "Philippine CODM community alliance"
+    },
+    {
+      "name": "Manila Scrims Hub",
+      "type": "partner",
+      "url": "#",
+      "description": "Organized scrim network for PH clans"
+    },
+    {
+      "name": "SteelFang Clan",
+      "type": "partner",
+      "url": "#",
+      "description": "Friendly rival and regular scrim partner"
+    },
+    {
+      "name": "NightRaven Gaming",
+      "type": "partner",
+      "url": "#",
+      "description": "Community gaming org, Southeast Asia"
+    }
+  ]
+}

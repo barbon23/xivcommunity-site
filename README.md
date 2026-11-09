@@ -1,7 +1,11 @@
 # XIVCOMMUNITY
 
-Static website for the XIVCOMMUNITY Call of Duty: Mobile clan.  
-Plain HTML, CSS, and vanilla JS — no build step, no frameworks.
+Static website for the XIVCOMMUNITY Call of Duty: Mobile clan.
+Plain HTML, CSS, and vanilla JS — no build step, no frameworks, no CMS dependency.
+
+All editable content lives in `/data/*.json` and is managed through a friendly
+editor at **`/admin`** (Sveltia CMS) — see [EDITING.md](./EDITING.md) for the
+non-technical editor guide. This README covers setup and architecture.
 
 ---
 
@@ -22,26 +26,38 @@ python -m http.server 8000
 
 Then open `http://localhost:3000` (or whichever port is shown).
 
+The `/admin` panel works locally too (create → preview), but sign-in only
+works on the deployed site, where GitHub OAuth is configured.
+
 ---
 
 ## Folder structure
 
 ```
 xivcommunity-site/
-├── index.html          Home page
+├── index.html          Home page (content rendered from data/content.json)
 ├── members.html        Member roster
 ├── blog.html           Blog list
 ├── post.html           Single post (reads ?slug=)
 ├── support.html        FAQ + contact
-├── rules.html          Code of conduct
+├── rules.html          Code of conduct (not editable in the CMS)
 ├── 404.html            Not found page
 ├── vercel.json         Vercel config (cleanUrls, cache headers)
-├── robots.txt
+├── robots.txt          /admin and /api are noindex/nofollow
 ├── sitemap.xml
+│
+├── admin/
+│   ├── index.html      Sveltia CMS entry (CDN script, no build step)
+│   └── config.yml      CMS configuration (collections, fields)
+│
+├── api/
+│   ├── auth.js         OAuth step 1: redirect to GitHub with CSRF state
+│   ├── callback.js     OAuth step 2: exchange code for token, post to CMS
+│   └── _shared.js      Shared helpers (site-markdown: adapted sveltia-cms-auth)
 │
 ├── assets/
 │   ├── avatars/        Member avatar images (optional, .webp/.jpg)
-│   ├── brand/          og.jpg (1200×630), logo.svg, wordmark.svg
+│   ├── brand/          og.jpg (1200×630), logo.png
 │   ├── fonts/          inter-latin-var.woff2
 │   └── screens/        shot-01.webp … shot-10.webp (gameplay screenshots)
 │
@@ -52,157 +68,159 @@ xivcommunity-site/
 │   ├── components/     One file per component
 │   └── pages/          Page-specific styles
 │
-├── data/               JSON content (edit these, not the HTML)
+├── data/               JSON content — the editor's single source of truth
+│   ├── config.json     Links (apply/discord/facebook/report/appeal/suggest) + email
+│   ├── pages.json      Members/Blog/Support page titles & sub-titles
+│   ├── content.json    Homepage: hero, blurbs, marquee, section labels, CTA, footer
 │   ├── members.json
-│   ├── posts.json
-│   ├── supporters.json
-│   ├── achievements.json
-│   ├── schedule.json
+│   ├── posts.json      Blog posts (content is Markdown)
 │   ├── testimonials.json
-│   └── faq.json
+│   ├── achievements.json
+│   ├── supporters.json
+│   ├── faq.json
+│   └── schedule.json
 │
 └── js/
-    ├── config.js       Site-wide settings (clan name, URLs, stats)
-    ├── main.js         Shared bootstrap (navbar + footer + reveal)
+    ├── config.js       Developer constants + link defaults (fallbacks)
+    ├── main.js         Shared bootstrap (loads config/content, mounts navbar,
+    │                   footer, page slots, homepage blocks, reveal)
     ├── components/     Navbar, footer, avatar-row, member-card
-    ├── features/       Members list, blog list/post, schedule, reveal
+    ├── features/       site-content, page-content, members list, blog list/post,
+    │                   schedule, reveal
     ├── pages/          Page entry files (import + wire up)
-    └── utils/          dom.js, fetch-json.js, format.js
+    └── utils/          dom.js, fetch-json.js, format.js, markdown.js
 ```
 
 ---
 
-## How to edit config
+## First-time setup — make `/admin` work
 
-Open `js/config.js` and update any value:
+The editor needs three things, all free:
 
-```js
-const CONFIG = {
-  CLAN_NAME:    'XIVCOMMUNITY',
-  CLAN_TAG:     '[XIV]',
-  DISCORD_URL:  'https://discord.gg/your-invite',
-  FACEBOOK_URL: 'https://www.facebook.com/yourpage',
-  APPLY_URL:    'https://your-apply-form-url',
-  REPORT_URL:   'https://your-report-form-url',
-  APPEAL_URL:   'https://your-appeal-form-url',
-  SUGGEST_URL:  'https://your-suggest-form-url',
-  SUPPORT_EMAIL:'support@yourdomain.gg',
-  SITE_URL:     'https://yourdomain.gg',
-  STATS: {
-    memberCount: 20,
-    clanWarsPlayed: 87,
-    winRate: 74,
-    seasonFounded: 'S3 2021',
-  },
-};
+### 1. A shared "editor" GitHub account
+
+1. Create a new GitHub account, e.g. `xivcommunity-editor` (free).
+2. Invite it to the repository (Settings → Collaborators → add the account).
+3. The editor will sign in at `/admin` with this account only — they never see
+   the GitHub website or any code.
+
+### 2. A GitHub OAuth App
+
+Do this while signed in to the **owner** account (the one that owns the repo):
+
+1. Go to <https://github.com/settings/developers> → **New OAuth App**.
+2. Fill in:
+   - **Application name:** `XIVCOMMUNITY editor`
+   - **Homepage URL:** `https://xivcommunity.gg` (your real domain)
+   - **Authorization callback URL:** `https://xivcommunity.gg/api/callback` ← must match exactly
+3. After creating, click **Generate a new client secret**, then copy both the
+   **Client ID** and the **Client secret**.
+
+### 3. Vercel environment variables
+
+Vercel Dashboard → your project → **Settings → Environment Variables**, and add
+two variables (available for Production):
+
+| Name | Value |
+|---|---|
+| `GITHUB_CLIENT_ID` | the Client ID from step 2 |
+| `GITHUB_CLIENT_SECRET` | the Client secret from step 2 |
+
+Then **redeploy** (Deployments → latest → ⋯ → Redeploy). Optional extra
+variables, only if you want them:
+
+| Name | Purpose |
+|---|---|
+| `ALLOWED_DOMAINS` | lock sign-in popups to your domain, e.g. `xivcommunity.gg` |
+| `GITHUB_ALLOW_WORKFLOW_SCOPE` | leave unset — the editor never needs it |
+
+### 4. Check the CMS config
+
+`admin/config.yml` already points at `barbon23/xivcommunity-site`. If your
+production domain is NOT `xivcommunity.gg`, update the two marked lines:
+
+```yaml
+backend:
+  base_url: https://yourdomain.tld/api    # ← your real domain + /api
+site_url: https://yourdomain.tld          # ← your real domain
 ```
+
+### 5. First sign-in
+
+On the **editor's** device, go to `https://xivcommunity.gg/admin`, choose
+**Log in with GitHub**, and complete the flow once (GitHub may ask you to
+authorize the OAuth app). Done — from then on, a refresh re-signs in.
 
 ---
 
-## How to add a member
+## How sites render content
 
-Open `data/members.json` and append a new object to the array:
+- `js/main.js` runs on every page: it loads `/data/config.json` (links) and
+  `/data/content.json`, renders navbar/footer, fills every `[data-text-slot]`
+  section header and every page-title slot from `/data/pages.json`, and points
+  every `[data-href]` element at its configured link.
+- On the homepage, `js/features/site-content.js` renders the hero, phone
+  mockup, blurbs, marquee and final CTA into `#hero-content`, `#hero-media`,
+  `#feature-blurbs`, `#marquee` and `#cta-block`.
+- The HTML itself therefore contains **no editable copy** — page titles and
+  OG/meta tags stay static (SEO), while everything an editor needs is in data.
+
+### Data shapes
+
+Every data file is an object whose single top-level key holds the array —
+this is required so the CMS can manage it:
 
 ```json
-{
-  "id": 21,
-  "ign": "YourIGN",
-  "role": "Member",
-  "uid": "1234567",
-  "joinDate": "2026-12-01",
-  "class": "Slayer",
-  "verified": true,
-  "avatar": ""
-}
+{ "members": [ { "ign": "REVO", "role": "Founder", "uid": "8841023",
+                "joinDate": "2021-03-15", "class": "Slayer",
+                "verified": true, "avatar": "" } ] }
 ```
 
-**Fields:**
-- `role` — one of: `Leader`, `Co-Leader`, `Officer`, `Member`, `Recruit`
-- `class` — one of: `Slayer`, `OBJ`, `Support`, `Sniper`
+- `role` — one of `Founder`, `Head Admin`, `Leader`, `Co-Leader`, `Officer`, `Member`, `Recruit`
+- `class` — one of `Slayer`, `OBJ`, `Support`, `Sniper`
 - `verified` — `true` shows a checkmark badge
-- `avatar` — path to image in `/assets/avatars/` (leave empty for initials fallback)
+- `avatar` — `/assets/...` path (empty = initials fallback)
+
+### Blog posts are Markdown
+
+`posts.json` entries store `content` as **Markdown**, not HTML. It is rendered
+client-side by `js/utils/markdown.js` (a small hand-written, XSS-safe
+converter). Supported syntax: paragraphs, `##`/`###` headings, `**bold**`,
+`*italic*`, `[links](https://…)`, unordered lists (`- `), ordered lists (`1. `).
+
+Categories: `Announcements`, `Clan Wars`, `Tournaments`, `Guides`, `Patch Notes`, `Recruitment`.
+A post without a `slug` still resolves — the URL falls back to the slugified title.
+
+### Editing without the CMS
+
+You can also edit the JSON files directly and push — the CMS panel is just a
+friendly layer over the same files. Keep the top-level object shape when you
+do, otherwise the CMS paths stop matching.
 
 ---
 
-## How to add a blog post
+## Images
 
-Open `data/posts.json` and add a new object. The newest post by date appears first:
-
-```json
-{
-  "slug": "your-post-slug",
-  "title": "Your Post Title",
-  "date": "2026-12-15",
-  "category": "Announcements",
-  "author": "XIV_Cipher",
-  "excerpt": "One or two sentences that appear on the blog card.",
-  "cover": "/assets/screens/shot-05.webp",
-  "readingTime": 3,
-  "content": "<p>Your post HTML here.</p><h2>Section heading</h2><p>More content.</p>"
-}
-```
-
-**Categories:** `Announcements`, `Clan Wars`, `Tournaments`, `Guides`, `Patch Notes`, `Recruitment`
-
-The post is immediately accessible at `/post.html?slug=your-post-slug`.
+Screenshots and avatars are uploaded through the CMS and stored under
+`/assets/`. Recommended: landscape ~1200–1400px wide `.webp`, avatars square
+≥ 200×200. Cache headers for `/assets/screens` and `/assets/fonts` are set in
+`vercel.json`.
 
 ---
 
-## How to replace screenshots
+## Deploy
 
-Drop `.webp` files (recommended) or `.jpg` into `/assets/screens/`.  
-The filenames used in `index.html` are `shot-01.webp` through `shot-10.webp`.  
-Update `index.html` marquee `src` attributes if you add more or rename files.
-
-For best performance:
-- Resize to 1080px wide max
-- Export as `.webp` at quality 80
-- Add `width` and `height` attributes matching the actual dimensions
-
----
-
-## How to add member avatars
-
-1. Add a square image (at least 80×80px) to `/assets/avatars/` — e.g. `cipher.webp`
-2. In `data/members.json`, set the member's `"avatar"` field to `/assets/avatars/cipher.webp`
-
-If the avatar field is empty, an initials circle is shown automatically.
-
----
-
-## Deploy to Vercel
-
-### Option A — GitHub import (recommended)
-1. Push this folder to a GitHub repository
-2. Go to [vercel.com](https://vercel.com) → New Project → Import your repo
-3. Leave all settings as default (no build command needed)
-4. Click Deploy
-
-### Option B — Vercel CLI
-```bash
-npm install -g vercel
-vercel
-```
-Follow the prompts. No build settings required.
-
-### After deploying
-- Update `SITE_URL` in `js/config.js` to your real domain
-- Update all `https://xivcommunity.gg/` references in `sitemap.xml` to your domain
-- If you have a custom domain, add it in the Vercel project settings
-
----
+The repo is already connected to Vercel — every push to `main` redeploys
+automatically. No build command, no dependencies (`package.json` is only a
+marker). Changes made in `/admin` commit to `main` and redeploy the same way;
+data responses are served with `max-age=0, must-revalidate` so edits appear
+within ~1 minute of saving.
 
 ## Updating the sitemap
 
-When you add new blog posts, add their slugs to `sitemap.xml`:
-
-```xml
-<url>
-  <loc>https://yourdomain.gg/post?slug=your-post-slug</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-</url>
-```
+`sitemap.xml` lists page-level URLs. Blog post slugs change as editors write
+new posts; add them if you care about post-level sitemap entries. Page
+references use `https://xivcommunity.gg/...`.
 
 ---
 
@@ -214,14 +232,19 @@ All tokens are in `css/tokens.css`. Never hardcode colors or spacing elsewhere.
 |---|---|
 | `--color-ink` | `#0A0A0A` (primary text / dark bg) |
 | `--color-muted` | `#737373` (secondary text) |
+| `--color-subtle` | `#A3A3A3` (muted on dark backgrounds) |
 | `--color-border` | `#E5E5E5` |
 | `--color-surface` | `#F5F5F5` (alt section bg) |
 | `--radius-card` | `16px` |
 | `--radius-pill` | `999px` |
 | `--space-1` | `8px` through `--space-12: 96px` |
 
+Architecture rules: relative ES module imports, kebab-case filenames, BEM
+classes, one small file per component, no build step.
+
 ---
 
 ## Browser support
 
-Modern evergreen browsers (Chrome, Firefox, Safari, Edge). ES modules and `IntersectionObserver` are used — IE is not supported.
+Modern evergreen browsers (Chrome, Firefox, Safari, Edge). ES modules,
+`IntersectionObserver` and top-level fetch are used — IE is not supported.

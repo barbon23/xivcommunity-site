@@ -162,7 +162,7 @@ export async function initMembersList() {
   container.innerHTML = '<p class="state-loading">Loading members…</p>';
 
   try {
-    allMembers = await fetchJSON('/data/members.json');
+    allMembers = (await fetchJSON('/data/members.json')).members;
   } catch {
     container.innerHTML = '<p class="state-error">Could not load members. Please try again.</p>';
     return;

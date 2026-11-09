@@ -1,0 +1,502 @@
+# ═══════════════════════════════════════════════════════════════
+#  XIVCOMMUNITY content editor config
+#  Sveltia CMS reads this file and turns /data/*.json into forms.
+#
+#  BEFORE FIRST USE — replace the two lines marked  ← REPLACE :
+#   1. base_url: your production domain + /api
+#   2. site_url: your production domain
+#  (the repo below is already set)
+# ═══════════════════════════════════════════════════════════════
+
+backend:
+  name: github
+  repo: barbon23/xivcommunity-site               # GitHub username / repo name
+  branch: main
+  base_url: https://xivcommunity.gg/api          # ← REPLACE with your real domain + /api
+
+# Uploaded images are written to /assets in the repo and stored in the
+# JSON data files with /assets/… URLs, which the site uses directly.
+media_folder: assets
+public_folder: /assets
+
+site_url: https://xivcommunity.gg               # ← REPLACE (enables the "view site" link)
+
+collections:
+
+  - name: homepage
+    label: Homepage
+    icon: home
+    files:
+      - name: content
+        label: Homepage text & images
+        file: data/content.json
+        fields:
+
+          - label: Hero (top of the page)
+            name: hero
+            widget: object
+            fields:
+              - label: Small label above the heading
+                name: eyebrow
+                widget: string
+                required: false
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Description
+                name: sub
+                widget: text
+              - label: Phone screenshot
+                name: phoneImage
+                widget: image
+                required: false
+                media_folder: /assets/screens
+                default: ''
+              - label: Phone screenshot alt text
+                name: phoneAlt
+                widget: string
+                required: false
+              - label: Text under "20+ members"
+                name: socialProofSub
+                widget: string
+                required: false
+              - label: Buttons
+                name: buttons
+                widget: list
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                  - label: URL
+                    name: url
+                    widget: string
+
+          - label: Feature blurbs (the three numbered blocks)
+            name: blurbs
+            widget: object
+            fields:
+              - label: Items
+                name: items
+                widget: list
+                fields:
+                  - label: Number
+                    name: num
+                    widget: string
+                  - label: Title
+                    name: title
+                    widget: string
+                  - label: Description
+                    name: desc
+                    widget: text
+                  - label: Image
+                    name: image
+                    widget: image
+                    default: ''
+                  - label: Alt text
+                    name: alt
+                    widget: string
+                    required: false
+
+          - label: Screenshot marquee (two scrolling rows)
+            name: marquee
+            widget: object
+            fields:
+              - label: Row 1 (scrolls left)
+                name: row1
+                widget: list
+                field:
+                  label: Screenshot
+                  name: image
+                  widget: image
+              - label: Row 2 (scrolls right)
+                name: row2
+                widget: list
+                field:
+                  label: Screenshot
+                  name: image
+                  widget: image
+
+          - label: Section labels & headings
+            name: sections
+            widget: object
+            fields:
+              - label: "Features — small label"
+                name: featuresLabel
+                widget: string
+              - label: "Features — heading"
+                name: featuresHeading
+                widget: string
+              - label: "Achievements — small label"
+                name: achievementsLabel
+                widget: string
+              - label: "Achievements — heading"
+                name: achievementsHeading
+                widget: string
+              - label: "Partners — small label"
+                name: partnersLabel
+                widget: string
+              - label: "Roster — small label"
+                name: rosterLabel
+                widget: string
+              - label: "Roster — heading"
+                name: rosterHeading
+                widget: string
+              - label: "Roster — 'See all members' button"
+                name: rosterButtonLabel
+                widget: string
+              - label: "Blog preview — small label"
+                name: postsLabel
+                widget: string
+              - label: "Blog preview — heading"
+                name: postsHeading
+                widget: string
+              - label: "Blog preview — 'All posts' button"
+                name: postsButtonLabel
+                widget: string
+              - label: "Schedule — small label"
+                name: scheduleLabel
+                widget: string
+              - label: "Schedule — heading"
+                name: scheduleHeading
+                widget: string
+              - label: "Schedule — timezone note (under heading)"
+                name: scheduleNote
+                widget: string
+              - label: "Testimonials — small label"
+                name: testimonialsLabel
+                widget: string
+              - label: "Testimonials — heading"
+                name: testimonialsHeading
+                widget: string
+
+          - label: Final call to action (bottom of the page)
+            name: cta
+            widget: object
+            fields:
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Description
+                name: sub
+                widget: text
+              - label: Buttons
+                name: buttons
+                widget: list
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                  - label: URL
+                    name: url
+                    widget: string
+
+          - label: Footer (brand blurb)
+            name: footer
+            widget: object
+            fields:
+              - label: Brand description
+                name: brandDesc
+                widget: text
+
+  - name: pages
+    label: Page headings
+    icon: link
+    files:
+      - name: pages
+        label: Page titles & sub-titles
+        file: data/pages.json
+        fields:
+          - label: Members page
+            name: members
+            widget: object
+            fields:
+              - label: Page title
+                name: title
+                widget: string
+              - label: "Header button ('Apply to join')"
+                name: applyButtonLabel
+                widget: string
+              - label: CTA text
+                name: ctaText
+                widget: string
+              - label: CTA sub-text
+                name: ctaSub
+                widget: text
+              - label: CTA button label ('Apply now')
+                name: ctaButtonLabel
+                widget: string
+          - label: Blog page
+            name: blog
+            widget: object
+            fields:
+              - label: Page title
+                name: title
+                widget: string
+              - label: Sub-title
+                name: sub
+                widget: text
+          - label: Support page
+            name: support
+            widget: object
+            fields:
+              - label: Page title
+                name: title
+                widget: string
+              - label: Sub-title
+                name: sub
+                widget: text
+
+  - name: links
+    label: Important links
+    icon: link
+    files:
+      - name: config
+        label: Links & contact email
+        file: data/config.json
+        fields:
+          - label: Apply URL (join button everywhere)
+            name: applyUrl
+            widget: string
+          - label: Discord invite URL
+            name: discordUrl
+            widget: string
+          - label: Facebook page URL
+            name: facebookUrl
+            widget: string
+          - label: Report-a-player URL
+            name: reportUrl
+            widget: string
+          - label: Appeal URL
+            name: appealUrl
+            widget: string
+          - label: Suggestion form URL
+            name: suggestUrl
+            widget: string
+          - label: Support email address
+            name: supportEmail
+            widget: string
+
+  - name: members
+    label: Members
+    icon: groups
+    files:
+      - name: members
+        label: Member roster
+        file: data/members.json
+        fields:
+          - label: Members
+            name: members
+            widget: list
+            fields:
+              - label: In-game name (IGN)
+                name: ign
+                widget: string
+              - label: Role
+                name: role
+                widget: select
+                options: [Founder, Head Admin, Leader, Co-Leader, Officer, Member, Recruit]
+                default: Member
+              - label: Main class
+                name: class
+                widget: select
+                options: [Slayer, OBJ, Sniper, Support]
+                required: false
+              - label: UID (copyable in-game ID)
+                name: uid
+                widget: string
+                required: false
+              - label: Join date
+                name: joinDate
+                widget: date
+                format: YYYY-MM-DD
+                required: false
+              - label: Verified (tick shown next to IGN)
+                name: verified
+                widget: boolean
+                default: false
+              - label: Avatar image
+                name: avatar
+                widget: image
+                required: false
+                default: ''
+
+  - name: posts
+    label: Blog Posts
+    icon: article
+    files:
+      - name: posts
+        label: Blog posts
+        file: data/posts.json
+        fields:
+          - label: Posts
+            name: posts
+            widget: list
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: URL slug (also used to open the post; unique, no spaces)
+                name: slug
+                widget: string
+                hint: e.g. april-clan-war-recap — letters, numbers and dashes only
+                required: false
+              - label: Date
+                name: date
+                widget: date
+                format: YYYY-MM-DD
+              - label: Category
+                name: category
+                widget: select
+                options: [Announcements, Clan Wars, Tournaments, Guides, Patch Notes, Recruitment]
+              - label: Author
+                name: author
+                widget: string
+              - label: Excerpt (shown on the blog list)
+                name: excerpt
+                widget: text
+              - label: Cover image
+                name: cover
+                widget: image
+                required: false
+                default: ''
+              - label: Reading time (minutes)
+                name: readingTime
+                widget: number
+                value_type: int
+                min: 1
+                default: 4
+              - label: Content
+                name: content
+                widget: markdown
+
+  - name: testimonials
+    label: Testimonials
+    icon: format_quote
+    files:
+      - name: testimonials
+        label: Testimonial quotes
+        file: data/testimonials.json
+        fields:
+          - label: Testimonials
+            name: testimonials
+            widget: list
+            fields:
+              - label: Quote
+                name: quote
+                widget: text
+              - label: Name
+                name: name
+                widget: string
+              - label: Source (e.g. "Member since Mar 2022")
+                name: source
+                widget: string
+
+  - name: faq
+    label: FAQ
+    icon: quiz
+    files:
+      - name: faq
+        label: Frequently asked questions
+        file: data/faq.json
+        fields:
+          - label: Questions
+            name: faq
+            widget: list
+            fields:
+              - label: Question
+                name: question
+                widget: string
+              - label: Answer
+                name: answer
+                widget: text
+              - label: Category
+                name: category
+                widget: select
+                options: [Joining, Events, Discipline, Account, General]
+                default: General
+
+  - name: schedule
+    label: Weekly Schedule
+    icon: event
+    files:
+      - name: schedule
+        label: Weekly events
+        file: data/schedule.json
+        fields:
+          - label: Events
+            name: schedule
+            widget: list
+            fields:
+              - label: Day
+                name: day
+                widget: select
+                options: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+              - label: Time (24-hour, e.g. 20:00)
+                name: time
+                widget: string
+              - label: Timezone (leave as is)
+                name: timezone
+                widget: string
+                default: Asia/Manila
+              - label: Event name
+                name: event
+                widget: string
+              - label: Description
+                name: description
+                widget: text
+                required: false
+              - label: Type
+                name: type
+                widget: select
+                options: [scrim, clan-war, casual, training]
+                default: casual
+
+  - name: achievements
+    label: Achievements
+    icon: emoji_events
+    files:
+      - name: achievements
+        label: Achievement badges
+        file: data/achievements.json
+        fields:
+          - label: Achievements
+            name: achievements
+            widget: list
+            fields:
+              - label: Big stat (e.g. "Top 50")
+                name: stat
+                widget: string
+              - label: Label (what the stat means)
+                name: label
+                widget: string
+              - label: Small detail line
+                name: detail
+                widget: string
+                required: false
+
+  - name: supporters
+    label: Partners
+    icon: handshake
+    files:
+      - name: supporters
+        label: Partner clans & links
+        file: data/supporters.json
+        fields:
+          - label: Partners
+            name: supporters
+            widget: list
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - label: Type
+                name: type
+                widget: select
+                options: [partner]
+                default: partner
+              - label: URL
+                name: url
+                widget: string
+              - label: Description (shown as hover text)
+                name: description
+                widget: string

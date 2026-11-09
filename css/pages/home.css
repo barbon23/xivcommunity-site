@@ -136,6 +136,11 @@
   color: var(--color-ink);
 }
 
+/* Features section heading column width */
+#features-heading {
+  max-width: 480px;
+}
+
 .feature-blurb__desc {
   font-size: var(--font-size-md);
   color: var(--color-muted);
@@ -217,6 +222,10 @@
 }
 
 /* ── Schedule table ───────────────────────────────────────── */
+
+.schedule-scroll {
+  overflow-x: auto;
+}
 
 .schedule__table {
   width: 100%;

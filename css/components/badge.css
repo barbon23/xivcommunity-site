@@ -45,18 +45,16 @@
   color: var(--color-white);
 }
 
-.badge__unit {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semi);
-  vertical-align: top;
-  color: var(--color-white);
-}
-
 .badge__label {
   font-size: var(--font-size-sm);
   color: var(--color-subtle);
   line-height: var(--line-height-snug);
   max-width: 180px;
+}
+
+.badge__detail {
+  font-size: var(--font-size-xs);
+  color: var(--color-subtle);
 }
 
 /* Divider between badges */

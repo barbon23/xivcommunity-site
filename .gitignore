@@ -1,0 +1,12 @@
+# No npm dependencies — kept only so a stray local install never gets committed
+node_modules/
+
+# Local scratch clone of the other repo (not part of this site)
+/xivcommunity/
+
+# Vercel CLI local state
+.vercel/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db

@@ -1,26 +1,24 @@
-[
-  {
-    "id": 1,
-    "stat": "Top 50",
-    "label": "Clan War leaderboard finish, October 2026",
-    "detail": "Out of 50,000+ clans"
-  },
-  {
-    "id": 2,
-    "stat": "7–2",
-    "label": "Clan War record, October 2026",
-    "detail": "Best monthly record to date"
-  },
-  {
-    "id": 3,
-    "stat": "3 yrs",
-    "label": "Active since March 2021",
-    "detail": "Consistent roster, zero rebranding"
-  },
-  {
-    "id": 4,
-    "stat": "20+",
-    "label": "Verified roster members",
-    "detail": "All based in the Philippines"
-  }
-]
+{
+  "achievements": [
+    {
+      "stat": "Top 50",
+      "label": "Clan War leaderboard finish, October 2026",
+      "detail": "Out of 50,000+ clans"
+    },
+    {
+      "stat": "7–2",
+      "label": "Clan War record, October 2026",
+      "detail": "Best monthly record to date"
+    },
+    {
+      "stat": "3 yrs",
+      "label": "Active since March 2021",
+      "detail": "Consistent roster, zero rebranding"
+    },
+    {
+      "stat": "20+",
+      "label": "Verified roster members",
+      "detail": "All based in the Philippines"
+    }
+  ]
+}

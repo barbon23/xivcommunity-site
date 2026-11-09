@@ -1,62 +1,54 @@
-[
-  {
-    "id": 1,
-    "question": "How do I apply to join XIVCOMMUNITY?",
-    "answer": "Fill out the application form linked in our Discord #apply channel or click the \"Join XIVCOMMUNITY\" button on any page. We review applications within 5 days and will reach out via Discord if you're shortlisted for a trial scrim.",
-    "category": "Joining"
-  },
-  {
-    "id": 2,
-    "question": "Is there a rank requirement to join?",
-    "answer": "We don't enforce a strict rank floor, but most of our members are Legendary or Mythic tier. More important to us is communication, consistency, and attitude. If you're still climbing, show us your trajectory and attitude in the application.",
-    "category": "Joining"
-  },
-  {
-    "id": 3,
-    "question": "Do I need a microphone?",
-    "answer": "Yes. We rely on voice communication during scrims and clan wars. You don't need studio-quality gear — any headset with a working mic is fine. Text-only members are not a good fit for the war squad.",
-    "category": "Joining"
-  },
-  {
-    "id": 4,
-    "question": "What time zone do clan events run in?",
-    "answer": "All events are scheduled in Philippine Standard Time (PST / Asia/Manila, UTC+8). The weekly schedule is posted every Sunday in the Discord #schedule channel.",
-    "category": "Events"
-  },
-  {
-    "id": 5,
-    "question": "How often do clan wars happen?",
-    "answer": "We participate in every clan war cycle — typically twice a week, Saturday and Wednesday. The war squad is selected by officers based on activity, stats, and availability that week.",
-    "category": "Events"
-  },
-  {
-    "id": 6,
-    "question": "I was kicked. Can I appeal?",
-    "answer": "Yes. Use the appeal form linked on the Support page. Include your IGN, UID, and a brief explanation. Appeals are reviewed by officers within 72 hours. Repeat violations are not eligible for appeal.",
-    "category": "Discipline"
-  },
-  {
-    "id": 7,
-    "question": "How do I report a member for misconduct?",
-    "answer": "Use the report form on the Support page. Provide the IGN, a description of the incident, and any screenshots or recordings you have. Reports are handled confidentially.",
-    "category": "Discipline"
-  },
-  {
-    "id": 8,
-    "question": "Why isn't my IGN showing up on the Members page?",
-    "answer": "The roster is updated manually by officers after your membership is confirmed. If you've been accepted and your profile is missing, message an officer on Discord with your IGN and join date.",
-    "category": "Account"
-  },
-  {
-    "id": 9,
-    "question": "Can I suggest a feature or rule change?",
-    "answer": "Yes. Use the suggestion form on the Support page. Suggestions are reviewed during our monthly officer meeting. We implement changes that improve the experience for everyone.",
-    "category": "Account"
-  },
-  {
-    "id": 10,
-    "question": "Is XIVCOMMUNITY affiliated with Activision or Call of Duty?",
-    "answer": "No. We are an independent fan-made clan and community. XIVCOMMUNITY is not affiliated with, sponsored by, or endorsed by Activision Blizzard or the Call of Duty franchise in any way.",
-    "category": "General"
-  }
-]
+{
+  "faq": [
+    {
+      "question": "How do I apply to join XIVCOMMUNITY?",
+      "answer": "Fill out the application form linked in our Discord #apply channel or click the \"Join XIVCOMMUNITY\" button on any page. We review applications within 5 days and will reach out via Discord if you're shortlisted for a trial scrim.",
+      "category": "Joining"
+    },
+    {
+      "question": "Is there a rank requirement to join?",
+      "answer": "We don't enforce a strict rank floor, but most of our members are Legendary or Mythic tier. More important to us is communication, consistency, and attitude. If you're still climbing, show us your trajectory and attitude in the application.",
+      "category": "Joining"
+    },
+    {
+      "question": "Do I need a microphone?",
+      "answer": "Yes. We rely on voice communication during scrims and clan wars. You don't need studio-quality gear — any headset with a working mic is fine. Text-only members are not a good fit for the war squad.",
+      "category": "Joining"
+    },
+    {
+      "question": "What time zone do clan events run in?",
+      "answer": "All events are scheduled in Philippine Standard Time (PST / Asia/Manila, UTC+8). The weekly schedule is posted every Sunday in the Discord #schedule channel.",
+      "category": "Events"
+    },
+    {
+      "question": "How often do clan wars happen?",
+      "answer": "We participate in every clan war cycle — typically twice a week, Saturday and Wednesday. The war squad is selected by officers based on activity, stats, and availability that week.",
+      "category": "Events"
+    },
+    {
+      "question": "I was kicked. Can I appeal?",
+      "answer": "Yes. Use the appeal form linked on the Support page. Include your IGN, UID, and a brief explanation. Appeals are reviewed by officers within 72 hours. Repeat violations are not eligible for appeal.",
+      "category": "Discipline"
+    },
+    {
+      "question": "How do I report a member for misconduct?",
+      "answer": "Use the report form on the Support page. Provide the IGN, a description of the incident, and any screenshots or recordings you have. Reports are handled confidentially.",
+      "category": "Discipline"
+    },
+    {
+      "question": "Why isn't my IGN showing up on the Members page?",
+      "answer": "The roster is updated manually by officers after your membership is confirmed. If you've been accepted and your profile is missing, message an officer on Discord with your IGN and join date.",
+      "category": "Account"
+    },
+    {
+      "question": "Can I suggest a feature or rule change?",
+      "answer": "Yes. Use the suggestion form on the Support page. Suggestions are reviewed during our monthly officer meeting. We implement changes that improve the experience for everyone.",
+      "category": "Account"
+    },
+    {
+      "question": "Is XIVCOMMUNITY affiliated with Activision or Call of Duty?",
+      "answer": "No. We are an independent fan-made clan and community. XIVCOMMUNITY is not affiliated with, sponsored by, or endorsed by Activision Blizzard or the Call of Duty franchise in any way.",
+      "category": "General"
+    }
+  ]
+}

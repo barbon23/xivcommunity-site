@@ -1,9 +1,11 @@
 /**
  * home.js — Page entry file for index.html.
- * Wires up: avatar row, member preview, latest posts, schedule,
- * testimonials, achievements, supporters.
+ * Wires up: hero avatar rows, member preview, latest posts, schedule,
+ * testimonials, achievements and supporters.
+ * All page copy/blocks render in site-content.js / page-content.js (main.js).
  */
 
+import { loadSiteContent, whenSlotsMounted } from '../features/site-content.js';
 import { fetchJSON } from '../utils/fetch-json.js';
 import { escapeHTML, roleWeight } from '../utils/format.js';
 import { renderAvatarRow } from '../components/avatar-row.js';
@@ -14,18 +16,16 @@ import { staggerReveal } from '../features/reveal.js';
 import { qs } from '../utils/dom.js';
 
 /** Render avatar row(s) from members data */
-async function initAvatarRows() {
+async function initAvatarRows(content) {
   const containers = document.querySelectorAll('[data-avatar-row]');
   if (!containers.length) return;
 
   try {
-    const members = await fetchJSON('/data/members.json');
+    const { members } = await fetchJSON('/data/members.json');
+    const subLabel = content?.hero?.socialProofSub ?? 'already play with us';
+
     containers.forEach(container => {
-      container.innerHTML = renderAvatarRow({
-        members,
-        max: 5,
-        subLabel: 'already play with us',
-      });
+      container.innerHTML = renderAvatarRow({ members, max: 5, subLabel });
     });
   } catch {
     containers.forEach(c => { c.hidden = true; });
@@ -38,7 +38,7 @@ async function initMemberPreview() {
   if (!container) return;
 
   try {
-    const members = await fetchJSON('/data/members.json');
+    const { members } = await fetchJSON('/data/members.json');
     const priority = members
       .filter(m => ['Founder', 'Head Admin', 'Leader', 'Co-Leader', 'Officer'].includes(m.role))
       .sort((a, b) => roleWeight(a.role) - roleWeight(b.role))
@@ -63,10 +63,10 @@ async function initTestimonials() {
   if (!container) return;
 
   try {
-    const data = await fetchJSON('/data/testimonials.json');
-    if (!data.length) { container.closest('section')?.remove(); return; }
+    const { testimonials } = await fetchJSON('/data/testimonials.json');
+    if (!testimonials.length) { container.closest('section')?.remove(); return; }
 
-    container.innerHTML = data.map(t => `
+    container.innerHTML = testimonials.map(t => `
       <blockquote class="testimonial" data-reveal>
         <p class="testimonial__quote">"${escapeHTML(t.quote)}"</p>
         <footer class="testimonial__author">
@@ -90,8 +90,8 @@ async function initAchievements() {
   if (!container) return;
 
   try {
-    const data = await fetchJSON('/data/achievements.json');
-    if (!data.length) return;
+    const { achievements } = await fetchJSON('/data/achievements.json');
+    if (!achievements.length) return;
 
     const laurelLeft = `<svg class="badge__laurel-left" viewBox="0 0 28 36" fill="none"
       xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -115,7 +115,7 @@ async function initAchievements() {
             stroke-linecap="round" fill="none" opacity="0.3"/>
     </svg>`;
 
-    container.innerHTML = data.map(a => `
+    container.innerHTML = achievements.map(a => `
       <div class="badge" data-reveal>
         <div class="badge__laurel">
           ${laurelLeft}
@@ -125,7 +125,7 @@ async function initAchievements() {
           ${laurelRight}
         </div>
         <p class="badge__label">${escapeHTML(a.label)}</p>
-        <p style="font-size:var(--font-size-xs);color:var(--color-ink-3)">${escapeHTML(a.detail)}</p>
+        <p class="badge__detail">${escapeHTML(a.detail)}</p>
       </div>
     `).join('');
 
@@ -140,13 +140,13 @@ async function initSupporters() {
   if (!section || !container) return;
 
   try {
-    const data = await fetchJSON('/data/supporters.json');
-    if (!data.length) {
+    const { supporters } = await fetchJSON('/data/supporters.json');
+    if (!supporters.length) {
       section.hidden = true;
       return;
     }
 
-    container.innerHTML = data.map(s => `
+    container.innerHTML = supporters.map(s => `
       <a href="${escapeHTML(s.url)}" class="partners__item"
          target="_blank" rel="noopener noreferrer"
          title="${escapeHTML(s.description)}">
@@ -158,11 +158,19 @@ async function initSupporters() {
   }
 }
 
-// Boot all home features
-initAvatarRows();
-initMemberPreview();
-renderLatestPosts(qs('#posts-preview'));
-initSchedule();
-initTestimonials();
-initAchievements();
-initSupporters();
+/** Boot all home features after main.js has mounted the content slots. */
+async function boot() {
+  // Hero/CTA markup (with the avatar-row containers) is rendered by main.js
+  await whenSlotsMounted();
+  const content = await loadSiteContent();
+
+  initAvatarRows(content);
+  initMemberPreview();
+  renderLatestPosts(qs('#posts-preview'));
+  initSchedule();
+  initTestimonials();
+  initAchievements();
+  initSupporters();
+}
+
+boot();

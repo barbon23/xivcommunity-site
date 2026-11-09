@@ -82,7 +82,7 @@ export async function initSchedule() {
   container.innerHTML = '<tr><td colspan="5" class="schedule__empty">Loading…</td></tr>';
 
   try {
-    const data = await fetchJSON('/data/schedule.json');
+    const data = (await fetchJSON('/data/schedule.json')).schedule;
 
     if (!data.length) {
       container.innerHTML = '<tr><td colspan="5" class="schedule__empty">No events scheduled yet.</td></tr>';

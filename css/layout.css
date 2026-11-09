@@ -96,6 +96,22 @@
   margin-bottom: var(--space-7);
 }
 
+/* Section header laid out as label/heading on the left, button on the right */
+.section-header--row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Muted helper note under a section heading (e.g. schedule timezone note) */
+.section-note {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+}
+
 .section-label {
   display: block;
   font-size: var(--font-size-sm);

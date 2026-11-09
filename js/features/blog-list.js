@@ -4,7 +4,7 @@
  */
 
 import { fetchJSON } from '../utils/fetch-json.js';
-import { formatDateShort, readingTime, escapeHTML, truncate } from '../utils/format.js';
+import { formatDateShort, readingTime, escapeHTML, truncate, postSlug } from '../utils/format.js';
 import { qs, qsa } from '../utils/dom.js';
 
 /** @type {Array} */
@@ -28,7 +28,7 @@ function renderPostCard(post) {
   const date    = formatDateShort(post.date);
   const rt      = readingTime(post.readingTime);
   const cat     = escapeHTML(post.category);
-  const slug    = encodeURIComponent(post.slug);
+  const slug    = encodeURIComponent(postSlug(post));
 
   const coverHTML = post.cover
     ? `<img class="card__cover" src="${escapeHTML(post.cover)}"
@@ -129,7 +129,7 @@ export async function initBlogList() {
   container.innerHTML = '<p class="state-loading">Loading posts…</p>';
 
   try {
-    allPosts = await fetchJSON('/data/posts.json');
+    allPosts = (await fetchJSON('/data/posts.json')).posts;
     // Newest first
     allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
   } catch {
@@ -170,7 +170,7 @@ export async function renderLatestPosts(container, limit = 3) {
   container.innerHTML = '<p class="state-loading">Loading…</p>';
 
   try {
-    const posts = await fetchJSON('/data/posts.json');
+    const posts = (await fetchJSON('/data/posts.json')).posts;
     const latest = posts
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, limit);
