@@ -6,7 +6,7 @@
 
 ## 1. Opening the editor
 
-1. Go to **https://xivcommunity.gg/admin** (the same address, plus `/admin`).
+1. Go to **https://xivcommunity-site.vercel.app/admin** (the same address, plus `/admin`).
 2. Click **Log in with GitHub**.
 3. Sign in with the shared editor account (the one saved on your device).
 4. You will see a list of sections on the left:

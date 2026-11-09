@@ -147,7 +147,7 @@ site_url: https://yourdomain.tld          # ← your real domain
 
 ### 5. First sign-in
 
-On the **editor's** device, go to `https://xivcommunity.gg/admin`, choose
+On the **editor's** device, go to `https://xivcommunity-site.vercel.app/admin`, choose
 **Log in with GitHub**, and complete the flow once (GitHub may ask you to
 authorize the OAuth app). Done — from then on, a refresh re-signs in.
 

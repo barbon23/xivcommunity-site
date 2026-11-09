@@ -2,24 +2,27 @@
 #  XIVCOMMUNITY content editor config
 #  Sveltia CMS reads this file and turns /data/*.json into forms.
 #
-#  BEFORE FIRST USE — replace the two lines marked  ← REPLACE :
-#   1. base_url: your production domain + /api
-#   2. site_url: your production domain
-#  (the repo below is already set)
+#  DOMAIN NOTE — currently on the free Vercel URL:
+#    https://xivcommunity-site.vercel.app
+#  When you buy a domain later (e.g. xivcommunity.gg), update these two lines
+#  below AND the Authorization callback URL of the GitHub OAuth app:
+#    1. base_url: https://your-new-domain/api
+#    2. site_url: https://your-new-domain
+#  (the repo next to them is already set)
 # ═══════════════════════════════════════════════════════════════
 
 backend:
   name: github
   repo: barbon23/xivcommunity-site               # GitHub username / repo name
   branch: main
-  base_url: https://xivcommunity.gg/api          # ← REPLACE with your real domain + /api
+  base_url: https://xivcommunity-site.vercel.app/api  # free Vercel URL + /api (swap when you buy a domain)
 
 # Uploaded images are written to /assets in the repo and stored in the
 # JSON data files with /assets/… URLs, which the site uses directly.
 media_folder: assets
 public_folder: /assets
 
-site_url: https://xivcommunity.gg               # ← REPLACE (enables the "view site" link)
+site_url: https://xivcommunity-site.vercel.app  # free Vercel URL (swap when you buy a domain)
 
 collections:
 
