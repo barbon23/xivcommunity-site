@@ -310,7 +310,8 @@ collections:
                 required: false
               - label: Join date
                 name: joinDate
-                widget: date
+                widget: datetime
+                type: date
                 format: YYYY-MM-DD
                 required: false
               - label: Verified (tick shown next to IGN)
@@ -345,7 +346,8 @@ collections:
                 required: false
               - label: Date
                 name: date
-                widget: date
+                widget: datetime
+                type: date
                 format: YYYY-MM-DD
               - label: Category
                 name: category
