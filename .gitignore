@@ -10,3 +10,6 @@ node_modules/
 # OS/editor junk
 .DS_Store
 Thumbs.db
+
+.vercel
+.env*
