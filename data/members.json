@@ -179,6 +179,15 @@
       "joinDate": "2024-03-29",
       "verified": false,
       "avatar": ""
+    },
+    {
+      "ign": "TetsuUghh",
+      "role": "Officer",
+      "class": "Support",
+      "uid": "",
+      "joinDate": "2026-11-10",
+      "verified": true,
+      "avatar": "/assets/members/temp_image_F20F59B0-FC38-4816-893B-0CD7C2035E58.jpeg"
     }
   ]
 }
