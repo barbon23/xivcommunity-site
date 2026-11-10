@@ -1,5 +1,6 @@
 /* ============================================================
-   navbar.css — Sticky top nav, desktop + mobile hamburger
+   navbar.css — Sticky top nav. On mobile, navigation lives in
+   the fixed bottom toolbar (css/components/bottom-nav.css).
    ============================================================ */
 
 .navbar {
@@ -103,100 +104,4 @@
   .navbar__cta {
     display: inline-flex;
   }
-}
-
-/* Hamburger button */
-.navbar__hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
-  padding: var(--space-1);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  background: none;
-  border: none;
-  transition: background-color var(--transition-fast);
-}
-
-.navbar__hamburger:hover {
-  background-color: var(--color-surface);
-}
-
-.navbar__hamburger:focus-visible {
-  outline: 2px solid var(--color-ink);
-  outline-offset: 2px;
-}
-
-@media (min-width: 768px) {
-  .navbar__hamburger {
-    display: none;
-  }
-}
-
-.navbar__hamburger-line {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background-color: var(--color-ink);
-  border-radius: 2px;
-  transition: transform var(--transition-base), opacity var(--transition-fast);
-  transform-origin: center;
-}
-
-/* Open state */
-.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-
-.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Mobile drawer */
-.navbar__mobile {
-  display: none;
-  position: fixed;
-  inset: 64px 0 0 0;
-  background-color: var(--color-white);
-  border-top: var(--border);
-  z-index: calc(var(--z-nav) - 1);
-  flex-direction: column;
-  padding: var(--space-3);
-  gap: var(--space-1);
-  overflow-y: auto;
-}
-
-.navbar__mobile.is-open {
-  display: flex;
-}
-
-.navbar__mobile-link {
-  display: flex;
-  align-items: center;
-  padding: var(--space-2) var(--space-2);
-  font-size: var(--font-size-md);
-  color: var(--color-ink);
-  border-radius: var(--radius-sm);
-  transition: background-color var(--transition-fast);
-  min-height: 52px;
-}
-
-.navbar__mobile-link:hover {
-  background-color: var(--color-surface);
-}
-
-.navbar__mobile-link--active {
-  font-weight: var(--font-weight-semi);
-}
-
-.navbar__mobile-cta {
-  margin-top: var(--space-2);
-  align-self: flex-start;
 }
