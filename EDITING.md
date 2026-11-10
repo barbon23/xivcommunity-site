@@ -51,7 +51,8 @@ orientation** and roughly 1400×900 or larger, so they look sharp.
    - **Verified** — switch on when you've confirmed the player is real.
    - **Avatar image** — optional profile photo. **png, jpeg or webp all
      work** — square, at least 200×200. Compress big photos first (free:
-     squoosh.app) and aim for under ~200 KB so pages stay fast. Files
+     squoosh.app) and aim for under ~200 KB so pages stay fast.
+      **Pick a file whose preview you can actually see** - if a thumbnail is a grey checkerboard/blank square, the file has no visible pixels (a common result of background-removal sites or an interrupted download), it will never display anywhere: delete that upload and use the original image instead. Files
      save to the website's `assets/members` folder automatically. After
      saving, check the site — if the photo doesn't appear within a
      minute, re-upload it once more; the tidy initials circle shows
