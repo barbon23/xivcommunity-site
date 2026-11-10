@@ -2,13 +2,19 @@
   "hero": {
     "eyebrow": "XIVCOMMUNITY [XIV]",
     "heading": "A CODM clan that takes the game seriously.",
-    "sub": "We run structured scrims, compete in clan wars every week, and help every member get better. Based in the Philippines, active since 2021.",
+    "sub": "We run structured scrims, compete in clan wars every week, and help every member get better. Based in the Philippines, active since 2021. REVO REVO",
     "phoneImage": "/assets/screens/shot-01.webp",
     "phoneAlt": "CODM clan gameplay screenshot",
     "socialProofSub": "already play with us",
     "buttons": [
-      { "label": "Join Discord", "url": "https://discord.gg/xivcommunity" },
-      { "label": "Facebook group", "url": "https://www.facebook.com/xivcommunity" }
+      {
+        "label": "Join Discord",
+        "url": "https://discord.gg/xivcommunity"
+      },
+      {
+        "label": "Facebook group",
+        "url": "https://www.facebook.com/xivcommunity"
+      }
     ]
   },
   "blurbs": {
@@ -74,8 +80,14 @@
     "heading": "Start playing with us today.",
     "sub": "Applications are open. We'll review yours within 5 days.",
     "buttons": [
-      { "label": "Join Discord", "url": "https://discord.gg/xivcommunity" },
-      { "label": "Facebook group", "url": "https://www.facebook.com/xivcommunity" }
+      {
+        "label": "Join Discord",
+        "url": "https://discord.gg/xivcommunity"
+      },
+      {
+        "label": "Facebook group",
+        "url": "https://www.facebook.com/xivcommunity"
+      }
     ]
   },
   "footer": {
