@@ -5,6 +5,12 @@
 
 import { initials, escapeHTML } from '../utils/format.js';
 
+/** Avatar paths from older CMS config may lack the leading slash;
+    normalise so they resolve to site-root URLs on every page. */
+function avatarSrc(src) {
+  return src.startsWith('/') ? src : `/${src}`;
+}
+
 /**
  * Build one avatar circle.
  * @param {{ ign: string, avatar: string }} member
@@ -17,7 +23,7 @@ function buildAvatar(member) {
   if (member.avatar) {
     return `
       <div class="avatar-row__item" title="${ign}">
-        <img src="${escapeHTML(member.avatar)}"
+        <img src="${escapeHTML(avatarSrc(member.avatar))}"
              alt="${ign}"
              width="36" height="36"
              loading="lazy">

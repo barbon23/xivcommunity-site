@@ -331,7 +331,7 @@ collections:
                 widget: image
                 required: false
                 default: ''
-                media_folder: assets/members
+                media_folder: /assets/members
                 public_folder: /assets/members
 
   - name: posts
