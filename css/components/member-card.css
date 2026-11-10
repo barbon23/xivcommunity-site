@@ -1,0 +1,152 @@
+/* ============================================================
+   member-card.css — Officer profile cards (home + members page)
+   Photo-first layout: big round avatar, full IGN (never truncated),
+   role/class tags, join date, compact copy button. Uploaded photos
+   render grayscale and bloom to full color on hover; members without
+   a photo keep the initials circle. Cards reflow 4→3→2→1 columns.
+   ============================================================ */
+
+/* ── Card ────────────────────────────────────────────────── */
+
+.member-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background-color: var(--color-white);
+  border: var(--border);
+  border-radius: var(--radius-card);
+  transition: border-color var(--transition-fast);
+}
+
+.member-card:hover {
+  border-color: var(--color-subtle);
+}
+
+/* ── Avatar ──────────────────────────────────────────────── */
+
+.member-card__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border: var(--border);
+  flex-shrink: 0;
+}
+
+.member-card__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter var(--transition-fast);
+}
+
+/* Photos are monochrome until the card is hovered (brand mono → personal). */
+.member-card:hover .member-card__avatar--photo .member-card__avatar-img,
+.member-card:focus-within .member-card__avatar--photo .member-card__avatar-img {
+  filter: grayscale(0%);
+}
+
+.member-card__avatar-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: var(--font-weight-semi);
+  color: var(--color-muted);
+}
+
+/* ── Name (full text always; wraps instead of ellipsizing) ─ */
+
+.member-card__ign {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding-right: 64px;             /* keeps clear of the copy button */
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semi);
+  line-height: var(--line-height-tight);
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+}
+
+/* ── Tags row ────────────────────────────────────────────── */
+
+.member-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* ── Join date ───────────────────────────────────────────── */
+
+.member-card__joined {
+  font-size: var(--font-size-xs);
+  color: var(--color-subtle);
+}
+
+/* ── Copy button ─────────────────────────────────────────── */
+
+.member-card__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 28px;
+  padding: 4px 10px;
+  font-size: var(--font-size-xs);
+  color: var(--color-muted);
+  background-color: var(--color-white);
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.member-card__copy:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.member-card__copy:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.member-card__copy svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* Absolute corner placement only inside the profile card. */
+.member-card .member-card__copy {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+}
+
+/* ── Verified tick (shared by cards and the roster table) ── */
+
+.verified-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color-ink);
+  color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.verified-mark svg {
+  width: 10px;
+  height: 10px;
+}

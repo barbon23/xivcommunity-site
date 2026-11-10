@@ -49,7 +49,11 @@ orientation** and roughly 1400×900 or larger, so they look sharp.
    - **UID** — optional, but the "Copy" button on the website copies this.
    - **Join date** — click the field and pick the date.
    - **Verified** — switch on when you've confirmed the player is real.
-   - **Avatar image** — optional square photo (at least 200×200 works best).
+   - **Avatar image** — optional profile photo (png or jpeg, square,
+     at least 200×200). Compress big photos first (free: squoosh.app) and
+     aim for under ~200 KB so pages stay fast. Uploads save to the
+     website's `assets/members` folder automatically. No photo? They get
+     a tidy initials circle instead — the roster looks fine either way.
 3. To edit someone, click **Edit** next to their name.
 4. To remove someone, click the **trash/delete** icon next to their entry.
 5. Click **Save** when done. Members are listed alphabetically inside their

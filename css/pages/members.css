@@ -88,7 +88,7 @@
 .members-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 @media (min-width: 640px) {
@@ -97,9 +97,15 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 960px) {
   .members-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1240px) {
+  .members-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -161,23 +167,7 @@
   font-size: var(--font-size-xs);
 }
 
-/* Verified checkmark */
-.verified-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: var(--color-ink);
-  flex-shrink: 0;
-}
-
-.verified-mark svg {
-  width: 10px;
-  height: 10px;
-  color: var(--color-white);
-}
+/* Verified checkmark is shared — see css/components/member-card.css */
 
 /* ── Empty state ─────────────────────────────────────────── */
 
