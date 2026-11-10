@@ -110,7 +110,31 @@ button, the footer, the support page, etc.
 
 ---
 
-## 7. After you save — WAIT ~1 MINUTE
+## 7. How long can my text be?
+
+There's no technical limit — long text can't break the site. At worst something
+looks crowded, and retyping it shorter fixes it. Comfort zones:
+
+| Type of field | Comfy length | If much longer… |
+|---|---|---|
+| Headings & section titles | one short line (about 50–70 characters) | the heading wraps or looks squeezed |
+| Buttons & small labels | 2–4 words | the button gets very wide |
+| Descriptions & FAQ answers | 2–4 sentences | fine — the block just gets taller |
+| Member names, roles, UIDs | short, exactly as they appear in-game | — |
+| Blog post content | as long as you like | fine — long posts are normal |
+
+Good habits:
+
+- Keep headings short — they're labels, not paragraphs.
+- Compress large screenshots before uploading; huge images make slow pages.
+- Treat a post's **URL slug** as set-once: changing it changes that post's web
+  address, so old links would stop working.
+- Every save is recorded, so an accidental paste can always be undone — nothing
+  is ever lost.
+
+---
+
+## 8. After you save — WAIT ~1 MINUTE
 
 1. When you click **Save**, the change is sent to GitHub, and GitHub sends it
    to the live site. This takes about **60 seconds**.
@@ -122,7 +146,7 @@ same change again and again.
 
 ---
 
-## 8. Things you can't change (intentionally)
+## 9. Things you can't change (intentionally)
 
 - The **Activision disclaimer** in the footer (legal text — fixed).
 - The **clan name, tag, timezone and site address**.
@@ -131,7 +155,7 @@ same change again and again.
 
 ---
 
-## 9. If something looks broken
+## 10. If something looks broken
 
 - First: hard-refresh (Ctrl+Shift+R) — old cached files are the usual cause.
 - If the whole site looks wrong right after a save, the editor will see the
