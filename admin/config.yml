@@ -24,6 +24,14 @@ public_folder: /assets
 
 site_url: https://xivcommunity-site.vercel.app  # free Vercel URL (swap when you buy a domain)
 
+# Branding: title on the login screen + browser tab, clan logo in the header
+# and as the favicon/app icon, and a friendly exit back to the homepage.
+app_title: XIVCOMMUNITY Content Editor
+logo:
+  src: /assets/brand/logo.png
+  show_in_header: true
+logout_redirect_url: https://xivcommunity-site.vercel.app
+
 collections:
 
   - name: homepage

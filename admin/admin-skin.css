@@ -1,0 +1,101 @@
+/**
+ * admin-skin.css — XIVCOMMUNITY editor panel theme.
+ * Sveltia CMS is mounted inside this page, so these styles apply to it.
+ * The CMS derives its whole look from `--sui-*` custom-property "parts"
+ * (base hue + five background/foreground/border lightnesses), so we
+ * override the parts instead of fighting individual components.
+ *
+ * Palette mirrors the site (css/tokens.css): pure charcoal, no accent hue.
+ */
+
+/* Site typography: variable Inter served from the same origin. */
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-latin-var.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/*
+ * Force the clan dark theme no matter which theme the editor picked in CMS
+ * settings. Selector battery outranks every Sveltia token block
+ * (`:root`, `:root[data-theme=light|dark]`, and the prefers-color-scheme block).
+ */
+html:root,
+html:root[data-theme='light'],
+html:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Charcoal layers matching --color-ink / ink-2 / ink-3 (neutral: sat 0). */
+  --sui-base-hue: 0;
+  --sui-background-color-1-hsl: 0 0% 4%;   /* body            #0a0a0a */
+  --sui-background-color-2-hsl: 0 0% 8%;   /* panels/sidebars #141414 */
+  --sui-background-color-3-hsl: 0 0% 13%;  /* wells/inputs    #212121 */
+  --sui-background-color-4-hsl: 0 0% 16%;
+  --sui-background-color-5-hsl: 0 0% 22%;  /* hover/selected  #383838 */
+
+  --sui-foreground-color-1-hsl: 0 0% 98%;  /* strongest text  */
+  --sui-foreground-color-2-hsl: 0 0% 80%;
+  --sui-foreground-color-3-hsl: 0 0% 65%;
+  --sui-foreground-color-4-hsl: 0 0% 55%;
+  --sui-foreground-color-5-hsl: 0 0% 40%;  /* disabled        */
+
+  --sui-border-color-1-hsl: 0 0% 30%;
+  --sui-border-color-2-hsl: 0 0% 20%;
+  --sui-border-color-3-hsl: 0 0% 16%;
+  --sui-shadow-color: 0 0% 0%;
+
+  /* Monochrome accent: focus rings, links and primary buttons go white. */
+  --sui-primary-accent-color: hsl(0 0% 90%);
+  --sui-primary-accent-color-light: hsl(0 0% 100%);
+  --sui-primary-accent-color-dark: hsl(0 0% 78%);
+  --sui-primary-accent-color-translucent: hsl(0 0% 100% / 18%);
+  --sui-primary-accent-color-translucent-light: hsl(0 0% 100% / 10%);
+  --sui-primary-accent-color-inverted: hsl(0 0% 4%);
+  --sui-primary-accent-color-text: hsl(0 0% 96%);
+  --sui-focus-ring-color: hsl(0 0% 100% / 70%);
+
+  /* Site typography over "Source Sans 3". */
+  --sui-font-family-default: 'Inter', system-ui, sans-serif;
+  --sui-heading-font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Primary buttons: white on black, like the site's buttons on dark sections. */
+html:root {
+  --sui-button-primary-background-color: hsl(0 0% 96%);
+  --sui-button-primary-foreground-color: hsl(0 0% 4%);
+  --sui-button-primary-background-color-focus: hsl(0 0% 88%);
+  --sui-button-primary-background-color-active: hsl(0 0% 88%);
+  --sui-button-primary-foreground-color-focus: hsl(0 0% 4%);
+  --sui-button-primary-foreground-color-active: hsl(0 0% 4%);
+}
+
+/* Safety net for the login screen and first paint. */
+html {
+  background-color: hsl(0 0% 4%);
+  color: hsl(0 0% 98%);
+}
+
+/* Brand the header: the XIV metal monogram is black-on-transparent, so here it
+   flips to polished white metal to sit on the dark chrome. Matches the site
+   logo as used in the hero. */
+html img[src*='brand/logo'] {
+  filter: invert(1) brightness(1.1);
+}
+
+/* A hint of breathing room on medium density screens. */
+html input[data-field-type],
+html textarea[data-field-type] {
+  letter-spacing: 0.01em;
+}
+
+/* Phones: bigger form controls and thumb-friendly buttons. */
+@media (pointer: coarse) {
+  html:root {
+    --sui-control-medium-height: 36px;
+    --sui-control-large-height: 44px;
+    --sui-button-medium-height: 40px;
+    --sui-button-large-height: 48px;
+    --sui-line-height-compact: 1.5;
+  }
+}
