@@ -124,8 +124,9 @@ function buildNavHTML() {
     <nav class="bottom-nav" role="navigation" aria-label="Primary">
       ${bottomLeft}
       <a href="${applyUrl}" class="bottom-nav__join"
-         target="_blank" rel="noopener noreferrer">
-        Join ${CONFIG.CLAN_NAME}
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Join ${CONFIG.CLAN_NAME} on Discord">
+        Join
       </a>
       ${bottomRight}
     </nav>

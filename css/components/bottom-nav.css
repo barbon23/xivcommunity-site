@@ -40,15 +40,16 @@
 /* ── Tabs ───────────────────────────────────────────────── */
 
 .bottom-nav__tab {
+  position: relative;
   flex: 1 1 0;
-  min-width: 56px;
+  min-width: 0;
   min-height: 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2px;
-  padding: 5px 2px;
+  padding: 4px 0;
   font-size: 11px;
   line-height: var(--line-height-tight);
   color: var(--color-muted);
@@ -72,11 +73,23 @@
   outline-offset: -2px;
 }
 
-/* Active tab: ink text + a crisp top accent bar (Material-style). */
+/* Active tab: ink text + a short, clean accent pill at the top
+   (a plain inset shadow would curve weirdly with the tab radius). */
 .bottom-nav__tab--active {
   color: var(--color-ink);
   font-weight: var(--font-weight-semi);
-  box-shadow: inset 0 2px 0 var(--color-ink);
+}
+
+.bottom-nav__tab--active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 3px;
+  border-radius: 999px;
+  background-color: var(--color-ink);
 }
 
 /* ── Center Join pill ───────────────────────────────────── */
@@ -87,10 +100,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 8px 14px;
+  min-height: 40px;
+  padding: 7px 14px;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semi);
+  white-space: nowrap;
   color: var(--color-white);
   background-color: var(--color-ink);
   border-radius: var(--radius-pill);
