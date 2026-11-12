@@ -6,7 +6,7 @@
  * and open the member profile popup (member-modal.js). Pure component.
  */
 
-import { formatDateShort, initials, escapeHTML, roleClass } from '../utils/format.js';
+import { formatDateShort, initials, escapeHTML, memberTagClass } from '../utils/format.js';
 
 /** Double-sheet clipboard icon for the copy button. */
 export const COPY_ICON = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -48,7 +48,7 @@ export function renderMemberCard(member, { hideRole = false } = {}) {
   const cls = escapeHTML(member.class || '');
   const init = escapeHTML(initials(member.ign));
   const joined = member.joinDate ? formatDateShort(member.joinDate) : '';
-  const tagClass = roleClass(member.role);
+  const tagClass = memberTagClass(member);
   const copy = copyTarget(member);
 
   const avatarInner = member.avatar
@@ -90,7 +90,7 @@ export function renderMemberRow(member, index) {
   const cls = escapeHTML(member.class || '—');
   const uid = member.uid ? escapeHTML(member.uid) : '—';
   const joined = member.joinDate ? formatDateShort(member.joinDate) : '—';
-  const tagClass = roleClass(member.role);
+  const tagClass = memberTagClass(member);
   const copy = copyTarget(member);
 
   return `

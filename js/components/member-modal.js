@@ -8,7 +8,7 @@
  * instead of leaving the page.
  */
 
-import { escapeHTML, initials, formatDateShort, roleClass } from '../utils/format.js';
+import { escapeHTML, initials, formatDateShort, memberTagClass } from '../utils/format.js';
 import { initCopyButtons, avatarSrc, VERIFIED_HTML, COPY_ICON } from './member-card.js';
 
 /** Close (X) icon for the corner button. */
@@ -99,7 +99,7 @@ export function openMemberModal(member) {
 
   refs.ign.innerHTML = `<span>${ign}</span>${member.verified ? VERIFIED_HTML : ''}`;
   refs.tags.innerHTML =
-    `<span class="tag ${roleClass(member.role)}">${escapeHTML(member.role)}</span>` +
+    `<span class="tag ${memberTagClass(member)}">${escapeHTML(member.role)}</span>` +
     (cls ? `<span class="tag tag--member">${cls}</span>` : '');
 
   refs.bio.textContent = bio || 'Bio coming soon.';

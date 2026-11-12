@@ -4,7 +4,7 @@
  */
 
 import { fetchJSON } from '../utils/fetch-json.js';
-import { escapeHTML, roleWeight, roleCategory } from '../utils/format.js';
+import { escapeHTML, roleWeight, memberCategory, CATEGORIES } from '../utils/format.js';
 import { renderMemberCard, renderMemberRow, initCopyButtons } from '../components/member-card.js';
 import { initMemberModal, wireProfilePopups } from '../components/member-modal.js';
 import { qs, qsa } from '../utils/dom.js';
@@ -24,7 +24,7 @@ function getFiltered() {
   let list = [...allMembers];
 
   if (currentFilter !== 'All') {
-    list = list.filter(m => roleCategory(m.role) === currentFilter);
+    list = list.filter(m => memberCategory(m) === currentFilter);
   }
 
   if (currentSearch) {
@@ -47,16 +47,16 @@ function getFiltered() {
 }
 
 /**
- * Group members by category for the grid view. Category follows the
- * role automatically (see roleCategory in format.js).
+ * Group members by their own category for the grid view. The category
+ * is picked per member in the CMS (a role-based fallback keeps old
+ * data working — see memberCategory in format.js).
  * @param {Array} members
  * @returns {Map<string, Array>}
  */
 function groupByCategory(members) {
-  const order = ['XIV MANAGEMENT', 'XIV EXCLUSIVE', 'XIV MEMBER'];
-  const map = new Map(order.map((c) => [c, []]));
+  const map = new Map(CATEGORIES.map((c) => [c, []]));
   for (const m of members) {
-    const cat = roleCategory(m.role);
+    const cat = memberCategory(m);
     if (!map.has(cat)) map.set(cat, [m]);
     else map.get(cat).push(m);
   }

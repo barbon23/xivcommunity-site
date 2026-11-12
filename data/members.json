@@ -3,6 +3,7 @@
     {
       "ign": "KM2 REVO XIV",
       "role": "Founder",
+      "category": "XIV MANAGEMENT",
       "class": "Slayer",
       "uid": "7051178125996064769",
       "joinDate": "2025-11-12",
@@ -13,6 +14,7 @@
     {
       "ign": "KM2 YARA XIV",
       "role": "Head Admin",
+      "category": "XIV MANAGEMENT",
       "class": "Support",
       "uid": "6747503535144828929",
       "joinDate": "2026-04-01",
@@ -23,6 +25,7 @@
     {
       "ign": "Krey",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Slayer",
       "uid": "9920311",
       "joinDate": "2021-06-02",
@@ -33,6 +36,7 @@
     {
       "ign": "YUMI",
       "role": "Moderator",
+      "category": "XIV MANAGEMENT",
       "class": "",
       "uid": "7712044",
       "joinDate": "2021-08-18",
@@ -43,6 +47,7 @@
     {
       "ign": "PinoyFlash",
       "role": "Moderator",
+      "category": "XIV MANAGEMENT",
       "class": "Slayer",
       "uid": "7712045",
       "joinDate": "2021-09-01",
@@ -53,6 +58,7 @@
     {
       "ign": "GhostLineR",
       "role": "Moderator",
+      "category": "XIV MANAGEMENT",
       "class": "Sniper",
       "uid": "6603812",
       "joinDate": "2022-01-10",
@@ -63,6 +69,7 @@
     {
       "ign": "IronMask_XIV",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "OBJ",
       "uid": "5540091",
       "joinDate": "2022-02-20",
@@ -73,6 +80,7 @@
     {
       "ign": "VoidWalker",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Slayer",
       "uid": "5540092",
       "joinDate": "2022-03-05",
@@ -83,6 +91,7 @@
     {
       "ign": "CalmStrike",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Support",
       "uid": "5540093",
       "joinDate": "2022-04-11",
@@ -93,6 +102,7 @@
     {
       "ign": "Apex_Rook",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "OBJ",
       "uid": "4431009",
       "joinDate": "2022-07-30",
@@ -103,6 +113,7 @@
     {
       "ign": "ZeroChill_XIV",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Slayer",
       "uid": "4431010",
       "joinDate": "2022-09-14",
@@ -113,6 +124,7 @@
     {
       "ign": "MotherBase_MNL",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Support",
       "uid": "3320445",
       "joinDate": "2022-11-02",
@@ -123,6 +135,7 @@
     {
       "ign": "DarkLancet",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Sniper",
       "uid": "3320446",
       "joinDate": "2023-01-21",
@@ -133,6 +146,7 @@
     {
       "ign": "Paladin_Cruz",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "OBJ",
       "uid": "2210887",
       "joinDate": "2023-02-08",
@@ -143,6 +157,7 @@
     {
       "ign": "HaloBreaker",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Slayer",
       "uid": "2210888",
       "joinDate": "2023-03-19",
@@ -153,6 +168,7 @@
     {
       "ign": "KuroSeraph",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Support",
       "uid": "1100223",
       "joinDate": "2023-05-07",
@@ -163,6 +179,7 @@
     {
       "ign": "TacticalBean",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "OBJ",
       "uid": "1100224",
       "joinDate": "2023-06-14",
@@ -173,6 +190,7 @@
     {
       "ign": "SolTrace",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Slayer",
       "uid": "",
       "joinDate": "2024-01-03",
@@ -183,6 +201,7 @@
     {
       "ign": "MireillePH",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "Sniper",
       "uid": "",
       "joinDate": "2024-02-11",
@@ -193,6 +212,7 @@
     {
       "ign": "Strikevoid",
       "role": "Casual",
+      "category": "XIV MEMBER",
       "class": "OBJ",
       "uid": "",
       "joinDate": "2024-03-29",
@@ -203,6 +223,7 @@
     {
       "ign": "TetsuUghh",
       "role": "Moderator",
+      "category": "XIV MANAGEMENT",
       "class": "Support",
       "uid": "",
       "joinDate": "2026-11-10",

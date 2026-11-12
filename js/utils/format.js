@@ -102,9 +102,8 @@ export function escapeHTML(str) {
 }
 
 /**
- * Map a role to its category group (the members page groups by these).
- * Category names are stored in CAPS exactly as they display.
- * Roles outside the official list fall back to XIV MEMBER.
+ * Map a role to its default category group. Used as the fallback when a
+ * member has no category of their own in the data.
  * @param {string} role
  * @returns {"XIV MANAGEMENT"|"XIV EXCLUSIVE"|"XIV MEMBER"}
  */
@@ -133,17 +132,38 @@ export function roleCategory(role) {
   return map[role] || 'XIV MEMBER';
 }
 
+/** The three category groups, in display order. */
+export const CATEGORIES = ['XIV MANAGEMENT', 'XIV EXCLUSIVE', 'XIV MEMBER'];
+
 /**
- * Map a role to its CSS tag modifier class. Tags are coloured by the
- * role's category group so the 16 roles stay visually calm.
- * @param {string} role
+ * A member's category: their own choice from the CMS editor, falling
+ * back to the role's default category when the field is missing.
+ * @param {object} member
+ * @returns {"XIV MANAGEMENT"|"XIV EXCLUSIVE"|"XIV MEMBER"}
+ */
+export function memberCategory(member) {
+  if (member && CATEGORIES.includes(member.category)) return member.category;
+  return roleCategory(member?.role);
+}
+
+/**
+ * Map a category to its CSS tag modifier class.
+ * @param {string} category
  * @returns {string}
  */
-export function roleClass(role) {
-  const category = roleCategory(role);
+export function categoryClass(category) {
   if (category === 'XIV MANAGEMENT') return 'tag--xiv-management';
   if (category === 'XIV EXCLUSIVE')  return 'tag--xiv-exclusive';
   return 'tag--xiv-member';
+}
+
+/**
+ * Tag class for a member — coloured by their own category.
+ * @param {object} member
+ * @returns {string}
+ */
+export function memberTagClass(member) {
+  return categoryClass(memberCategory(member));
 }
 
 /**

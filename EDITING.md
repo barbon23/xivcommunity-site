@@ -65,11 +65,12 @@ failed — browsers can briefly hold the previous image.
    - **Role** — pick one of 16 roles: Founder, Community Master, Head
      Admin, Event Organizer, Moderator, Internal Affair, Tag Checker,
      Discipline & Warning, Recruiter, Graphics & Content, Leaderboard,
-     Sponsor, Streamer, Content Creator, Compe or Casual. The members
-     page groups everyone under three category headings that follow the
-     role automatically: **XIV MANAGEMENT** (the staff roles), **XIV
-     EXCLUSIVE** (Sponsor, Streamer, Content Creator) and **XIV MEMBER**
-     (Compe, Casual). The tag colour follows the category too.
+     Sponsor, Streamer, Content Creator, Compe or Casual.
+   - **Category** — which group the member belongs in on the members
+     page: **XIV MANAGEMENT**, **XIV EXCLUSIVE** or **XIV MEMBER**.
+     You choose this yourself for every member, independently of their
+     role; new members start as XIV MEMBER. The tag colour follows the
+     category too.
    - **Main class** — Slayer, OBJ, Sniper or Support.
    - **UID** — optional, but the "Copy" button on the website copies this.
    - **Join date** — click the field and pick the date.
