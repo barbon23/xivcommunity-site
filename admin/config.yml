@@ -326,6 +326,10 @@ collections:
                 name: verified
                 widget: boolean
                 default: false
+              - label: Description (shown when someone clicks the member)
+                name: description
+                widget: text
+                required: false
               - label: Avatar image
                 name: avatar
                 widget: image

@@ -2,24 +2,26 @@
  * member-card.js — Officer profile card (grid) and roster table row.
  * Photo-first card: large round avatar (photo or initials fallback),
  * full IGN (wraps instead of ellipsizing), role/class tags, join date,
- * compact copy-IGN button in the corner. Pure component: HTML strings.
+ * compact copy-IGN button in the corner. Cards and rows are clickable
+ * and open the member profile popup (member-modal.js). Pure component.
  */
 
 import { formatDateShort, initials, escapeHTML, roleClass } from '../utils/format.js';
 
 /** Double-sheet clipboard icon for the copy button. */
-const COPY_ICON = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+export const COPY_ICON = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect x="3" y="2" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/>
       <rect x="5.5" y="4.5" width="8" height="10" rx="1" fill="white" stroke="currentColor" stroke-width="1.2"/>
     </svg>`;
 
 /** Avatar paths from older CMS config may lack the leading slash;
     normalise so they resolve to site-root URLs on every page. */
-function avatarSrc(src) {
+export function avatarSrc(src) {
   return src.startsWith('/') ? src : `/${src}`;
 }
 
-/** Verified tick (circle badge rendered by CSS). */const VERIFIED_HTML = `<span class="verified-mark" title="Verified member" aria-label="Verified">
+/** Verified tick (circle badge rendered by CSS). */
+export const VERIFIED_HTML = `<span class="verified-mark" title="Verified member" aria-label="Verified">
      <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
        <path d="M2 5l2 2 4-4" stroke="currentColor" stroke-width="1.5"
              stroke-linecap="round" stroke-linejoin="round"/>
@@ -53,7 +55,8 @@ export function renderMemberCard(member) {
     : `<span class="member-card__avatar-initials" aria-hidden="true">${init}</span>`;
 
   return `
-    <article class="member-card" data-ign="${ign}">
+    <article class="member-card" data-ign="${ign}" tabindex="0" role="button"
+             aria-haspopup="dialog" aria-label="Open profile: ${ign}">
       <button class="member-card__copy" data-copy="${copy}"
               aria-label="Copy ${member.uid ? 'UID' : 'IGN'} ${ign}" title="Copy">
         ${COPY_ICON}
@@ -88,7 +91,7 @@ export function renderMemberRow(member, index) {
   const copy = copyTarget(member);
 
   return `
-    <tr>
+    <tr data-ign="${ign}" tabindex="0" title="Open profile">
       <td class="members-table__num">${index + 1}</td>
       <td>
         <div class="members-table__ign">

@@ -10,6 +10,7 @@ import { fetchJSON } from '../utils/fetch-json.js';
 import { escapeHTML, roleWeight } from '../utils/format.js';
 import { renderAvatarRow } from '../components/avatar-row.js';
 import { renderMemberCard, initCopyButtons } from '../components/member-card.js';
+import { initMemberModal, wireProfilePopups } from '../components/member-modal.js';
 import { renderLatestPosts } from '../features/blog-list.js';
 import { initSchedule } from '../features/schedule.js';
 import { staggerReveal } from '../features/reveal.js';
@@ -52,6 +53,8 @@ async function initMemberPreview() {
     container.innerHTML = priority.map(renderMemberCard).join('');
     staggerReveal(container, 60);
     initCopyButtons(container);
+    initMemberModal();
+    wireProfilePopups(container, () => priority);
   } catch {
     container.hidden = true;
   }

@@ -6,6 +6,7 @@
 import { fetchJSON } from '../utils/fetch-json.js';
 import { escapeHTML, roleWeight } from '../utils/format.js';
 import { renderMemberCard, renderMemberRow, initCopyButtons } from '../components/member-card.js';
+import { initMemberModal, wireProfilePopups } from '../components/member-modal.js';
 import { qs, qsa } from '../utils/dom.js';
 
 /** @type {Array} */
@@ -169,6 +170,10 @@ export async function initMembersList() {
   }
 
   if (countEl) countEl.textContent = `${allMembers.length} members`;
+
+  // Clicking a card or roster row opens the member's profile popup.
+  initMemberModal();
+  wireProfilePopups(container, () => allMembers);
 
   // Initial render
   rerender(container);

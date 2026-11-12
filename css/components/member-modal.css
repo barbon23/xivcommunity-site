@@ -1,0 +1,246 @@
+/* ============================================================
+   member-modal.css — Click-a-member profile popup.
+   White panel over a blurred backdrop on desktop; slides up as a
+   bottom sheet on phones. Also hosts the trigger affordances
+   (pointer cursor + focus ring) for member cards and roster rows.
+   ============================================================ */
+
+/* ── Trigger affordances (cards + roster rows) ───────────── */
+
+.member-card {
+  cursor: pointer;
+}
+
+.member-card:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.members-table tr[data-ign] {
+  cursor: pointer;
+}
+
+.members-table tr[data-ign]:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: -2px;
+}
+
+/* ── Shell + backdrop ────────────────────────────────────── */
+
+.member-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+}
+
+.member-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(0 0 0 / 0.55);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.member-modal--open .member-modal__backdrop {
+  opacity: 1;
+}
+
+/* ── Panel (desktop: centered dialog) ────────────────────── */
+
+.member-modal__panel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -46%);
+  width: min(420px, calc(100% - var(--space-3) * 2));
+  max-height: min(84vh, 640px);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  background-color: var(--color-white);
+  border: var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.35);
+  opacity: 0;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.member-modal--open .member-modal__panel {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.member-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* ── Close button ────────────────────────────────────────── */
+
+.member-modal__close {
+  position: absolute;
+  top: var(--space-1);
+  right: var(--space-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--color-muted);
+  background-color: var(--color-surface);
+  border: var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.member-modal__close:hover {
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+.member-modal__close:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.member-modal__close svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Header: avatar + name + tags ────────────────────────── */
+
+.member-modal__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-right: var(--space-4);   /* keeps clear of the close button */
+}
+
+.member-modal__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border: var(--border);
+}
+
+.member-modal__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-modal__avatar-initials {
+  font-size: 22px;
+  font-weight: var(--font-weight-semi);
+  color: var(--color-muted);
+}
+
+.member-modal__id {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.member-modal__ign {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semi);
+  line-height: var(--line-height-tight);
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+}
+
+.member-modal__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* ── Description (line breaks typed in the CMS are kept) ─── */
+
+.member-modal__bio {
+  padding-top: var(--space-1);
+  border-top: var(--border);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: var(--color-ink);
+  white-space: pre-line;
+}
+
+.member-modal__bio--empty {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+/* ── Meta rows: UID + copy chip, joined date ─────────────── */
+
+.member-modal__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-top: var(--space-1);
+  border-top: var(--border);
+}
+
+.member-modal__meta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.member-modal__meta-label {
+  width: 56px;
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-muted);
+}
+
+.member-modal__meta-value {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+}
+
+/* ── Phone: slide up as a bottom sheet ───────────────────── */
+
+@media (max-width: 640px) {
+  .member-modal__panel {
+    left: 50%;
+    top: auto;
+    bottom: 0;
+    transform: translate(-50%, 24px);
+    width: 100%;
+    max-height: 82vh;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+    border-bottom: none;
+    padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .member-modal--open .member-modal__panel {
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .member-modal__backdrop,
+  .member-modal__panel {
+    transition: none;
+  }
+}
