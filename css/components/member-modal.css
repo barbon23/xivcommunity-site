@@ -31,6 +31,7 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-modal);
+  overscroll-behavior: contain;   /* no scroll bleed-through to the page */
 }
 
 .member-modal__backdrop {
@@ -77,6 +78,7 @@
   gap: var(--space-2);
   overflow-y: auto;
   min-height: 0;
+  overscroll-behavior: contain;
 }
 
 /* ── Close button ────────────────────────────────────────── */
@@ -119,7 +121,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  padding-right: var(--space-4);   /* keeps clear of the close button */
+  padding-right: 56px;   /* keeps clear of the 36px close button */
 }
 
 .member-modal__avatar {
@@ -228,9 +230,23 @@
     transform: translate(-50%, 24px);
     width: 100%;
     max-height: 82vh;
+    max-height: 82dvh;   /* dvh follows the mobile browser's chrome */
     border-radius: var(--radius-card) var(--radius-card) 0 0;
     border-bottom: none;
     padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Grab handle: the sheet's drag affordance */
+  .member-modal__panel::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 4px;
+    border-radius: 999px;
+    background-color: var(--color-ink-3);
   }
 
   .member-modal--open .member-modal__panel {

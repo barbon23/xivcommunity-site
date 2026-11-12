@@ -31,11 +31,11 @@ function ensureShell() {
   shell.hidden = true;
   shell.innerHTML = `
     <div class="member-modal__backdrop" data-close></div>
-    <div class="member-modal__panel" role="dialog" aria-modal="true" aria-labelledby="member-modal-ign">
+    <div class="member-modal__panel" role="dialog" aria-modal="true" aria-labelledby="member-modal-ign" data-ref="panel">
       <button class="member-modal__close" type="button" data-close data-ref="close" aria-label="Close profile">
         ${CLOSE_ICON}
       </button>
-      <div class="member-modal__body">
+      <div class="member-modal__body" data-ref="body">
         <div class="member-modal__head">
           <div class="member-modal__avatar" data-ref="avatar"></div>
           <div class="member-modal__id">
@@ -68,6 +68,37 @@ function ensureShell() {
   }
 
   initCopyButtons(shell);
+
+  // Swipe-down-to-close on the mobile bottom sheet. Only engages when
+  // the sheet's content is scrolled to the top, so reading long bios
+  // still scrolls normally.
+  const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
+  let startY = 0;
+  let dragging = false;
+  let delta = 0;
+
+  refs.panel.addEventListener('touchstart', (e) => {
+    if (!isMobile() || refs.body.scrollTop > 0) return;
+    startY = e.touches[0].clientY;
+    dragging = true;
+    delta = 0;
+    refs.panel.style.transition = 'none';
+  }, { passive: true });
+
+  refs.panel.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    delta = Math.max(0, e.touches[0].clientY - startY);
+    refs.panel.style.transform = `translate(-50%, ${delta}px)`;
+  }, { passive: true });
+
+  refs.panel.addEventListener('touchend', () => {
+    if (!dragging) return;
+    dragging = false;
+    refs.panel.style.transition = '';
+    refs.panel.style.transform = '';
+    if (delta > 80) closeMemberModal();
+    delta = 0;
+  });
 
   shell.addEventListener('click', (e) => {
     if (e.target.closest('[data-close]')) closeMemberModal();
