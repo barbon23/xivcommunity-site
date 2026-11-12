@@ -88,7 +88,6 @@ export function openMemberModal(member) {
   ensureShell();
 
   const ign = escapeHTML(member.ign);
-  const cls = escapeHTML(member.class || '');
   const bio = (member.description || '').trim();
 
   refs.avatar.classList.toggle('member-modal__avatar--photo', Boolean(member.avatar));
@@ -99,8 +98,7 @@ export function openMemberModal(member) {
 
   refs.ign.innerHTML = `<span>${ign}</span>${member.verified ? VERIFIED_HTML : ''}`;
   refs.tags.innerHTML =
-    `<span class="tag ${memberTagClass(member)}">${escapeHTML(member.role)}</span>` +
-    (cls ? `<span class="tag tag--member">${cls}</span>` : '');
+    `<span class="tag ${memberTagClass(member)}">${escapeHTML(member.role)}</span>`;
 
   refs.bio.textContent = bio || 'Bio coming soon.';
   refs.bio.classList.toggle('member-modal__bio--empty', !bio);
