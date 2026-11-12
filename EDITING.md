@@ -62,8 +62,14 @@ failed — browsers can briefly hold the previous image.
 1. Click **Members** → **Member roster**.
 2. To add someone, click **Add members →** at the top of the list and fill in:
    - **In-game name (IGN)** — exactly as it looks in-game; this is required.
-   - **Role** — Founder, Head Admin, Leader, Co-Leader, Officer, Member or
-     Recruit. The card colour changes automatically.
+   - **Role** — pick one of 16 roles: Founder, Community Master, Head
+     Admin, Event Organizer, Moderator, Internal Affair, Tag Checker,
+     Discipline & Warning, Recruiter, Graphics & Content, Leaderboard,
+     Sponsor, Streamer, Content Creator, Compe or Casual. The members
+     page groups everyone under three category headings that follow the
+     role automatically: **Admin Team** (the staff roles), **XIV
+     Exclusive** (Sponsor, Streamer, Content Creator) and **XIV Member**
+     (Compe, Casual). The tag colour follows the category too.
    - **Main class** — Slayer, OBJ, Sniper or Support.
    - **UID** — optional, but the "Copy" button on the website copies this.
    - **Join date** — click the field and pick the date.

@@ -302,11 +302,11 @@ collections:
               - label: In-game name (IGN)
                 name: ign
                 widget: string
-              - label: Role
+              - label: Role (its category group follows automatically)
                 name: role
                 widget: select
-                options: [Founder, Head Admin, Leader, Co-Leader, Officer, Member, Recruit]
-                default: Member
+                options: [Founder, Community Master, Head Admin, Event Organizer, Moderator, Internal Affair, Tag Checker, "Discipline & Warning", Recruiter, "Graphics & Content", Leaderboard, Sponsor, Streamer, Content Creator, Compe, Casual]
+                default: Casual
               - label: Main class
                 name: class
                 widget: select

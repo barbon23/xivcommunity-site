@@ -89,11 +89,11 @@
   border-color: var(--color-ink-3);
 }
 
-/* Role-specific tags */
-.tag--founder   { background-color: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
-.tag--head-admin { background-color: var(--color-ink); color: var(--color-white); border-color: var(--color-ink); }
-.tag--leader    { background-color: var(--color-ink); color: var(--color-white); border-color: var(--color-ink); }
-.tag--co-leader { background-color: var(--color-ink-3); color: var(--color-white); border-color: var(--color-ink-3); }
-.tag--officer   { background-color: var(--color-ink-3); color: var(--color-subtle); border-color: var(--color-ink-3); }
-.tag--member    { background-color: transparent; color: var(--color-muted); border-color: var(--color-border); }
-.tag--recruit   { background-color: transparent; color: var(--color-subtle); border-color: var(--color-border); }
+/* Role tags, coloured by the role's category group (role → category
+   mapping lives in js/utils/format.js) */
+.tag--admin-team    { background-color: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
+.tag--xiv-exclusive { background-color: var(--color-ink); color: var(--color-white); border-color: var(--color-ink); }
+.tag--xiv-member    { background-color: transparent; color: var(--color-muted); border-color: var(--color-border); }
+
+/* Neutral tag for the member's class (Slayer/OBJ/Sniper/Support) */
+.tag--plain { background-color: transparent; color: var(--color-muted); border-color: var(--color-border); }

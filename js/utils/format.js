@@ -102,37 +102,72 @@ export function escapeHTML(str) {
 }
 
 /**
- * Map a role string to its CSS tag modifier class.
+ * Map a role to its category group (the members page groups by these).
+ * Roles outside the official list fall back to XIV Member.
+ * @param {string} role
+ * @returns {"Admin Team"|"XIV Exclusive"|"XIV Member"}
+ */
+export function roleCategory(role) {
+  const map = {
+    // Admin Team (staff)
+    'Founder':              'Admin Team',
+    'Community Master':     'Admin Team',
+    'Head Admin':           'Admin Team',
+    'Event Organizer':      'Admin Team',
+    'Moderator':            'Admin Team',
+    'Internal Affair':      'Admin Team',
+    'Tag Checker':          'Admin Team',
+    'Discipline & Warning': 'Admin Team',
+    'Recruiter':            'Admin Team',
+    'Graphics & Content':   'Admin Team',
+    'Leaderboard':          'Admin Team',
+    // XIV Exclusive
+    'Sponsor':              'XIV Exclusive',
+    'Streamer':             'XIV Exclusive',
+    'Content Creator':      'XIV Exclusive',
+    // XIV Member
+    'Compe':                'XIV Member',
+    'Casual':               'XIV Member',
+  };
+  return map[role] || 'XIV Member';
+}
+
+/**
+ * Map a role to its CSS tag modifier class. Tags are coloured by the
+ * role's category group so the 16 roles stay visually calm.
  * @param {string} role
  * @returns {string}
  */
 export function roleClass(role) {
-  const map = {
-    'Founder':    'tag--founder',
-    'Head Admin': 'tag--head-admin',
-    'Leader':     'tag--leader',
-    'Co-Leader':  'tag--co-leader',
-    'Officer':    'tag--officer',
-    'Member':     'tag--member',
-    'Recruit':    'tag--recruit',
-  };
-  return map[role] || 'tag--member';
+  const category = roleCategory(role);
+  if (category === 'Admin Team')   return 'tag--admin-team';
+  if (category === 'XIV Exclusive') return 'tag--xiv-exclusive';
+  return 'tag--xiv-member';
 }
 
 /**
- * Return a role sort weight (lower = higher in list).
+ * Return a role sort weight (lower = higher in list). Unknown roles sort last.
  * @param {string} role
  * @returns {number}
  */
 export function roleWeight(role) {
   const weights = {
-    'Founder':    0,
-    'Head Admin': 1,
-    'Leader':     2,
-    'Co-Leader':  3,
-    'Officer':    4,
-    'Member':     5,
-    'Recruit':    6,
+    'Founder':              0,
+    'Community Master':     1,
+    'Head Admin':           2,
+    'Event Organizer':      3,
+    'Moderator':            4,
+    'Internal Affair':      5,
+    'Discipline & Warning': 6,
+    'Tag Checker':          7,
+    'Recruiter':            8,
+    'Graphics & Content':   9,
+    'Leaderboard':          10,
+    'Sponsor':              11,
+    'Streamer':             12,
+    'Content Creator':      13,
+    'Compe':                14,
+    'Casual':               15,
   };
-  return weights[role] ?? 7;
+  return weights[role] ?? 99;
 }

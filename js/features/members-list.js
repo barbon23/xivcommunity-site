@@ -4,7 +4,7 @@
  */
 
 import { fetchJSON } from '../utils/fetch-json.js';
-import { escapeHTML, roleWeight } from '../utils/format.js';
+import { escapeHTML, roleWeight, roleCategory } from '../utils/format.js';
 import { renderMemberCard, renderMemberRow, initCopyButtons } from '../components/member-card.js';
 import { initMemberModal, wireProfilePopups } from '../components/member-modal.js';
 import { qs, qsa } from '../utils/dom.js';
@@ -24,7 +24,7 @@ function getFiltered() {
   let list = [...allMembers];
 
   if (currentFilter !== 'All') {
-    list = list.filter(m => m.role === currentFilter);
+    list = list.filter(m => roleCategory(m.role) === currentFilter);
   }
 
   if (currentSearch) {
@@ -47,16 +47,18 @@ function getFiltered() {
 }
 
 /**
- * Group members by role for the grid view.
+ * Group members by category for the grid view. Category follows the
+ * role automatically (see roleCategory in format.js).
  * @param {Array} members
  * @returns {Map<string, Array>}
  */
-function groupByRole(members) {
-  const order = ['Founder', 'Head Admin', 'Leader', 'Co-Leader', 'Officer', 'Member', 'Recruit'];
-  const map = new Map(order.map(r => [r, []]));
+function groupByCategory(members) {
+  const order = ['Admin Team', 'XIV Exclusive', 'XIV Member'];
+  const map = new Map(order.map((c) => [c, []]));
   for (const m of members) {
-    if (map.has(m.role)) map.get(m.role).push(m);
-    else map.set(m.role, [m]);
+    const cat = roleCategory(m.role);
+    if (!map.has(cat)) map.set(cat, [m]);
+    else map.get(cat).push(m);
   }
   // Remove empty groups
   for (const [key, val] of map) {
@@ -80,14 +82,14 @@ function renderGrid(members, container) {
     return;
   }
 
-  const grouped = currentSort === 'role' ? groupByRole(members) : null;
+  const grouped = currentSort === 'role' ? groupByCategory(members) : null;
 
   if (grouped && currentFilter === 'All') {
     let html = '';
-    for (const [role, group] of grouped) {
-      html += `<div class="role-group">
-        <p class="role-group__heading">${escapeHTML(role)} <span style="color:var(--color-subtle)">(${group.length})</span></p>
-        <div class="members-grid">${group.map((m) => renderMemberCard(m, { hideRole: true })).join('')}</div>
+    for (const [category, group] of grouped) {
+      html += `<div class="member-group">
+        <p class="member-group__heading">${escapeHTML(category)} <span style="color:var(--color-subtle)">(${group.length})</span></p>
+        <div class="members-grid">${group.map((m) => renderMemberCard(m)).join('')}</div>
       </div>`;
     }
     container.innerHTML = html;

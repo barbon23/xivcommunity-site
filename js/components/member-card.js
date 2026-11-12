@@ -71,7 +71,7 @@ export function renderMemberCard(member, { hideRole = false } = {}) {
       <p class="member-card__ign"><span>${ign}</span>${member.verified ? VERIFIED_HTML : ''}</p>
       <div class="member-card__tags">
         ${hideRole ? '' : `<span class="tag ${tagClass}">${role}</span>`}
-        ${cls ? `<span class="tag tag--member">${cls}</span>` : ''}
+        ${cls ? `<span class="tag tag--plain">${cls}</span>` : ''}
       </div>
       ${joined ? `<p class="member-card__joined">Joined ${joined}</p>` : ''}
     </article>

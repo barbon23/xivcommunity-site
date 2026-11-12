@@ -41,7 +41,7 @@ async function initMemberPreview() {
   try {
     const { members } = await fetchJSON('/data/members.json');
     const priority = members
-      .filter(m => ['Founder', 'Head Admin', 'Leader', 'Co-Leader', 'Officer'].includes(m.role))
+      .filter(m => ['Founder', 'Community Master', 'Head Admin', 'Event Organizer', 'Moderator'].includes(m.role))
       .sort((a, b) => roleWeight(a.role) - roleWeight(b.role))
       .slice(0, 6);
 
