@@ -36,6 +36,19 @@
 file from your computer (or drag it in). Keep screenshots in **landscape
 orientation** and roughly 1400×900 or larger, so they look sharp.
 
+**How the moving pictures map to the panel:** Row 1 is the **top** scrolling
+row, Row 2 the **bottom** row, and each row's five slots fill the website
+**left to right**. The dark tiles that read "Add screenshot 03" (and so on)
+are placeholder pictures still sitting in those slots — replace them one by
+one by putting a new image in the matching slot and saving. Editing other
+homepage blocks (hero, labels, buttons) does not touch the marquee, and the
+marquee does not update automatically from new uploads elsewhere.
+
+**After changing any picture:** click **Save**, wait about a minute for the
+site to rebuild, then **refresh the page** (on a computer: Ctrl + Shift + R).
+If a changed picture still looks old, refresh once more before assuming it
+failed — browsers can briefly hold the previous image.
+
 ---
 
 ## 3. Adding or editing a member
