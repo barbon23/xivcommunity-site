@@ -177,7 +177,7 @@ this is required so the CMS can manage it:
 ```
 
 - `role` — one of 16 roles: `Founder`, `Community Master`, `Head Admin`, `Event Organizer`, `Moderator`, `Internal Affair`, `Tag Checker`, `Discipline & Warning`, `Recruiter`, `Graphics & Content`, `Leaderboard`, `Sponsor`, `Streamer`, `Content Creator`, `Compe`, `Casual`
-- `category` — `XIV MANAGEMENT`, `XIV EXCLUSIVE` or `XIV MEMBER`, chosen per member in the CMS; the roster groups by it. When a member lacks the field, the site falls back to the role's default category (`roleCategory()` in `format.js`)
+- `category` — `X1V MANAGEMENT`, `X1V EXCLUSIVE` or `X1V MEMBER`, chosen per member in the CMS; the roster groups by it. When a member lacks the field, the site falls back to the role's default category (`roleCategory()` in `format.js`)
 - `class` — one of `Slayer`, `OBJ`, `Support`, `Sniper`
 - `verified` — `true` shows a checkmark badge
 - `avatar` — `/assets/...` path (empty = initials fallback)

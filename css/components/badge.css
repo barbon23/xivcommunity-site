@@ -91,9 +91,9 @@
 
 /* Role tags, coloured by the role's category group (role → category
    mapping lives in js/utils/format.js) */
-.tag--xiv-management { background-color: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
-.tag--xiv-exclusive { background-color: var(--color-ink); color: var(--color-white); border-color: var(--color-ink); }
-.tag--xiv-member    { background-color: transparent; color: var(--color-muted); border-color: var(--color-border); }
+.tag--x1v-management { background-color: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
+.tag--x1v-exclusive { background-color: var(--color-ink); color: var(--color-white); border-color: var(--color-ink); }
+.tag--x1v-member    { background-color: transparent; color: var(--color-muted); border-color: var(--color-border); }
 
 /* Neutral tag for the member's class (Slayer/OBJ/Sniper/Support) */
 .tag--plain { background-color: transparent; color: var(--color-muted); border-color: var(--color-border); }

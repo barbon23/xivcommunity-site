@@ -310,8 +310,8 @@ collections:
               - label: Category (which group they belong in)
                 name: category
                 widget: select
-                options: [XIV MANAGEMENT, XIV EXCLUSIVE, XIV MEMBER]
-                default: XIV MEMBER
+                options: [X1V MANAGEMENT, X1V EXCLUSIVE, X1V MEMBER]
+                default: X1V MEMBER
               - label: Main class
                 name: class
                 widget: select

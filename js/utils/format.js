@@ -105,41 +105,41 @@ export function escapeHTML(str) {
  * Map a role to its default category group. Used as the fallback when a
  * member has no category of their own in the data.
  * @param {string} role
- * @returns {"XIV MANAGEMENT"|"XIV EXCLUSIVE"|"XIV MEMBER"}
+ * @returns {"X1V MANAGEMENT"|"X1V EXCLUSIVE"|"X1V MEMBER"}
  */
 export function roleCategory(role) {
   const map = {
-    // XIV MANAGEMENT (staff)
-    'Founder':              'XIV MANAGEMENT',
-    'Community Master':     'XIV MANAGEMENT',
-    'Head Admin':           'XIV MANAGEMENT',
-    'Event Organizer':      'XIV MANAGEMENT',
-    'Moderator':            'XIV MANAGEMENT',
-    'Internal Affair':      'XIV MANAGEMENT',
-    'Tag Checker':          'XIV MANAGEMENT',
-    'Discipline & Warning': 'XIV MANAGEMENT',
-    'Recruiter':            'XIV MANAGEMENT',
-    'Graphics & Content':   'XIV MANAGEMENT',
-    'Leaderboard':          'XIV MANAGEMENT',
-    // XIV EXCLUSIVE
-    'Sponsor':              'XIV EXCLUSIVE',
-    'Streamer':             'XIV EXCLUSIVE',
-    'Content Creator':      'XIV EXCLUSIVE',
-    // XIV MEMBER
-    'Compe':                'XIV MEMBER',
-    'Casual':               'XIV MEMBER',
+    // X1V MANAGEMENT (staff)
+    'Founder':              'X1V MANAGEMENT',
+    'Community Master':     'X1V MANAGEMENT',
+    'Head Admin':           'X1V MANAGEMENT',
+    'Event Organizer':      'X1V MANAGEMENT',
+    'Moderator':            'X1V MANAGEMENT',
+    'Internal Affair':      'X1V MANAGEMENT',
+    'Tag Checker':          'X1V MANAGEMENT',
+    'Discipline & Warning': 'X1V MANAGEMENT',
+    'Recruiter':            'X1V MANAGEMENT',
+    'Graphics & Content':   'X1V MANAGEMENT',
+    'Leaderboard':          'X1V MANAGEMENT',
+    // X1V EXCLUSIVE
+    'Sponsor':              'X1V EXCLUSIVE',
+    'Streamer':             'X1V EXCLUSIVE',
+    'Content Creator':      'X1V EXCLUSIVE',
+    // X1V MEMBER
+    'Compe':                'X1V MEMBER',
+    'Casual':               'X1V MEMBER',
   };
-  return map[role] || 'XIV MEMBER';
+  return map[role] || 'X1V MEMBER';
 }
 
 /** The three category groups, in display order. */
-export const CATEGORIES = ['XIV MANAGEMENT', 'XIV EXCLUSIVE', 'XIV MEMBER'];
+export const CATEGORIES = ['X1V MANAGEMENT', 'X1V EXCLUSIVE', 'X1V MEMBER'];
 
 /**
  * A member's category: their own choice from the CMS editor, falling
  * back to the role's default category when the field is missing.
  * @param {object} member
- * @returns {"XIV MANAGEMENT"|"XIV EXCLUSIVE"|"XIV MEMBER"}
+ * @returns {"X1V MANAGEMENT"|"X1V EXCLUSIVE"|"X1V MEMBER"}
  */
 export function memberCategory(member) {
   if (member && CATEGORIES.includes(member.category)) return member.category;
@@ -152,9 +152,9 @@ export function memberCategory(member) {
  * @returns {string}
  */
 export function categoryClass(category) {
-  if (category === 'XIV MANAGEMENT') return 'tag--xiv-management';
-  if (category === 'XIV EXCLUSIVE')  return 'tag--xiv-exclusive';
-  return 'tag--xiv-member';
+  if (category === 'X1V MANAGEMENT') return 'tag--x1v-management';
+  if (category === 'X1V EXCLUSIVE')  return 'tag--x1v-exclusive';
+  return 'tag--x1v-member';
 }
 
 /**

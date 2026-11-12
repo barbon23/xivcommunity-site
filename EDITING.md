@@ -67,9 +67,9 @@ failed — browsers can briefly hold the previous image.
      Discipline & Warning, Recruiter, Graphics & Content, Leaderboard,
      Sponsor, Streamer, Content Creator, Compe or Casual.
    - **Category** — which group the member belongs in on the members
-     page: **XIV MANAGEMENT**, **XIV EXCLUSIVE** or **XIV MEMBER**.
+     page: **X1V MANAGEMENT**, **X1V EXCLUSIVE** or **X1V MEMBER**.
      You choose this yourself for every member, independently of their
-     role; new members start as XIV MEMBER. The tag colour follows the
+     role; new members start as X1V MEMBER. The tag colour follows the
      category too.
    - **Main class** — Slayer, OBJ, Sniper or Support.
    - **UID** — optional, but the "Copy" button on the website copies this.
