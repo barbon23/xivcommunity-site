@@ -9,7 +9,8 @@
       "joinDate": "2025-11-12",
       "verified": true,
       "description": "BOSS REVO POGI BOSS REVO POGI PASALI APOC",
-      "avatar": "/assets/members/foujnder na panget.png"
+      "avatar": "/assets/members/foujnder na panget.png",
+      "idCard": ""
     },
     {
       "ign": "KM2 YARA XIV",
@@ -20,7 +21,8 @@
       "joinDate": "2026-04-01",
       "verified": true,
       "description": "",
-      "avatar": "/assets/members/YARA HEADSHOT1.png"
+      "avatar": "/assets/members/YARA HEADSHOT1.png",
+      "idCard": "/assets/idcards/c935c68e-34e4-4e88-874d-d4be2256da1f.jfif"
     },
     {
       "ign": "Krey",
@@ -31,7 +33,8 @@
       "joinDate": "2021-06-02",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "YUMI",
@@ -42,7 +45,8 @@
       "joinDate": "2021-08-18",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "PinoyFlash",
@@ -53,7 +57,8 @@
       "joinDate": "2021-09-01",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "GhostLineR",
@@ -64,7 +69,8 @@
       "joinDate": "2022-01-10",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "IronMask_XIV",
@@ -75,7 +81,8 @@
       "joinDate": "2022-02-20",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "VoidWalker",
@@ -86,7 +93,8 @@
       "joinDate": "2022-03-05",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "CalmStrike",
@@ -97,7 +105,8 @@
       "joinDate": "2022-04-11",
       "verified": false,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "Apex_Rook",
@@ -108,7 +117,8 @@
       "joinDate": "2022-07-30",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "ZeroChill_XIV",
@@ -119,7 +129,8 @@
       "joinDate": "2022-09-14",
       "verified": false,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "MotherBase_MNL",
@@ -130,7 +141,8 @@
       "joinDate": "2022-11-02",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "DarkLancet",
@@ -141,7 +153,8 @@
       "joinDate": "2023-01-21",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "Paladin_Cruz",
@@ -152,7 +165,8 @@
       "joinDate": "2023-02-08",
       "verified": false,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "HaloBreaker",
@@ -163,7 +177,8 @@
       "joinDate": "2023-03-19",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "KuroSeraph",
@@ -174,7 +189,8 @@
       "joinDate": "2023-05-07",
       "verified": false,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "TacticalBean",
@@ -185,7 +201,8 @@
       "joinDate": "2023-06-14",
       "verified": true,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "SolTrace",
@@ -196,7 +213,8 @@
       "joinDate": "2024-01-03",
       "verified": false,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "MireillePH",
@@ -207,7 +225,8 @@
       "joinDate": "2024-02-11",
       "verified": false,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "Strikevoid",
@@ -218,7 +237,8 @@
       "joinDate": "2024-03-29",
       "verified": false,
       "description": "",
-      "avatar": ""
+      "avatar": "",
+      "idCard": ""
     },
     {
       "ign": "TetsuUghh",
@@ -229,7 +249,8 @@
       "joinDate": "2026-11-10",
       "verified": true,
       "description": "",
-      "avatar": "/assets/members/temp_image_F20F59B0-FC38-4816-893B-0CD7C2035E58.jpeg"
+      "avatar": "/assets/members/temp_image_F20F59B0-FC38-4816-893B-0CD7C2035E58.jpeg",
+      "idCard": ""
     }
   ]
 }
