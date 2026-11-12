@@ -67,12 +67,13 @@ failed — browsers can briefly hold the previous image.
      Discipline & Warning, Recruiter, Graphics & Content, Leaderboard,
      Sponsor, Streamer, Content Creator, Compe or Casual.
    - **Category** — which group the member belongs in on the members
-     page: **X1V MANAGEMENT**, **X1V EXCLUSIVE** or **X1V MEMBER**.
+     page: **XIV MANAGEMENT**, **X1V EXCLUSIVE** or **XIV MEMBER**.
      You choose this yourself for every member, independently of their
-     role; new members start as X1V MEMBER. The tag colour follows the
+     role; new members start as XIV MEMBER. The tag colour follows the
      category too.
    - **Main class** — Slayer, OBJ, Sniper or Support.
-   - **UID** — optional, but the "Copy" button on the website copies this.
+   - **UID** — optional. It is not shown in the pop-up; the Copy button
+     on a member's card copies it.
    - **Join date** — click the field and pick the date.
    - **Verified** — switch on when you've confirmed the player is real.
    - **Description** — optional short bio. Visitors see it in a pop-up
@@ -98,8 +99,9 @@ failed — browsers can briefly hold the previous image.
      Windows saved it as **.jfif**, rename it to .jpg first (same
      picture; files with endings the web does not know will not
      display). Files save to the website's `assets/idcards` folder
-     automatically. While a member has an ID card, the pop-up hides
-     its UID row because the UID is already inside the picture.
+     automatically. The pop-up shows no UID row at all — the UID lives
+     in the ID card picture, and the member's card keeps its Copy
+     button for it.
 3. To edit someone, click **Edit** next to their name.
 4. To remove someone, click the **trash/delete** icon next to their entry.
 5. Click **Save** when done. Members are listed alphabetically inside their

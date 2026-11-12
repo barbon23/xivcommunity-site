@@ -2,18 +2,17 @@
  * member-modal.js — Click-a-member profile popup.
  * One self-mounting dialog shared by the members page and the homepage
  * roster preview. Shows the big avatar, IGN with the verified tick,
- * the role tag, a copyable UID, the join date and the member's
- * description. Members with an ID card picture also get it under the
- * bio: tap the picture to view it full size, or download it with a
- * properly named file (the UID row hides while the card shows, since
- * the UID is baked into the picture). Closes via the X, the
- * backdrop or Esc; on phones it
- * slides up as a bottom sheet and the Android back gesture closes it
- * instead of leaving the page.
+ * the role tag, the join date and the member's description. Members
+ * with an ID card picture also get it under the bio: tap the picture
+ * to view it full size, or download it with a properly named file.
+ * No UID row: the UID lives in the card picture and on the member
+ * cards' copy chip. Closes via the X, the backdrop or Esc; on phones
+ * it slides up as a bottom sheet and the Android back gesture closes
+ * it instead of leaving the page.
  */
 
 import { escapeHTML, initials, formatDateShort, memberTagClass } from '../utils/format.js';
-import { initCopyButtons, avatarSrc, VERIFIED_HTML, COPY_ICON } from './member-card.js';
+import { avatarSrc, VERIFIED_HTML } from './member-card.js';
 
 /** Close (X) icon for the corner button. */
 const CLOSE_ICON = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -55,14 +54,6 @@ function ensureShell() {
           </button>
         </figure>
         <div class="member-modal__meta">
-          <div class="member-modal__meta-row" data-ref="uidRow">
-            <span class="member-modal__meta-label">UID</span>
-            <span class="member-modal__meta-value" data-ref="uid"></span>
-            <button class="member-card__copy" type="button" data-copy="" data-ref="copy">
-              ${COPY_ICON}
-              <span class="member-card__copy-label">Copy</span>
-            </button>
-          </div>
           <div class="member-modal__meta-row">
             <span class="member-modal__meta-label">Joined</span>
             <span class="member-modal__meta-value" data-ref="joined"></span>
@@ -80,8 +71,6 @@ function ensureShell() {
   for (const node of shell.querySelectorAll('[data-ref]')) {
     refs[node.dataset.ref] = node;
   }
-
-  initCopyButtons(shell);
 
   // Download the ID card picture as a real file (blob) named after the
   // member. The extension comes from the picture's own URL, not the
@@ -198,9 +187,9 @@ export function openMemberModal(member) {
   refs.bio.textContent = bio || 'Bio coming soon.';
   refs.bio.classList.toggle('member-modal__bio--empty', !bio);
 
-  // Optional ID card picture: shown under the bio, downloadable. The
-  // UID row hides while the card shows because the UID is in the
-  // picture; members without a card keep the copyable UID row.
+  // Optional ID card picture: shown under the bio (tap it to view it
+  // full size), downloadable. The popup has no UID row — the UID lives
+  // in the card picture and on the member cards' copy chip.
   const idcard = (member.idCard || '').trim();
   refs.idcard.hidden = !idcard;
   refs.idcardDl.dataset.member = member.ign;
@@ -211,10 +200,7 @@ export function openMemberModal(member) {
     refs.idcardImg.removeAttribute('src');
     refs.idcardImg.alt = '';
   }
-  refs.uidRow.hidden = Boolean(idcard);
 
-  refs.uid.textContent = member.uid || '—';
-  refs.copy.dataset.copy = member.uid || member.ign;
   refs.joined.textContent = member.joinDate ? formatDateShort(member.joinDate) : '—';
 
   lastFocus = document.activeElement;

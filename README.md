@@ -177,11 +177,11 @@ this is required so the CMS can manage it:
 ```
 
 - `role` — one of 16 roles: `Founder`, `Community Master`, `Head Admin`, `Event Organizer`, `Moderator`, `Internal Affair`, `Tag Checker`, `Discipline & Warning`, `Recruiter`, `Graphics & Content`, `Leaderboard`, `Sponsor`, `Streamer`, `Content Creator`, `Compe`, `Casual`
-- `category` — `X1V MANAGEMENT`, `X1V EXCLUSIVE` or `X1V MEMBER`, chosen per member in the CMS; the roster groups by it. When a member lacks the field, the site falls back to the role's default category (`roleCategory()` in `format.js`)
+- `category` — `XIV MANAGEMENT`, `X1V EXCLUSIVE` or `XIV MEMBER`, chosen per member in the CMS; the roster groups by it. When a member lacks the field, the site falls back to the role's default category (`roleCategory()` in `format.js`)
 - `class` — one of `Slayer`, `OBJ`, `Support`, `Sniper`
 - `verified` — `true` shows a checkmark badge
 - `avatar` — `/assets/...` path (empty = initials fallback)
-- `idCard` — `/assets/idcards/...` picture of the member's ID card (optional). The pop-up shows it under the bio — tap it to view full size, with a Download button — and hides its UID row while a card is shown, because the UID is in the picture
+- `idCard` — `/assets/idcards/...` picture of the member's ID card (optional). The pop-up shows it under the bio — tap it to view full size, with a Download button. The pop-up itself shows no UID row; the UID lives in the picture and on the member cards' copy chip
 
 ### Blog posts are Markdown
 
