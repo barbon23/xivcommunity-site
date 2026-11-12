@@ -7,6 +7,7 @@
       "uid": "7051178125996064769",
       "joinDate": "2025-11-12",
       "verified": true,
+      "description": "",
       "avatar": "/assets/members/foujnder na panget.png"
     },
     {
@@ -16,7 +17,8 @@
       "uid": "6747503535144828929",
       "joinDate": "2026-04-01",
       "verified": true,
-      "avatar": "/assets/members/isji (1).png"
+      "description": "",
+      "avatar": "/assets/members/YARA HEADSHOT1.png"
     },
     {
       "ign": "Krey",
@@ -25,6 +27,7 @@
       "uid": "9920311",
       "joinDate": "2021-06-02",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -34,6 +37,7 @@
       "uid": "7712044",
       "joinDate": "2021-08-18",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -43,6 +47,7 @@
       "uid": "7712045",
       "joinDate": "2021-09-01",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -52,6 +57,7 @@
       "uid": "6603812",
       "joinDate": "2022-01-10",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -61,6 +67,7 @@
       "uid": "5540091",
       "joinDate": "2022-02-20",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -70,6 +77,7 @@
       "uid": "5540092",
       "joinDate": "2022-03-05",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -79,6 +87,7 @@
       "uid": "5540093",
       "joinDate": "2022-04-11",
       "verified": false,
+      "description": "",
       "avatar": ""
     },
     {
@@ -88,6 +97,7 @@
       "uid": "4431009",
       "joinDate": "2022-07-30",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -97,6 +107,7 @@
       "uid": "4431010",
       "joinDate": "2022-09-14",
       "verified": false,
+      "description": "",
       "avatar": ""
     },
     {
@@ -106,6 +117,7 @@
       "uid": "3320445",
       "joinDate": "2022-11-02",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -115,6 +127,7 @@
       "uid": "3320446",
       "joinDate": "2023-01-21",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -124,6 +137,7 @@
       "uid": "2210887",
       "joinDate": "2023-02-08",
       "verified": false,
+      "description": "",
       "avatar": ""
     },
     {
@@ -133,6 +147,7 @@
       "uid": "2210888",
       "joinDate": "2023-03-19",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -142,6 +157,7 @@
       "uid": "1100223",
       "joinDate": "2023-05-07",
       "verified": false,
+      "description": "",
       "avatar": ""
     },
     {
@@ -151,6 +167,7 @@
       "uid": "1100224",
       "joinDate": "2023-06-14",
       "verified": true,
+      "description": "",
       "avatar": ""
     },
     {
@@ -160,6 +177,7 @@
       "uid": "",
       "joinDate": "2024-01-03",
       "verified": false,
+      "description": "",
       "avatar": ""
     },
     {
@@ -169,6 +187,7 @@
       "uid": "",
       "joinDate": "2024-02-11",
       "verified": false,
+      "description": "",
       "avatar": ""
     },
     {
@@ -178,6 +197,7 @@
       "uid": "",
       "joinDate": "2024-03-29",
       "verified": false,
+      "description": "",
       "avatar": ""
     },
     {
@@ -187,6 +207,7 @@
       "uid": "",
       "joinDate": "2026-11-10",
       "verified": true,
+      "description": "",
       "avatar": "/assets/members/temp_image_F20F59B0-FC38-4816-893B-0CD7C2035E58.jpeg"
     }
   ]
