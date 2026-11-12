@@ -49,7 +49,7 @@ function ensureShell() {
         </div>
         <p class="member-modal__bio" data-ref="bio"></p>
         <figure class="member-modal__idcard" data-ref="idcard" hidden>
-          <img class="member-modal__idcard-img" data-ref="idcardImg" alt="" hidden title="View full size">
+          <img class="member-modal__idcard-img" data-ref="idcardImg" alt="" title="View full size">
           <button class="btn btn--dark btn--sm member-modal__idcard-btn" type="button" data-ref="idcardDl">
             Download ID card
           </button>

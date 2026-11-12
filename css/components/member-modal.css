@@ -201,8 +201,7 @@
 }
 
 /* display: set above, so [hidden] needs an explicit win */
-.member-modal__idcard[hidden],
-.member-modal__idcard-img[hidden] {
+.member-modal__idcard[hidden] {
   display: none;
 }
 
