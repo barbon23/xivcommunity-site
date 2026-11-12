@@ -50,7 +50,7 @@ async function initMemberPreview() {
       return;
     }
 
-    container.innerHTML = priority.map(renderMemberCard).join('');
+    container.innerHTML = priority.map((m) => renderMemberCard(m)).join('');
     staggerReveal(container, 60);
     initCopyButtons(container);
     initMemberModal();

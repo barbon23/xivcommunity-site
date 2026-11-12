@@ -87,12 +87,12 @@ function renderGrid(members, container) {
     for (const [role, group] of grouped) {
       html += `<div class="role-group">
         <p class="role-group__heading">${escapeHTML(role)} <span style="color:var(--color-subtle)">(${group.length})</span></p>
-        <div class="members-grid">${group.map(renderMemberCard).join('')}</div>
+        <div class="members-grid">${group.map((m) => renderMemberCard(m, { hideRole: true })).join('')}</div>
       </div>`;
     }
     container.innerHTML = html;
   } else {
-    container.innerHTML = `<div class="members-grid">${members.map(renderMemberCard).join('')}</div>`;
+    container.innerHTML = `<div class="members-grid">${members.map((m) => renderMemberCard(m)).join('')}</div>`;
   }
 
   initCopyButtons(container);

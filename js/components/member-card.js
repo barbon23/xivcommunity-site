@@ -37,9 +37,12 @@ function copyTarget(member) {
 /**
  * Build a member profile card for the grid view.
  * @param {object} member
+ * @param {object} [opts]
+ * @param {boolean} [opts.hideRole] — skip the role tag when a role-group
+ *                                   heading already shows it above the card.
  * @returns {string} HTML string
  */
-export function renderMemberCard(member) {
+export function renderMemberCard(member, { hideRole = false } = {}) {
   const ign = escapeHTML(member.ign);
   const role = escapeHTML(member.role);
   const cls = escapeHTML(member.class || '');
@@ -67,7 +70,7 @@ export function renderMemberCard(member) {
       </div>
       <p class="member-card__ign"><span>${ign}</span>${member.verified ? VERIFIED_HTML : ''}</p>
       <div class="member-card__tags">
-        <span class="tag ${tagClass}">${role}</span>
+        ${hideRole ? '' : `<span class="tag ${tagClass}">${role}</span>`}
         ${cls ? `<span class="tag tag--member">${cls}</span>` : ''}
       </div>
       ${joined ? `<p class="member-card__joined">Joined ${joined}</p>` : ''}
