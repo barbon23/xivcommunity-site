@@ -342,6 +342,13 @@ collections:
                 default: ''
                 media_folder: /assets/members
                 public_folder: /assets/members
+              - label: "ID card picture (optional - shows in the member pop-up with a Download button)"
+                name: idCard
+                widget: image
+                required: false
+                default: ''
+                media_folder: /assets/idcards
+                public_folder: /assets/idcards
 
   - name: posts
     label: Blog Posts

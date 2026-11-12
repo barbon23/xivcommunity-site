@@ -181,6 +181,7 @@ this is required so the CMS can manage it:
 - `class` — one of `Slayer`, `OBJ`, `Support`, `Sniper`
 - `verified` — `true` shows a checkmark badge
 - `avatar` — `/assets/...` path (empty = initials fallback)
+- `idCard` — `/assets/idcards/...` picture of the member's ID card (optional). The pop-up shows it under the bio with a Download button and hides its UID row while a card is shown, because the UID is in the picture
 
 ### Blog posts are Markdown
 

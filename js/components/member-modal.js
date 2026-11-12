@@ -2,8 +2,11 @@
  * member-modal.js — Click-a-member profile popup.
  * One self-mounting dialog shared by the members page and the homepage
  * roster preview. Shows the big avatar, IGN with the verified tick,
- * role/class tags, a copyable UID, the join date and the member's
- * description. Closes via the X, the backdrop or Esc; on phones it
+ * the role tag, a copyable UID, the join date and the member's
+ * description. Members with an ID card picture also get it under the
+ * bio with a Download button (the UID row hides while the card shows,
+ * since the UID is baked into the picture). Closes via the X, the
+ * backdrop or Esc; on phones it
  * slides up as a bottom sheet and the Android back gesture closes it
  * instead of leaving the page.
  */
@@ -44,8 +47,14 @@ function ensureShell() {
           </div>
         </div>
         <p class="member-modal__bio" data-ref="bio"></p>
+        <figure class="member-modal__idcard" data-ref="idcard" hidden>
+          <img class="member-modal__idcard-img" data-ref="idcardImg" alt="" hidden>
+          <button class="btn btn--dark btn--sm member-modal__idcard-btn" type="button" data-ref="idcardDl">
+            Download ID card
+          </button>
+        </figure>
         <div class="member-modal__meta">
-          <div class="member-modal__meta-row">
+          <div class="member-modal__meta-row" data-ref="uidRow">
             <span class="member-modal__meta-label">UID</span>
             <span class="member-modal__meta-value" data-ref="uid"></span>
             <button class="member-card__copy" type="button" data-copy="" data-ref="copy">
@@ -68,6 +77,29 @@ function ensureShell() {
   }
 
   initCopyButtons(shell);
+
+  // Download the ID card picture as a real file (blob) named after the
+  // member. Falls back to opening the full-size image in a new tab
+  // where direct blob download is blocked (e.g. some iOS browsers).
+  refs.idcardDl.addEventListener('click', async () => {
+    const src = refs.idcardImg.currentSrc || refs.idcardImg.src;
+    if (!src) return;
+    const safe = (refs.idcardDl.dataset.member || 'member').replace(/[^\w.-]+/g, '-');
+    try {
+      const blob = await (await fetch(src)).blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const ext = (blob.type.split('/')[1] || 'jpg').replace('jpeg', 'jpg');
+      a.href = url;
+      a.download = `X1V-ID-${safe}.${ext}`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      window.open(src, '_blank', 'noopener');
+    }
+  });
 
   // Swipe-down-to-close on the mobile bottom sheet. Only engages when
   // the sheet's content is scrolled to the top, so reading long bios
@@ -133,6 +165,21 @@ export function openMemberModal(member) {
 
   refs.bio.textContent = bio || 'Bio coming soon.';
   refs.bio.classList.toggle('member-modal__bio--empty', !bio);
+
+  // Optional ID card picture: shown under the bio, downloadable. The
+  // UID row hides while the card shows because the UID is in the
+  // picture; members without a card keep the copyable UID row.
+  const idcard = (member.idCard || '').trim();
+  refs.idcard.hidden = !idcard;
+  refs.idcardDl.dataset.member = member.ign;
+  if (idcard) {
+    refs.idcardImg.src = avatarSrc(idcard);
+    refs.idcardImg.alt = `${member.ign} ID card`;
+  } else {
+    refs.idcardImg.removeAttribute('src');
+    refs.idcardImg.alt = '';
+  }
+  refs.uidRow.hidden = Boolean(idcard);
 
   refs.uid.textContent = member.uid || '—';
   refs.copy.dataset.copy = member.uid || member.ign;
