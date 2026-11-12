@@ -57,7 +57,7 @@ collections:
               - label: Description
                 name: sub
                 widget: text
-              - label: Phone screenshot
+              - label: Phone screenshot (big phone card at the top — not a moving tile)
                 name: phoneImage
                 widget: image
                 required: false
@@ -108,22 +108,22 @@ collections:
                     widget: string
                     required: false
 
-          - label: Screenshot marquee (two scrolling rows)
+          - label: Moving pictures (two scrolling rows of 5 tiles)
             name: marquee
             widget: object
             fields:
-              - label: Row 1 (scrolls left)
+              - label: Row 1 — TOP moving row (5 tiles, left to right)
                 name: row1
                 widget: list
                 field:
-                  label: Screenshot
+                  label: Tile picture
                   name: image
                   widget: image
-              - label: Row 2 (scrolls right)
+              - label: Row 2 — BOTTOM moving row (5 tiles, left to right)
                 name: row2
                 widget: list
                 field:
-                  label: Screenshot
+                  label: Tile picture
                   name: image
                   widget: image
 

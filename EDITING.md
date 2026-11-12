@@ -25,7 +25,7 @@
    - **Hero** — the big black area at the very top (heading, description,
      buttons, phone screenshot).
    - **Feature blurbs** — the three numbered "why join" blocks.
-   - **Screenshot marquee** — the two scrolling rows of gameplay screenshots.
+   - **Moving pictures** — the two scrolling rows of gameplay screenshots.
    - **Section labels & headings** — the small labels and big headings above
      every section (achievements, roster, blog preview, schedule…).
    - **Final call to action** — the black box near the bottom.
@@ -43,6 +43,12 @@ are placeholder pictures still sitting in those slots — replace them one by
 one by putting a new image in the matching slot and saving. Editing other
 homepage blocks (hero, labels, buttons) does not touch the marquee, and the
 marquee does not update automatically from new uploads elsewhere.
+
+**The hero's "Phone screenshot" is not one of the moving tiles.** It is the
+big phone card at the top of the page — a separate picture stored separately,
+even when both show the same design (the anniversary letter currently appears
+in both places). Replacing one never changes the other: to change a moving
+tile, always use the "Moving pictures" block and its Row 1 / Row 2 fields.
 
 **After changing any picture:** click **Save**, wait about a minute for the
 site to rebuild, then **refresh the page** (on a computer: Ctrl + Shift + R).
