@@ -67,8 +67,8 @@ failed — browsers can briefly hold the previous image.
      Discipline & Warning, Recruiter, Graphics & Content, Leaderboard,
      Sponsor, Streamer, Content Creator, Compe or Casual. The members
      page groups everyone under three category headings that follow the
-     role automatically: **Admin Team** (the staff roles), **XIV
-     Exclusive** (Sponsor, Streamer, Content Creator) and **XIV Member**
+     role automatically: **XIV MANAGEMENT** (the staff roles), **XIV
+     EXCLUSIVE** (Sponsor, Streamer, Content Creator) and **XIV MEMBER**
      (Compe, Casual). The tag colour follows the category too.
    - **Main class** — Slayer, OBJ, Sniper or Support.
    - **UID** — optional, but the "Copy" button on the website copies this.

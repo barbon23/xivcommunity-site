@@ -103,33 +103,34 @@ export function escapeHTML(str) {
 
 /**
  * Map a role to its category group (the members page groups by these).
- * Roles outside the official list fall back to XIV Member.
+ * Category names are stored in CAPS exactly as they display.
+ * Roles outside the official list fall back to XIV MEMBER.
  * @param {string} role
- * @returns {"Admin Team"|"XIV Exclusive"|"XIV Member"}
+ * @returns {"XIV MANAGEMENT"|"XIV EXCLUSIVE"|"XIV MEMBER"}
  */
 export function roleCategory(role) {
   const map = {
-    // Admin Team (staff)
-    'Founder':              'Admin Team',
-    'Community Master':     'Admin Team',
-    'Head Admin':           'Admin Team',
-    'Event Organizer':      'Admin Team',
-    'Moderator':            'Admin Team',
-    'Internal Affair':      'Admin Team',
-    'Tag Checker':          'Admin Team',
-    'Discipline & Warning': 'Admin Team',
-    'Recruiter':            'Admin Team',
-    'Graphics & Content':   'Admin Team',
-    'Leaderboard':          'Admin Team',
-    // XIV Exclusive
-    'Sponsor':              'XIV Exclusive',
-    'Streamer':             'XIV Exclusive',
-    'Content Creator':      'XIV Exclusive',
-    // XIV Member
-    'Compe':                'XIV Member',
-    'Casual':               'XIV Member',
+    // XIV MANAGEMENT (staff)
+    'Founder':              'XIV MANAGEMENT',
+    'Community Master':     'XIV MANAGEMENT',
+    'Head Admin':           'XIV MANAGEMENT',
+    'Event Organizer':      'XIV MANAGEMENT',
+    'Moderator':            'XIV MANAGEMENT',
+    'Internal Affair':      'XIV MANAGEMENT',
+    'Tag Checker':          'XIV MANAGEMENT',
+    'Discipline & Warning': 'XIV MANAGEMENT',
+    'Recruiter':            'XIV MANAGEMENT',
+    'Graphics & Content':   'XIV MANAGEMENT',
+    'Leaderboard':          'XIV MANAGEMENT',
+    // XIV EXCLUSIVE
+    'Sponsor':              'XIV EXCLUSIVE',
+    'Streamer':             'XIV EXCLUSIVE',
+    'Content Creator':      'XIV EXCLUSIVE',
+    // XIV MEMBER
+    'Compe':                'XIV MEMBER',
+    'Casual':               'XIV MEMBER',
   };
-  return map[role] || 'XIV Member';
+  return map[role] || 'XIV MEMBER';
 }
 
 /**
@@ -140,8 +141,8 @@ export function roleCategory(role) {
  */
 export function roleClass(role) {
   const category = roleCategory(role);
-  if (category === 'Admin Team')   return 'tag--admin-team';
-  if (category === 'XIV Exclusive') return 'tag--xiv-exclusive';
+  if (category === 'XIV MANAGEMENT') return 'tag--xiv-management';
+  if (category === 'XIV EXCLUSIVE')  return 'tag--xiv-exclusive';
   return 'tag--xiv-member';
 }
 

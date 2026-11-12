@@ -53,7 +53,7 @@ function getFiltered() {
  * @returns {Map<string, Array>}
  */
 function groupByCategory(members) {
-  const order = ['Admin Team', 'XIV Exclusive', 'XIV Member'];
+  const order = ['XIV MANAGEMENT', 'XIV EXCLUSIVE', 'XIV MEMBER'];
   const map = new Map(order.map((c) => [c, []]));
   for (const m of members) {
     const cat = roleCategory(m.role);

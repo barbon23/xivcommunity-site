@@ -176,7 +176,7 @@ this is required so the CMS can manage it:
                 "verified": true, "avatar": "" } ] }
 ```
 
-- `role` — one of 16 roles: `Founder`, `Community Master`, `Head Admin`, `Event Organizer`, `Moderator`, `Internal Affair`, `Tag Checker`, `Discipline & Warning`, `Recruiter`, `Graphics & Content`, `Leaderboard`, `Sponsor`, `Streamer`, `Content Creator`, `Compe`, `Casual`. Each role belongs to a category group (`Admin Team`, `XIV Exclusive`, `XIV Member`) via `roleCategory()` in `format.js` — the roster groups by category
+- `role` — one of 16 roles: `Founder`, `Community Master`, `Head Admin`, `Event Organizer`, `Moderator`, `Internal Affair`, `Tag Checker`, `Discipline & Warning`, `Recruiter`, `Graphics & Content`, `Leaderboard`, `Sponsor`, `Streamer`, `Content Creator`, `Compe`, `Casual`. Each role belongs to a category group (`XIV MANAGEMENT`, `XIV EXCLUSIVE`, `XIV MEMBER`) via `roleCategory()` in `format.js` — the roster groups by category
 - `class` — one of `Slayer`, `OBJ`, `Support`, `Sniper`
 - `verified` — `true` shows a checkmark badge
 - `avatar` — `/assets/...` path (empty = initials fallback)
