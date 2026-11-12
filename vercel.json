@@ -47,6 +47,12 @@
       ]
     },
     {
+      "source": "/assets/idcards/(.*\\.jfif)",
+      "headers": [
+        { "key": "Content-Type", "value": "image/jpeg" }
+      ]
+    },
+    {
       "source": "/data/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }

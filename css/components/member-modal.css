@@ -212,10 +212,52 @@
   height: auto;
   border: var(--border);
   border-radius: var(--radius-card);
+  cursor: zoom-in;   /* tap opens the full-size viewer */
 }
 
 .member-modal__idcard-btn {
   align-self: flex-start;
+}
+
+/* ── Full-size card viewer (tap the picture to open) ─────── */
+
+.member-modal__viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;   /* last child of the shell, so it paints above the panel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  background-color: rgb(0 0 0 / 0.92);
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.member-modal__viewer--open {
+  opacity: 1;
+}
+
+.member-modal__viewer[hidden] {
+  display: none;
+}
+
+.member-modal__viewer-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--radius-card);
+}
+
+.member-modal__viewer-hint {
+  position: absolute;
+  bottom: calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-size-xs);
+  color: rgb(255 255 255 / 0.7);
+  white-space: nowrap;
 }
 
 /* ── Meta rows: UID + copy chip, joined date ─────────────── */
@@ -285,7 +327,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .member-modal__backdrop,
-  .member-modal__panel {
+  .member-modal__panel,
+  .member-modal__viewer {
     transition: none;
   }
 }

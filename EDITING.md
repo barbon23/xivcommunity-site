@@ -90,12 +90,16 @@ failed — browsers can briefly hold the previous image.
      minute, re-upload it once more; the tidy initials circle shows
      until a photo sticks, so the roster looks fine either way.
    - **ID card picture** — optional. The member's ID-card style image
-     (like the clan's YARA card), shown inside the pop-up under the bio
-     with a **Download ID card** button. Square around 1080×1080,
-     compressed to under ~500 KB (free: squoosh.app) looks best. Files
-     save to the website's `assets/idcards` folder automatically. While
-     a member has an ID card, the pop-up hides its UID row because the
-     UID is already inside the picture.
+     (like the clan's YARA card), shown inside the pop-up under the bio:
+     visitors tap the picture to view it full size, or press
+     **Download ID card** to save it. Square around 1080×1080,
+     compressed to under ~500 KB (free: squoosh.app) looks best. The
+     file's name must end in **.jpg, .jpeg, .png or .webp** — if
+     Windows saved it as **.jfif**, rename it to .jpg first (same
+     picture; files with endings the web does not know will not
+     display). Files save to the website's `assets/idcards` folder
+     automatically. While a member has an ID card, the pop-up hides
+     its UID row because the UID is already inside the picture.
 3. To edit someone, click **Edit** next to their name.
 4. To remove someone, click the **trash/delete** icon next to their entry.
 5. Click **Save** when done. Members are listed alphabetically inside their

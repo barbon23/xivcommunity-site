@@ -4,8 +4,9 @@
  * roster preview. Shows the big avatar, IGN with the verified tick,
  * the role tag, a copyable UID, the join date and the member's
  * description. Members with an ID card picture also get it under the
- * bio with a Download button (the UID row hides while the card shows,
- * since the UID is baked into the picture). Closes via the X, the
+ * bio: tap the picture to view it full size, or download it with a
+ * properly named file (the UID row hides while the card shows, since
+ * the UID is baked into the picture). Closes via the X, the
  * backdrop or Esc; on phones it
  * slides up as a bottom sheet and the Android back gesture closes it
  * instead of leaving the page.
@@ -48,7 +49,7 @@ function ensureShell() {
         </div>
         <p class="member-modal__bio" data-ref="bio"></p>
         <figure class="member-modal__idcard" data-ref="idcard" hidden>
-          <img class="member-modal__idcard-img" data-ref="idcardImg" alt="" hidden>
+          <img class="member-modal__idcard-img" data-ref="idcardImg" alt="" hidden title="View full size">
           <button class="btn btn--dark btn--sm member-modal__idcard-btn" type="button" data-ref="idcardDl">
             Download ID card
           </button>
@@ -68,6 +69,10 @@ function ensureShell() {
           </div>
         </div>
       </div>
+    </div>
+    <div class="member-modal__viewer" data-ref="viewer" hidden>
+      <img class="member-modal__viewer-img" data-ref="viewerImg" alt="">
+      <span class="member-modal__viewer-hint">Tap anywhere to close</span>
     </div>`;
   document.body.appendChild(shell);
 
@@ -79,17 +84,23 @@ function ensureShell() {
   initCopyButtons(shell);
 
   // Download the ID card picture as a real file (blob) named after the
-  // member. Falls back to opening the full-size image in a new tab
-  // where direct blob download is blocked (e.g. some iOS browsers).
+  // member. The extension comes from the picture's own URL, not the
+  // server's content-type answer: uploads like .jfif (the JPEG format
+  // under a Windows-only name) are served as a vague octet-stream
+  // type, and .jfif itself is renamed .jpg since the bytes are plain
+  // JPEG. Falls back to opening the full-size image in a new tab where
+  // direct blob download is blocked (e.g. some iOS browsers).
   refs.idcardDl.addEventListener('click', async () => {
     const src = refs.idcardImg.currentSrc || refs.idcardImg.src;
     if (!src) return;
     const safe = (refs.idcardDl.dataset.member || 'member').replace(/[^\w.-]+/g, '-');
+    const ending = decodeURIComponent(new URL(src, location.href).pathname)
+      .match(/\.(\w{2,5})$/)?.[1]?.toLowerCase() ?? '';
+    const ext = ({ jfif: 'jpg', jpeg: 'jpg' })[ending] || ending || 'jpg';
     try {
       const blob = await (await fetch(src)).blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      const ext = (blob.type.split('/')[1] || 'jpg').replace('jpeg', 'jpg');
       a.href = url;
       a.download = `X1V-ID-${safe}.${ext}`;
       document.body.appendChild(a);
@@ -100,6 +111,25 @@ function ensureShell() {
       window.open(src, '_blank', 'noopener');
     }
   });
+
+  // Tap the card picture to view it full size in an overlay that sits
+  // above the sheet; tap anywhere (or Esc) to close.
+  function openViewer() {
+    const src = refs.idcardImg.currentSrc || refs.idcardImg.src;
+    if (!src) return;
+    refs.viewerImg.src = src;
+    refs.viewerImg.alt = refs.idcardImg.alt;
+    refs.viewer.hidden = false;
+    requestAnimationFrame(() => refs.viewer.classList.add('member-modal__viewer--open'));
+  }
+
+  function closeViewer() {
+    refs.viewer.classList.remove('member-modal__viewer--open');
+    refs.viewer.hidden = true;
+  }
+
+  refs.idcardImg.addEventListener('click', openViewer);
+  refs.viewer.addEventListener('click', closeViewer);
 
   // Swipe-down-to-close on the mobile bottom sheet. Only engages when
   // the sheet's content is scrolled to the top, so reading long bios
@@ -136,7 +166,9 @@ function ensureShell() {
     if (e.target.closest('[data-close]')) closeMemberModal();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !shell.hidden) closeMemberModal();
+    if (e.key !== 'Escape' || shell.hidden) return;
+    if (!refs.viewer.hidden) { closeViewer(); return; }   // viewer first…
+    closeMemberModal();                                   // …then the sheet
   });
   window.addEventListener('popstate', () => {
     if (!shell.hidden) closeMemberModal(true);
@@ -200,6 +232,10 @@ export function openMemberModal(member) {
  */
 export function closeMemberModal(fromPop = false) {
   if (!shell || shell.hidden) return;
+  if (refs.viewer && !refs.viewer.hidden) {   // never leave the viewer open
+    refs.viewer.classList.remove('member-modal__viewer--open');
+    refs.viewer.hidden = true;
+  }
   shell.classList.remove('member-modal--open');
   shell.hidden = true;
   document.body.style.overflow = '';
