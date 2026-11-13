@@ -93,6 +93,19 @@ function renderHeroMedia(content) {
 }
 
 /**
+ * Render the optional hero character (mascot) beside the phone card.
+ * The <img> is decorative; an empty field keeps it hidden.
+ * @param {object} content
+ */
+function renderHeroMascot(content) {
+  const el = qs('#hero-mascot');
+  if (!el) return;
+  const src = (content.hero.mascot || '').trim();
+  el.hidden = !src;
+  if (src) el.src = src.startsWith('/') ? src : `/${src}`;
+}
+
+/**
  * Render one marquee row (images + duplicated set for a seamless loop).
  * @param {string[]} images
  * @param {boolean} reverse
@@ -156,6 +169,7 @@ export function initSiteContent(content) {
   if (content) {
     renderHero(content);
     renderHeroMedia(content);
+    renderHeroMascot(content);
     renderBlurbs(content);
     renderMarquee(content);
     renderCTA(content);

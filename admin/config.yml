@@ -67,6 +67,13 @@ collections:
                 name: phoneAlt
                 widget: string
                 required: false
+              - label: "Character design (mascot standing beside the phone card, shown on wide screens)"
+                name: mascot
+                widget: image
+                required: false
+                media_folder: /assets/brand
+                public_folder: /assets/brand
+                default: ''
               - label: Text under "20+ members"
                 name: socialProofSub
                 widget: string

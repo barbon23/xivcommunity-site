@@ -12,6 +12,7 @@
 }
 
 .hero__inner {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
@@ -84,6 +85,37 @@
   .hero__media {
     justify-content: flex-end;
   }
+}
+
+/* ── Hero mascot (character design, wide screens only) ───── */
+
+.hero__mascot {
+  display: none;   /* phones and small laptops keep the clean hero */
+}
+
+@media (min-width: 1280px) {
+  .hero__mascot {
+    display: block;
+    position: absolute;
+    right: calc(380px - 40px);   /* stands left of the phone, tucked behind its edge */
+    bottom: 0;
+    height: min(60vh, 560px);
+    width: auto;
+    z-index: 0;
+    pointer-events: none;
+    filter: drop-shadow(0 16px 32px rgb(0 0 0 / 0.5));
+  }
+
+  /* The phone card sits in front of the mascot's tucked edge */
+  .hero__media .phone-frame--hero {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* The CMS field can be empty: keep the decorative image hidden */
+.hero__mascot[hidden] {
+  display: none;
 }
 
 /* ── Feature blurbs ──────────────────────────────────────── */
