@@ -71,6 +71,16 @@
   gap: var(--space-2);
 }
 
+/* Ghost buttons on the dark hero need light text (the hero is not .section--dark) */
+.hero .btn--ghost {
+  color: var(--color-white);
+  border-color: var(--color-ink-3);
+}
+
+.hero .btn--ghost:hover {
+  border-color: var(--color-subtle);
+}
+
 .hero__social-proof {
   padding-top: var(--space-2);
 }
