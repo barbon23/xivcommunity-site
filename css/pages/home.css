@@ -101,12 +101,20 @@
     position: absolute;
     left: -30px;
     bottom: 0;
-    height: clamp(380px, 46vh, 560px);
+    height: clamp(420px, 50vh, 620px);
     width: auto;
     z-index: 0;
     pointer-events: none;
     transform: scaleX(-1);   /* rifle points into the page */
     filter: drop-shadow(0 16px 32px rgb(0 0 0 / 0.55));
+  }
+}
+
+/* Large desktop monitors: let her take real presence in the hero */
+@media (min-width: 1536px) {
+  .hero__mascot {
+    left: -40px;
+    height: clamp(560px, 64vh, 800px);
   }
 }
 
