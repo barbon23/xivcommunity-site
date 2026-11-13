@@ -5,6 +5,7 @@
 /* ── Hero ─────────────────────────────────────────────────── */
 
 .hero {
+  position: relative;
   background-color: var(--color-ink);
   padding-top: var(--space-10);
   padding-bottom: 0;
@@ -13,6 +14,7 @@
 
 .hero__inner {
   position: relative;
+  z-index: 1;   /* keeps the text and phone above the mascot */
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
@@ -97,19 +99,14 @@
   .hero__mascot {
     display: block;
     position: absolute;
-    right: calc(380px - 40px);   /* stands left of the phone, tucked behind its edge */
+    left: -30px;
     bottom: 0;
-    height: min(60vh, 560px);
+    height: clamp(380px, 46vh, 560px);
     width: auto;
     z-index: 0;
     pointer-events: none;
-    filter: drop-shadow(0 16px 32px rgb(0 0 0 / 0.5));
-  }
-
-  /* The phone card sits in front of the mascot's tucked edge */
-  .hero__media .phone-frame--hero {
-    position: relative;
-    z-index: 1;
+    transform: scaleX(-1);   /* rifle points into the page */
+    filter: drop-shadow(0 16px 32px rgb(0 0 0 / 0.55));
   }
 }
 

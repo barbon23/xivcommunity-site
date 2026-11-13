@@ -50,12 +50,12 @@ even when both show the same design (the anniversary letter currently appears
 in both places). Replacing one never changes the other: to change a moving
 tile, always use the "Moving pictures" block and its Row 1 / Row 2 fields.
 
-**The "Character design" (mascot) is optional.** She stands beside the phone
-card on wide screens (about 1280px and wider); phones and smaller laptops keep
-the clean hero without her. Upload a picture with a transparent background
-(png or webp, tall portrait like the current one, around 900×1600) compressed
-to under ~300 KB — squoosh.app does both. Leave the field empty to remove her
-from the site.
+**The "Character design" (mascot) is optional.** She stands at the left edge
+of the hero on wide screens (about 1280px and wider); phones and smaller
+laptops keep the clean hero without her. Upload a picture with a transparent
+background (png or webp, tall portrait like the current one, around 900×1600)
+compressed to under ~300 KB — squoosh.app does both. Leave the field empty to
+remove her from the site.
 
 **After changing any picture:** click **Save**, wait about a minute for the
 site to rebuild, then **refresh the page** (on a computer: Ctrl + Shift + R).

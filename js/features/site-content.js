@@ -93,7 +93,7 @@ function renderHeroMedia(content) {
 }
 
 /**
- * Render the optional hero character (mascot) beside the phone card.
+ * Render the optional hero character (mascot) at the hero's left edge.
  * The <img> is decorative; an empty field keeps it hidden.
  * @param {object} content
  */
