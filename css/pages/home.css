@@ -29,6 +29,21 @@
   }
 }
 
+/* Phones: tighter hero so content lands higher on the first screen */
+@media (max-width: 767.98px) {
+  .hero {
+    padding-top: var(--space-6);
+  }
+
+  .hero__inner {
+    gap: var(--space-6);
+  }
+
+  .hero__content {
+    padding-bottom: var(--space-6);
+  }
+}
+
 .hero__content {
   display: flex;
   flex-direction: column;
@@ -65,10 +80,68 @@
   max-width: 440px;
 }
 
+/* Long story: clamped on phones and small tablets with a Read more toggle */
+.hero__story {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+}
+
+.hero__more {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semi);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.hero__more:hover {
+  color: var(--color-subtle);
+}
+
+.hero__more[hidden] {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .hero__story:not(.is-open) .hero__sub {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+/* Phones: primary action full width, social buttons split one even row */
+@media (max-width: 480px) {
+  .hero__actions.btn-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    padding-inline: var(--space-3);
+  }
+
+  .hero__actions .btn:first-child {
+    grid-column: 1 / -1;
+  }
 }
 
 /* Ghost buttons on the dark hero need light text (the hero is not .section--dark) */

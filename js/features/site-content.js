@@ -63,12 +63,65 @@ function renderHero(content) {
     <h1 class="hero__heading" id="hero-heading">
       ${escapeHTML(content.hero.heading ?? '')}
     </h1>
-    <p class="hero__sub">${escapeHTML(content.hero.sub ?? '')}</p>
+    <div class="hero__story" id="hero-story">
+      <p class="hero__sub" id="hero-sub">${escapeHTML(content.hero.sub ?? '')}</p>
+      <button class="hero__more" id="hero-more" type="button"
+              aria-controls="hero-sub" aria-expanded="false" hidden>Read more</button>
+    </div>
     <div class="hero__actions btn-group">
       ${renderButtons(content.hero.buttons)}
     </div>
     <div class="hero__social-proof" data-avatar-row aria-live="polite"></div>
   `;
+}
+
+/**
+ * Collapse the long hero story on phones and small tablets with a
+ * Read more / Show less toggle. No-ops when the story already fits.
+ */
+function initHeroStory() {
+  const story = qs('#hero-story');
+  const sub = qs('#hero-sub');
+  const btn = qs('#hero-more');
+  if (!story || !sub || !btn) return;
+
+  const mq = window.matchMedia('(max-width: 899px)');
+
+  const sync = () => {
+    if (!mq.matches) {
+      story.classList.remove('is-open');
+      btn.textContent = 'Read more';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.hidden = true;
+      return;
+    }
+    if (story.classList.contains('is-open')) {
+      btn.hidden = false;
+      return;
+    }
+    const overflows = sub.scrollHeight > sub.clientHeight + 1;
+    btn.hidden = !overflows;
+  };
+
+  btn.addEventListener('click', () => {
+    const open = story.classList.toggle('is-open');
+    btn.textContent = open ? 'Show less' : 'Read more';
+    btn.setAttribute('aria-expanded', String(open));
+    sync();
+  });
+
+  mq.addEventListener('change', sync);
+
+  let frame = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(sync);
+  });
+
+  // Web fonts can change line wrapping after the first paint.
+  document.fonts?.ready.then(sync).catch(() => {});
+
+  sync();
 }
 
 /**
@@ -94,15 +147,37 @@ function renderHeroMedia(content) {
 
 /**
  * Render the optional hero character (mascot) at the hero's left edge.
- * The <img> is decorative; an empty field keeps it hidden.
+ * The <img> is decorative; an empty field keeps it hidden. The file is
+ * only requested on screens wide enough to show her, so phones and
+ * tablets never download it.
  * @param {object} content
  */
 function renderHeroMascot(content) {
   const el = qs('#hero-mascot');
   if (!el) return;
   const src = (content.hero.mascot || '').trim();
-  el.hidden = !src;
-  if (src) el.src = src.startsWith('/') ? src : `/${src}`;
+  if (!src) {
+    el.hidden = true;
+    el.removeAttribute('src');
+    return;
+  }
+
+  const wide = window.matchMedia('(min-width: 1280px)');
+
+  const sync = () => {
+    if (!wide.matches) {
+      el.hidden = true;
+      el.removeAttribute('src');
+      return;
+    }
+    if (el.getAttribute('src') !== src) {
+      el.src = src.startsWith('/') ? src : `/${src}`;
+    }
+    el.hidden = false;
+  };
+
+  wide.addEventListener('change', sync);
+  sync();
 }
 
 /**
@@ -168,6 +243,7 @@ function renderCTA(content) {
 export function initSiteContent(content) {
   if (content) {
     renderHero(content);
+    initHeroStory();
     renderHeroMedia(content);
     renderHeroMascot(content);
     renderBlurbs(content);
