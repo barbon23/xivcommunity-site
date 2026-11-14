@@ -220,3 +220,26 @@ same change again and again.
 - If the whole site looks wrong right after a save, the editor will see the
   change in the **homepage editor** — undo what you changed, save again.
 - Still stuck? Message the site owner with a screenshot of what you see.
+
+---
+
+## 11. The anniversary greeting (temporary — it retires itself)
+
+Around the clan's 1st anniversary, first-time visitors see a short greeting
+before the homepage: the silver XIV logo, **HAPPY 1ST ANNIVERSARY** with the
+tagline, and confetti. Good to know:
+
+- **Once per visitor.** The moment it starts, a small flag is saved in that
+  visitor's browser, so it never replays for them — even if they only tap it
+  away. To see it again yourself, open the site in a **private/incognito
+  window**.
+- **Auto-stop: end of November 17, 2026** (Philippine time). After that, even
+  brand-new visitors go straight into the site. Nothing to do — no expiry
+  button exists; it retires itself.
+- **Changing the words** (title, tagline, badge line): those are plain text
+  in `index.html`, between the two "ANNIVERSARY INTRO" comments near the
+  bottom of the file. Ask the site owner if unsure.
+- **Removing it for good** later: delete every piece marked ANNIVERSARY —
+  the guard script + overlay block in `index.html`, the ANNIVERSARY section
+  at the end of `css/pages/home.css`, the import + call in `js/main.js`, and
+  the file `js/features/anniversary-intro.js` — or just ask the site owner.

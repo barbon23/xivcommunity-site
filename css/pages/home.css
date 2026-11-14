@@ -481,3 +481,170 @@
   gap: var(--space-2);
   justify-content: center;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   ANNIVERSARY INTRO — temporary, auto-stops after Nov 17 2026.
+   TO RETIRE THE INTRO FOR GOOD, delete every piece marked
+   ANNIVERSARY: the guard <script> + #anniv-intro markup in
+   index.html, this whole section, the import + call in
+   js/main.js, and js/features/anniversary-intro.js.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Hidden unless the inline guard says this visitor should see it. */
+#anniv-intro { display: none; }
+
+/* Lock scrolling behind the overlay. */
+html.intro-pending { overflow: hidden; }
+
+html.intro-pending #anniv-intro {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal); /* above navbar (100) and bottom nav */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--color-black);
+  text-align: center;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 520ms ease;
+}
+
+/* Fading out (skip tap or auto-finish). */
+html.intro-pending #anniv-intro.is-closing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Hard kill switch from the guard's fallback timer. */
+html.intro-done #anniv-intro { display: none !important; }
+
+.anniv-intro__logo {
+  width: clamp(96px, 18vw, 160px);
+  height: auto;
+  /* Silver metal look: same color flip the admin panel skin applies. */
+  filter: invert(1) brightness(1.1) drop-shadow(0 0 26px rgba(237, 237, 237, 0.28));
+  animation: anniv-logo-in 900ms ease both,
+             anniv-logo-glow 2600ms ease-in-out 900ms infinite;
+}
+
+.anniv-intro__title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(1.75rem, 6.5vw, 3.25rem);
+  font-weight: var(--font-weight-semi);
+  letter-spacing: 0.05em;
+  line-height: var(--line-height-tight);
+  color: var(--color-white);
+  animation: anniv-rise 700ms ease 1000ms both;
+}
+
+.anniv-intro__tagline {
+  margin: 0;
+  max-width: 480px;
+  font-size: clamp(0.95rem, 2.6vw, var(--font-size-md));
+  line-height: var(--line-height-base);
+  color: var(--color-subtle);
+  animation: anniv-rise 700ms ease 1400ms both;
+}
+
+.anniv-intro__badge {
+  margin: var(--space-1) 0 0;
+  padding: 8px 18px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semi);
+  letter-spacing: 0.22em;
+  color: #E8B64C;
+  border: 1px solid rgba(232, 182, 76, 0.45);
+  border-radius: var(--radius-pill);
+  animation: anniv-rise 700ms ease 1800ms both;
+}
+
+.anniv-intro__hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  animation: anniv-fade-in 800ms ease 2400ms both;
+}
+
+/* Confetti layers (pieces built by the JS module, animated in CSS). */
+.anniv-burst,
+.anniv-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.anniv-piece {
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 13px;
+  margin: -6px 0 0 -4px;
+  border-radius: 1px;
+  background: var(--anniv-color, #E8B64C);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.anniv-piece--burst {
+  animation: anniv-burst-anim 2200ms ease-out both;
+}
+
+.anniv-piece--shower {
+  animation: anniv-shower-anim 3200ms linear both;
+}
+
+@keyframes anniv-logo-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes anniv-logo-glow {
+  0%, 100% { filter: invert(1) brightness(1.1) drop-shadow(0 0 14px rgba(237, 237, 237, 0.18)); }
+  50%      { filter: invert(1) brightness(1.15) drop-shadow(0 0 34px rgba(237, 237, 237, 0.38)); }
+}
+
+@keyframes anniv-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes anniv-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes anniv-burst-anim {
+  0%   { opacity: 0; transform: translate(0, 0) rotate(0deg) scale(0.5); }
+  10%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--tx, 0px), var(--ty, 0px)) rotate(var(--rot, 0deg)) scale(1); }
+}
+
+@keyframes anniv-shower-anim {
+  0%   { opacity: 0; transform: translateY(-6vh) rotate(var(--r0, 0deg)); }
+  8%   { opacity: 0.85; }
+  100% { opacity: 0; transform: translateY(110vh) rotate(var(--r1, 0deg)); }
+}
+
+/* Calm static card for visitors with reduce motion enabled:
+   no animations, no confetti, everything readable at once. */
+@media (prefers-reduced-motion: reduce) {
+  html.intro-pending #anniv-intro,
+  html.intro-pending #anniv-intro * {
+    animation: none !important;
+  }
+
+  .anniv-piece { display: none !important; }
+}
+
+/* === END ANNIVERSARY INTRO === */

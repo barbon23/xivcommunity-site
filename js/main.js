@@ -11,6 +11,12 @@ import { initPageContent } from './features/page-content.js';
 import { initNavbar } from './components/navbar.js';
 import { initFooter } from './components/footer.js';
 import { initReveal } from './features/reveal.js';
+import { initAnniversaryIntro } from './features/anniversary-intro.js';
+
+// The one-time anniversary greeting runs first, so the logo and confetti
+// are already on screen while the page content loads underneath. It only
+// acts when the inline guard in index.html added `intro-pending`.
+initAnniversaryIntro();
 
 async function bootstrap() {
   const config = await loadConfig();

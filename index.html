@@ -3,6 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ ANNIVERSARY INTRO guard — removable ═══
+       Runs before first paint: shows the one-time greeting only to visitors
+       who have not seen it yet, and only until the end of Nov 17 2026
+       (Philippine time). Saves the flag immediately so it never replays. -->
+  <script>
+    (function () {
+      try {
+        var KEY = 'xiv-anniv-2026-seen';
+        if (localStorage.getItem(KEY)) return;
+        if (Date.now() > new Date('2026-11-17T23:59:59+08:00').getTime()) return;
+        localStorage.setItem(KEY, String(Date.now()));
+        var root = document.documentElement;
+        root.classList.add('intro-pending');
+        // Safety net: even if the intro module never loads, the page
+        // unblocks itself after 6.5 seconds.
+        window.setTimeout(function () {
+          root.classList.add('intro-done');
+        }, 6500);
+      } catch (e) {
+        /* Storage unavailable: skip the intro, page loads normally. */
+      }
+    })();
+  </script>
+
   <title>XIV COMMUNITY - THE PUBLIC ENEMY</title>
   <meta name="description" content="XIVCOMMUNITY is a competitive Call of Duty: Mobile clan based in the Philippines. Active since 2021. Join us for scrims, clan wars, and a serious community.">
   <meta name="theme-color" content="#000000">
@@ -216,6 +241,18 @@
 
   <!-- Footer (rendered by footer.js) -->
   <footer id="site-footer"></footer>
+
+  <!-- ═══ ANNIVERSARY INTRO overlay — removable (shows once per visitor,
+       auto-stops after Nov 17 2026; removal steps are in EDITING.md) ═══ -->
+  <div id="anniv-intro">
+    <div class="anniv-burst" aria-hidden="true"></div>
+    <div class="anniv-confetti" aria-hidden="true"></div>
+    <img class="anniv-intro__logo" src="/assets/brand/logo.png" alt="" width="160" height="149">
+    <p class="anniv-intro__title">HAPPY 1ST ANNIVERSARY</p>
+    <p class="anniv-intro__tagline">The most hated community, yet only the real ones remained</p>
+    <p class="anniv-intro__badge">NOVEMBER 2026 - ONE YEAR STRONG</p>
+    <p class="anniv-intro__hint">Tap anywhere to enter</p>
+  </div>
 
   <script type="module" src="/js/main.js"></script>
   <script type="module" src="/js/pages/home.js"></script>
