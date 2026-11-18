@@ -83,6 +83,18 @@
   margin-bottom: var(--space-3);
 }
 
+/* ── Category groups (grouped view) ────────────────────────
+   The group wrapper and heading get their spacing here so a new
+   category never sits glued to the cards of the previous one. */
+
+.member-group + .member-group {
+  margin-top: var(--space-6);   /* clear air between categories */
+}
+
+.member-group__heading {
+  margin-bottom: var(--space-3);   /* heading -> its own cards */
+}
+
 /* ── Member grid ─────────────────────────────────────────── */
 
 .members-grid {
