@@ -29,6 +29,22 @@ function resetPages() {
 }
 
 /**
+ * Normalize text for search. Many IGNs are written in decorative Unicode
+ * letters (for example "𝐑𝐄𝐕𝐎 𝐗𝐈𝐕"), which never match normal keyboard
+ * input. NFKD turns those into plain letters, combining accents are
+ * dropped, and everything is lowercased, so typing "revo" finds the
+ * styled name.
+ * @param {string} value
+ * @returns {string}
+ */
+function normalizeSearchText(value) {
+  return String(value)
+    .normalize('NFKD')
+    .replace(/\p{M}/gu, '')
+    .toLowerCase();
+}
+
+/**
  * Apply current filter, sort and search to allMembers.
  * @returns {Array}
  */
@@ -40,8 +56,8 @@ function getFiltered() {
   }
 
   if (currentSearch) {
-    const q = currentSearch.toLowerCase();
-    list = list.filter(m => m.ign.toLowerCase().includes(q));
+    const q = normalizeSearchText(currentSearch);
+    list = list.filter(m => normalizeSearchText(m.ign).includes(q));
   }
 
   list.sort((a, b) => {
