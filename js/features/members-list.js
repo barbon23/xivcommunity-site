@@ -103,9 +103,35 @@ function renderGrid(members, container) {
 }
 
 /**
+ * Page numbers to show in the paging bar. Short lists show every page;
+ * long lists collapse to first/last plus the pages around the current
+ * one, with an ellipsis for the gaps.
+ * @param {number} current
+ * @param {number} total
+ * @returns {Array<number|'…'>}
+ */
+function pageSequence(current, total) {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+
+  const wanted = new Set([1, total, current - 1, current, current + 1]);
+  if (current <= 3) [2, 3, 4].forEach((p) => wanted.add(p));
+  if (current >= total - 2) [total - 1, total - 2, total - 3].forEach((p) => wanted.add(p));
+
+  const pages = [...wanted].filter((p) => p >= 1 && p <= total).sort((a, b) => a - b);
+  const out = [];
+  let prev = 0;
+  for (const p of pages) {
+    if (p - prev > 1) out.push('…');
+    out.push(p);
+    prev = p;
+  }
+  return out;
+}
+
+/**
  * Render the table view: one page of rows (TABLE_PAGE_SIZE) plus a
- * Prev/Next bar when the list spans more than one page. Row numbers
- * continue across pages (#21 on page 2).
+ * numbered paging bar when the list spans more than one page. Row
+ * numbers continue across pages (#21 on page 2).
  * @param {Array} members
  * @param {Element} container
  */
@@ -129,11 +155,14 @@ function renderTable(members, container) {
   const pagination = pageCount > 1
     ? `
     <nav class="members-pagination" aria-label="Member list pages">
-      <button class="btn btn--ghost btn--sm" type="button" data-page="prev"
-              ${currentPage <= 1 ? 'disabled' : ''}>Prev</button>
-      <span class="members-pagination__status">Page ${currentPage} of ${pageCount}</span>
-      <button class="btn btn--ghost btn--sm" type="button" data-page="next"
-              ${currentPage >= pageCount ? 'disabled' : ''}>Next</button>
+      ${pageSequence(currentPage, pageCount).map((p) => (
+        p === '…'
+          ? '<span class="members-pagination__gap" aria-hidden="true">…</span>'
+          : p === currentPage
+            ? `<span class="btn btn--dark btn--sm members-pagination__page" aria-current="page">${p}</span>`
+            : `<button class="btn btn--ghost btn--sm members-pagination__page" type="button"
+                       data-page="${p}" aria-label="Page ${p}">${p}</button>`
+      )).join('')}
     </nav>`
     : '';
 
@@ -159,12 +188,21 @@ function renderTable(members, container) {
   if (bar) {
     bar.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-page]');
-      if (!btn || btn.disabled) return;
-      currentPage += btn.dataset.page === 'next' ? 1 : -1;
+      if (!btn) return;
+      currentPage = Number(btn.dataset.page);
       rerender(container);
       // Land on the top of the new page, clear of the sticky navbar.
-      container.querySelector('.members-table-wrap')
-        ?.scrollIntoView({ block: 'start', behavior: 'instant' });
+      // The site sets scroll-behavior: smooth globally; switch it off for
+      // this one jump so paging is instant (and older browsers that do
+      // not know behavior: 'instant' are safe too).
+      const wrap = container.querySelector('.members-table-wrap');
+      if (wrap) {
+        const root = document.documentElement;
+        const previous = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        wrap.scrollIntoView({ block: 'start' });
+        root.style.scrollBehavior = previous;
+      }
     });
   }
 }
