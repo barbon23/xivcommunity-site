@@ -1,6 +1,7 @@
 /**
  * members-list.js — Fetch, filter, sort and render the member roster.
- * Handles search, role filter, sort, grid/table toggle, and group-by-role.
+ * Handles search, role filter, sort, grid/table toggle, group-by-role,
+ * and numbered paging in both the table and the grid.
  */
 
 import { fetchJSON } from '../utils/fetch-json.js';
@@ -15,8 +16,17 @@ let currentFilter = 'All';
 let currentSort = 'role';
 let currentSearch = '';
 let viewMode = 'grid'; // 'grid' | 'table'
-let currentPage = 1;   // table view page, reset by search/sort/filter/toggle
-const TABLE_PAGE_SIZE = 20;  // rows per page in the table view
+let currentPage = 1;    // table view page
+let gridPage = 1;       // flat grid page (A-Z, Z-A, Newest, search, filter)
+const gridCategoryPages = new Map();  // category -> page in the grouped grid
+const PAGE_SIZE = 20;   // cards or rows per page, shared by both views
+
+/** Reset every pager to page 1 (used by search/sort/filter/view changes). */
+function resetPages() {
+  currentPage = 1;
+  gridPage = 1;
+  gridCategoryPages.clear();
+}
 
 /**
  * Apply current filter, sort and search to allMembers.
@@ -70,7 +80,10 @@ function groupByCategory(members) {
 }
 
 /**
- * Render the grid view, grouped by role.
+ * Render the grid view. With the default role sort and no category
+ * filter, each category is its own group with its own pager when it
+ * grows past one page. Every other combination (A-Z, Newest, search or
+ * a filter chip) is one flat list with a single pager.
  * @param {Array} members
  * @param {Element} container
  */
@@ -89,17 +102,43 @@ function renderGrid(members, container) {
   if (grouped && currentFilter === 'All') {
     let html = '';
     for (const [category, group] of grouped) {
-      html += `<div class="member-group">
+      const pageCount = Math.max(1, Math.ceil(group.length / PAGE_SIZE));
+      let page = gridCategoryPages.get(category) ?? 1;
+      if (page > pageCount) page = pageCount;
+      if (page < 1) page = 1;
+      gridCategoryPages.set(category, page);
+
+      const start = (page - 1) * PAGE_SIZE;
+      const pageMembers = group.slice(start, start + PAGE_SIZE);
+      const pager = pageCount > 1
+        ? `
+        <nav class="members-pagination members-pagination--group"
+             aria-label="${escapeHTML(category)} pages"
+             data-grid-category="${escapeHTML(category)}">
+          ${pageButtonsHTML(page, pageCount, 'data-grid-page')}
+        </nav>`
+        : '';
+
+      html += `<div class="member-group" data-category="${escapeHTML(category)}">
         <p class="member-group__heading">${escapeHTML(category)} <span style="color:var(--color-subtle)">(${group.length})</span></p>
-        <div class="members-grid">${group.map((m) => renderMemberCard(m)).join('')}</div>
+        <div class="members-grid">${pageMembers.map((m) => renderMemberCard(m)).join('')}</div>${pager}
       </div>`;
     }
     container.innerHTML = html;
   } else {
-    container.innerHTML = `<div class="members-grid">${members.map((m) => renderMemberCard(m)).join('')}</div>`;
+    const pageCount = Math.max(1, Math.ceil(members.length / PAGE_SIZE));
+    if (gridPage > pageCount) gridPage = pageCount;
+    if (gridPage < 1) gridPage = 1;
+    const start = (gridPage - 1) * PAGE_SIZE;
+    const pageMembers = members.slice(start, start + PAGE_SIZE);
+    const pager = pageCount > 1
+      ? `
+      <nav class="members-pagination" aria-label="Member list pages">
+        ${pageButtonsHTML(gridPage, pageCount, 'data-grid-page')}
+      </nav>`
+      : '';
+    container.innerHTML = `<div class="members-grid">${pageMembers.map((m) => renderMemberCard(m)).join('')}</div>${pager}`;
   }
-
-  initCopyButtons(container);
 }
 
 /**
@@ -129,9 +168,44 @@ function pageSequence(current, total) {
 }
 
 /**
- * Render the table view: one page of rows (TABLE_PAGE_SIZE) plus a
- * numbered paging bar when the list spans more than one page. Row
- * numbers continue across pages (#21 on page 2).
+ * Build the numbered page buttons for a paging bar. The current page is a
+ * non-interactive dark pill; every other page is a button.
+ * @param {number} current
+ * @param {number} total
+ * @param {string} pageAttr — data attribute carrying the page number
+ * @returns {string}
+ */
+function pageButtonsHTML(current, total, pageAttr) {
+  return pageSequence(current, total).map((p) => (
+    p === '…'
+      ? '<span class="members-pagination__gap" aria-hidden="true">…</span>'
+      : p === current
+        ? `<span class="btn btn--dark btn--sm members-pagination__page" aria-current="page">${p}</span>`
+        : `<button class="btn btn--ghost btn--sm members-pagination__page" type="button"
+                   ${pageAttr}="${p}" aria-label="Page ${p}">${p}</button>`
+  )).join('');
+}
+
+/**
+ * Scroll an element to the top of the viewport instantly, clear of the
+ * sticky navbar. The site sets scroll-behavior: smooth globally, so it is
+ * switched off for this one jump (also safe in older browsers that do not
+ * know behavior: 'instant').
+ * @param {Element|null} el
+ */
+function instantScrollTo(el) {
+  if (!el) return;
+  const root = document.documentElement;
+  const previous = root.style.scrollBehavior;
+  root.style.scrollBehavior = 'auto';
+  el.scrollIntoView({ block: 'start' });
+  root.style.scrollBehavior = previous;
+}
+
+/**
+ * Render the table view: one page of rows (PAGE_SIZE) plus a numbered
+ * paging bar when the list spans more than one page. Row numbers
+ * continue across pages (#21 on page 2).
  * @param {Array} members
  * @param {Element} container
  */
@@ -145,24 +219,17 @@ function renderTable(members, container) {
     return;
   }
 
-  const pageCount = Math.max(1, Math.ceil(members.length / TABLE_PAGE_SIZE));
+  const pageCount = Math.max(1, Math.ceil(members.length / PAGE_SIZE));
   if (currentPage > pageCount) currentPage = pageCount;   // list shrank (search/filter)
   if (currentPage < 1) currentPage = 1;
-  const start = (currentPage - 1) * TABLE_PAGE_SIZE;
-  const pageRows = members.slice(start, start + TABLE_PAGE_SIZE);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageRows = members.slice(start, start + PAGE_SIZE);
 
   const rows = pageRows.map((m, i) => renderMemberRow(m, start + i)).join('');
   const pagination = pageCount > 1
     ? `
     <nav class="members-pagination" aria-label="Member list pages">
-      ${pageSequence(currentPage, pageCount).map((p) => (
-        p === '…'
-          ? '<span class="members-pagination__gap" aria-hidden="true">…</span>'
-          : p === currentPage
-            ? `<span class="btn btn--dark btn--sm members-pagination__page" aria-current="page">${p}</span>`
-            : `<button class="btn btn--ghost btn--sm members-pagination__page" type="button"
-                       data-page="${p}" aria-label="Page ${p}">${p}</button>`
-      )).join('')}
+      ${pageButtonsHTML(currentPage, pageCount, 'data-page')}
     </nav>`
     : '';
 
@@ -182,29 +249,6 @@ function renderTable(members, container) {
         <tbody>${rows}</tbody>
       </table>
     </div>${pagination}`;
-  initCopyButtons(container);
-
-  const bar = container.querySelector('.members-pagination');
-  if (bar) {
-    bar.addEventListener('click', (e) => {
-      const btn = e.target.closest('[data-page]');
-      if (!btn) return;
-      currentPage = Number(btn.dataset.page);
-      rerender(container);
-      // Land on the top of the new page, clear of the sticky navbar.
-      // The site sets scroll-behavior: smooth globally; switch it off for
-      // this one jump so paging is instant (and older browsers that do
-      // not know behavior: 'instant' are safe too).
-      const wrap = container.querySelector('.members-table-wrap');
-      if (wrap) {
-        const root = document.documentElement;
-        const previous = root.style.scrollBehavior;
-        root.style.scrollBehavior = 'auto';
-        wrap.scrollIntoView({ block: 'start' });
-        root.style.scrollBehavior = previous;
-      }
-    });
-  }
 }
 
 /**
@@ -248,6 +292,41 @@ export async function initMembersList() {
   initMemberModal();
   wireProfilePopups(container, () => allMembers);
 
+  // Copy buttons are delegated from the container, so they only need to
+  // be wired once even though the cards and rows are re-created.
+  initCopyButtons(container);
+
+  // Paging is delegated too: one listener serves the table pager, each
+  // category pager and the flat grid pager after every re-render.
+  container.addEventListener('click', (e) => {
+    const tableBtn = e.target.closest('[data-page]');
+    if (tableBtn) {
+      currentPage = Number(tableBtn.dataset.page);
+      rerender(container);
+      instantScrollTo(container.querySelector('.members-table-wrap'));
+      return;
+    }
+
+    const gridBtn = e.target.closest('[data-grid-page]');
+    if (!gridBtn) return;
+
+    const category = gridBtn.closest('.members-pagination')?.dataset.gridCategory;
+    if (category) {
+      gridCategoryPages.set(category, Number(gridBtn.dataset.gridPage));
+    } else {
+      gridPage = Number(gridBtn.dataset.gridPage);
+    }
+    rerender(container);
+
+    if (category) {
+      const groupEl = [...container.querySelectorAll('.member-group')]
+        .find((group) => group.dataset.category === category);
+      instantScrollTo(groupEl?.querySelector('.member-group__heading'));
+    } else {
+      instantScrollTo(container.querySelector('.members-grid'));
+    }
+  });
+
   // Initial render
   rerender(container);
 
@@ -255,7 +334,7 @@ export async function initMembersList() {
   if (searchEl) {
     searchEl.addEventListener('input', () => {
       currentSearch = searchEl.value.trim();
-      currentPage = 1;
+      resetPages();
       rerender(container);
     });
   }
@@ -264,7 +343,7 @@ export async function initMembersList() {
   if (sortEl) {
     sortEl.addEventListener('change', () => {
       currentSort = sortEl.value;
-      currentPage = 1;
+      resetPages();
       rerender(container);
     });
   }
@@ -275,7 +354,7 @@ export async function initMembersList() {
       filterBtns.forEach(b => b.classList.remove('filter-chip--active'));
       btn.classList.add('filter-chip--active');
       currentFilter = btn.dataset.filter;
-      currentPage = 1;
+      resetPages();
       rerender(container);
     });
   });
@@ -285,7 +364,7 @@ export async function initMembersList() {
     viewToggle.addEventListener('click', () => {
       viewMode = viewMode === 'grid' ? 'table' : 'grid';
       viewToggle.textContent = viewMode === 'grid' ? 'Table view' : 'Grid view';
-      currentPage = 1;
+      resetPages();
       rerender(container);
     });
   }
