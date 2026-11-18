@@ -15,6 +15,8 @@ let currentFilter = 'All';
 let currentSort = 'role';
 let currentSearch = '';
 let viewMode = 'grid'; // 'grid' | 'table'
+let currentPage = 1;   // table view page, reset by search/sort/filter/toggle
+const TABLE_PAGE_SIZE = 20;  // rows per page in the table view
 
 /**
  * Apply current filter, sort and search to allMembers.
@@ -101,7 +103,9 @@ function renderGrid(members, container) {
 }
 
 /**
- * Render the table view.
+ * Render the table view: one page of rows (TABLE_PAGE_SIZE) plus a
+ * Prev/Next bar when the list spans more than one page. Row numbers
+ * continue across pages (#21 on page 2).
  * @param {Array} members
  * @param {Element} container
  */
@@ -115,7 +119,24 @@ function renderTable(members, container) {
     return;
   }
 
-  const rows = members.map((m, i) => renderMemberRow(m, i)).join('');
+  const pageCount = Math.max(1, Math.ceil(members.length / TABLE_PAGE_SIZE));
+  if (currentPage > pageCount) currentPage = pageCount;   // list shrank (search/filter)
+  if (currentPage < 1) currentPage = 1;
+  const start = (currentPage - 1) * TABLE_PAGE_SIZE;
+  const pageRows = members.slice(start, start + TABLE_PAGE_SIZE);
+
+  const rows = pageRows.map((m, i) => renderMemberRow(m, start + i)).join('');
+  const pagination = pageCount > 1
+    ? `
+    <nav class="members-pagination" aria-label="Member list pages">
+      <button class="btn btn--ghost btn--sm" type="button" data-page="prev"
+              ${currentPage <= 1 ? 'disabled' : ''}>Prev</button>
+      <span class="members-pagination__status">Page ${currentPage} of ${pageCount}</span>
+      <button class="btn btn--ghost btn--sm" type="button" data-page="next"
+              ${currentPage >= pageCount ? 'disabled' : ''}>Next</button>
+    </nav>`
+    : '';
+
   container.innerHTML = `
     <div class="members-table-wrap">
       <table class="members-table">
@@ -131,8 +152,21 @@ function renderTable(members, container) {
         </thead>
         <tbody>${rows}</tbody>
       </table>
-    </div>`;
+    </div>${pagination}`;
   initCopyButtons(container);
+
+  const bar = container.querySelector('.members-pagination');
+  if (bar) {
+    bar.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-page]');
+      if (!btn || btn.disabled) return;
+      currentPage += btn.dataset.page === 'next' ? 1 : -1;
+      rerender(container);
+      // Land on the top of the new page, clear of the sticky navbar.
+      container.querySelector('.members-table-wrap')
+        ?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    });
+  }
 }
 
 /**
@@ -183,6 +217,7 @@ export async function initMembersList() {
   if (searchEl) {
     searchEl.addEventListener('input', () => {
       currentSearch = searchEl.value.trim();
+      currentPage = 1;
       rerender(container);
     });
   }
@@ -191,6 +226,7 @@ export async function initMembersList() {
   if (sortEl) {
     sortEl.addEventListener('change', () => {
       currentSort = sortEl.value;
+      currentPage = 1;
       rerender(container);
     });
   }
@@ -201,6 +237,7 @@ export async function initMembersList() {
       filterBtns.forEach(b => b.classList.remove('filter-chip--active'));
       btn.classList.add('filter-chip--active');
       currentFilter = btn.dataset.filter;
+      currentPage = 1;
       rerender(container);
     });
   });
@@ -210,6 +247,7 @@ export async function initMembersList() {
     viewToggle.addEventListener('click', () => {
       viewMode = viewMode === 'grid' ? 'table' : 'grid';
       viewToggle.textContent = viewMode === 'grid' ? 'Table view' : 'Grid view';
+      currentPage = 1;
       rerender(container);
     });
   }
