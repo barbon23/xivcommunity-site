@@ -78,7 +78,6 @@ failed — browsers can briefly hold the previous image.
      You choose this yourself for every member, independently of their
      role; new members start as XIV MEMBER. The tag colour follows the
      category too.
-   - **Main class** — Slayer, OBJ, Sniper or Support.
    - **UID** — optional. It is not shown in the pop-up; the Copy button
      on a member's card copies it.
    - **Join date** — click the field and pick the date.

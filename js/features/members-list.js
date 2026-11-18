@@ -124,7 +124,6 @@ function renderTable(members, container) {
             <th>#</th>
             <th>IGN</th>
             <th>Role</th>
-            <th>Class</th>
             <th>UID</th>
             <th>Joined</th>
             <th></th>

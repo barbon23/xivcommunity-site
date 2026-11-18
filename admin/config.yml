@@ -319,11 +319,6 @@ collections:
                 widget: select
                 options: [XIV MANAGEMENT, X1V EXCLUSIVE, XIV MEMBER]
                 default: XIV MEMBER
-              - label: Main class
-                name: class
-                widget: select
-                options: [Slayer, OBJ, Sniper, Support]
-                required: false
               - label: UID (copyable in-game ID)
                 name: uid
                 widget: string

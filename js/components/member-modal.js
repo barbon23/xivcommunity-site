@@ -1,8 +1,9 @@
 /**
  * member-modal.js — Click-a-member profile popup.
  * One self-mounting dialog shared by the members page and the homepage
- * roster preview. Shows the big avatar, IGN with the verified tick,
- * the role tag, the join date and the member's description. Members
+ * roster preview. The profile header (big avatar, IGN with the verified
+ * tick, role tag) is locked at the top of the panel while the member's
+ * description, ID card and joined date scroll underneath. Members
  * with an ID card picture also get it under the bio: tap the picture
  * to view it full size, or download it with a properly named file.
  * No UID row: the UID lives in the card picture and on the member
@@ -38,14 +39,16 @@ function ensureShell() {
       <button class="member-modal__close" type="button" data-close data-ref="close" aria-label="Close profile">
         ${CLOSE_ICON}
       </button>
-      <div class="member-modal__body" data-ref="body">
-        <div class="member-modal__head">
-          <div class="member-modal__avatar" data-ref="avatar"></div>
-          <div class="member-modal__id">
-            <p class="member-modal__ign" id="member-modal-ign" data-ref="ign"></p>
-            <div class="member-modal__tags" data-ref="tags"></div>
-          </div>
+      <!-- Locked profile header: avatar + IGN + role tag stay pinned while
+           the description and ID card scroll underneath. -->
+      <div class="member-modal__head">
+        <div class="member-modal__avatar" data-ref="avatar"></div>
+        <div class="member-modal__id">
+          <p class="member-modal__ign" id="member-modal-ign" data-ref="ign"></p>
+          <div class="member-modal__tags" data-ref="tags"></div>
         </div>
+      </div>
+      <div class="member-modal__body" data-ref="body">
         <p class="member-modal__bio" data-ref="bio"></p>
         <figure class="member-modal__idcard" data-ref="idcard" hidden>
           <img class="member-modal__idcard-img" data-ref="idcardImg" alt="" title="View full size">

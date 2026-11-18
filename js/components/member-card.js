@@ -1,7 +1,7 @@
 /**
  * member-card.js — Officer profile card (grid) and roster table row.
  * Photo-first card: large round avatar (photo or initials fallback),
- * full IGN (wraps instead of ellipsizing), role/class tags, join date,
+ * full IGN (wraps instead of ellipsizing), role tag, join date,
  * compact copy-IGN button in the corner. Cards and rows are clickable
  * and open the member profile popup (member-modal.js). Pure component.
  */
@@ -45,7 +45,6 @@ function copyTarget(member) {
 export function renderMemberCard(member, { hideRole = false } = {}) {
   const ign = escapeHTML(member.ign);
   const role = escapeHTML(member.role);
-  const cls = escapeHTML(member.class || '');
   const init = escapeHTML(initials(member.ign));
   const joined = member.joinDate ? formatDateShort(member.joinDate) : '';
   const tagClass = memberTagClass(member);
@@ -71,7 +70,6 @@ export function renderMemberCard(member, { hideRole = false } = {}) {
       <p class="member-card__ign"><span>${ign}</span>${member.verified ? VERIFIED_HTML : ''}</p>
       <div class="member-card__tags">
         ${hideRole ? '' : `<span class="tag ${tagClass}">${role}</span>`}
-        ${cls ? `<span class="tag tag--plain">${cls}</span>` : ''}
       </div>
       ${joined ? `<p class="member-card__joined">Joined ${joined}</p>` : ''}
     </article>
@@ -87,7 +85,6 @@ export function renderMemberCard(member, { hideRole = false } = {}) {
 export function renderMemberRow(member, index) {
   const ign = escapeHTML(member.ign);
   const role = escapeHTML(member.role);
-  const cls = escapeHTML(member.class || '—');
   const uid = member.uid ? escapeHTML(member.uid) : '—';
   const joined = member.joinDate ? formatDateShort(member.joinDate) : '—';
   const tagClass = memberTagClass(member);
@@ -103,7 +100,6 @@ export function renderMemberRow(member, index) {
         </div>
       </td>
       <td><span class="tag ${tagClass}">${role}</span></td>
-      <td>${cls}</td>
       <td class="members-table__uid">${uid}</td>
       <td class="members-table__date">${joined}</td>
       <td>
