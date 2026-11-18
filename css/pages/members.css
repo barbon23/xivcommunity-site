@@ -15,7 +15,7 @@
   gap: var(--space-4);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .members-header__inner {
     flex-direction: row;
     align-items: flex-end;
@@ -45,7 +45,7 @@
   gap: var(--space-3);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .members-controls {
     flex-direction: row;
     align-items: center;

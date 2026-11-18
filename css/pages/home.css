@@ -29,8 +29,9 @@
   }
 }
 
-/* Phones: tighter hero so content lands higher on the first screen */
-@media (max-width: 767.98px) {
+/* Phones and tablets: tighter hero so content lands higher on the
+   first screen (breakpoint follows the site-wide 900px boundary). */
+@media (max-width: 899.98px) {
   .hero {
     padding-top: var(--space-6);
   }
@@ -335,7 +336,7 @@
   margin-bottom: var(--space-5);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .posts-preview__grid {
     grid-template-columns: repeat(3, 1fr);
   }

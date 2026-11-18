@@ -1,8 +1,8 @@
 /* ============================================================
-   bottom-nav.css — App-style mobile toolbar (fixed, <768px)
+   bottom-nav.css — App-style mobile toolbar (fixed, <900px)
    Home · Members · dark center Join pill · Blog · Support.
    The desktop top navbar is untouched; the bar simply does not
-   exist from 768px up. Safe-area padding keeps it clear of the
+   exist from 900px up. Safe-area padding keeps it clear of the
    iOS/Android gesture bar.
    ============================================================ */
 
@@ -25,13 +25,13 @@
 }
 
 /* Room so page footers are never hidden behind the bar. */
-@media (max-width: 767.98px) {
+@media (max-width: 899.98px) {
   body {
     padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .bottom-nav {
     display: none;
   }

@@ -31,7 +31,7 @@
   gap: var(--space-3);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .blog-controls {
     flex-direction: row;
     align-items: center;
