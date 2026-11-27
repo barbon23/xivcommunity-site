@@ -312,7 +312,7 @@ collections:
               - label: Role
                 name: role
                 widget: select
-                options: [Founder, Community Master, Head Admin, Event Organizer, Moderator, Internal Affair, Tag Checker, "Discipline & Warning", Recruiter, "Graphics & Content", Leaderboard, Sponsor, Streamer, Content Creator, Compe, Casual]
+                options: [Founder, Community Master, Head Admin, Event Organizer, Moderator, Internal Affair, Tag Checker, "Discipline & Warning", Recruiter, "Graphics & Content", Masterlist, Webmaster, Leaderboard, Sponsor, Streamer, Content Creator, Compe, Casual]
                 default: Casual
               - label: Category (which group they belong in)
                 name: category

@@ -69,10 +69,11 @@ failed — browsers can briefly hold the previous image.
 1. Click **Members** → **Member roster**.
 2. To add someone, click **Add members →** at the top of the list and fill in:
    - **In-game name (IGN)** — exactly as it looks in-game; this is required.
-   - **Role** — pick one of 16 roles: Founder, Community Master, Head
+   - **Role** — pick one of 18 roles: Founder, Community Master, Head
      Admin, Event Organizer, Moderator, Internal Affair, Tag Checker,
-     Discipline & Warning, Recruiter, Graphics & Content, Leaderboard,
-     Sponsor, Streamer, Content Creator, Compe or Casual.
+     Discipline & Warning, Recruiter, Graphics & Content, Masterlist,
+     Webmaster, Leaderboard, Sponsor, Streamer, Content Creator, Compe
+     or Casual.
    - **Category** — which group the member belongs in on the members
      page: **XIV MANAGEMENT**, **X1V EXCLUSIVE** or **XIV MEMBER**.
      You choose this yourself for every member, independently of their

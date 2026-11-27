@@ -186,11 +186,6 @@
   white-space: pre-line;
 }
 
-.member-modal__bio--empty {
-  color: var(--color-muted);
-  font-style: italic;
-}
-
 /* ── ID card: optional downloadable member card ──────────── */
 
 .member-modal__idcard {

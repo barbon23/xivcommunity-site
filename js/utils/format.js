@@ -120,6 +120,8 @@ export function roleCategory(role) {
     'Discipline & Warning': 'XIV MANAGEMENT',
     'Recruiter':            'XIV MANAGEMENT',
     'Graphics & Content':   'XIV MANAGEMENT',
+    'Masterlist':           'XIV MANAGEMENT',
+    'Webmaster':            'XIV MANAGEMENT',
     'Leaderboard':          'XIV MANAGEMENT',
     // X1V EXCLUSIVE
     'Sponsor':              'X1V EXCLUSIVE',
@@ -183,12 +185,14 @@ export function roleWeight(role) {
     'Tag Checker':          7,
     'Recruiter':            8,
     'Graphics & Content':   9,
-    'Leaderboard':          10,
-    'Sponsor':              11,
-    'Streamer':             12,
-    'Content Creator':      13,
-    'Compe':                14,
-    'Casual':               15,
+    'Masterlist':           10,
+    'Webmaster':            11,
+    'Leaderboard':          12,
+    'Sponsor':              13,
+    'Streamer':             14,
+    'Content Creator':      15,
+    'Compe':                16,
+    'Casual':               17,
   };
   return weights[role] ?? 99;
 }

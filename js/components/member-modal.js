@@ -187,8 +187,8 @@ export function openMemberModal(member) {
   refs.tags.innerHTML =
     `<span class="tag ${memberTagClass(member)}">${escapeHTML(member.role)}</span>`;
 
-  refs.bio.textContent = bio || 'Bio coming soon.';
-  refs.bio.classList.toggle('member-modal__bio--empty', !bio);
+  refs.bio.textContent = bio;
+  refs.bio.hidden = !bio;
 
   // Optional ID card picture: shown under the bio (tap it to view it
   // full size), downloadable. The popup has no UID row — the UID lives
