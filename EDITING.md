@@ -114,6 +114,21 @@ failed — browsers can briefly hold the previous image.
 5. Click **Save** when done. Members are listed alphabetically inside their
    role group automatically.
 
+### Finding a member
+
+Use the **Find a member** bar at the top of the roster:
+
+1. Type any part of the IGN or the UID. Styled Unicode names work with normal
+   keyboard letters, so typing `revo` finds names such as the founder's.
+2. Narrow the results with **Category** and **Role** if needed.
+3. Click a result, or use the Up/Down arrows and press **Enter**, to jump to
+   that member. The row briefly flashes so you can see where you are.
+4. Click **Clear** to reset all filters.
+
+Search never hides or reorders rows, so drag and drop keeps working normally.
+Search uses the saved roster. If you add, remove, or reorder members, click
+**Save** to refresh the search list.
+
 ---
 
 ## 4. Writing a blog post
